@@ -2302,7 +2302,7 @@ texture = ExtResource("3_km0yn")
 7:20/0 = 0
 7:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, -8, -8, -8, 8)
 8:21/0 = 0
-8:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, -8, -8, -8, 8)
+8:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 0.9575672, 2.524498, 8, 8, 8, 8, -8, 8)
 8:22/0 = 0
 8:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:23/0 = 0
@@ -2312,19 +2312,19 @@ texture = ExtResource("3_km0yn")
 6:23/0 = 0
 6:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:22/0 = 0
-6:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, -8, -8, -8, 8)
+6:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.26115417, -0.26115417, 8, -8, 8, -8, 8, 8, -8, 8)
 6:21/0 = 0
 6:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, -8, -8, -8, 8)
 7:21/0 = 0
-7:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, -8, -8, -8, 8)
+7:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.26115417, -0.26115417, 8, -8, 8, -8, 8, 8, -8, 8)
 7:22/0 = 0
-7:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, 8, 8, -8, 8)
 8:20/0 = 0
 8:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, -8, -8, -8, 8)
 9:22/0 = 0
-9:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, -8, -8, -8, 8)
+9:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 0.9575672, 2.524498, 8, 8, 8, 8, -8, 8)
 10:22/0 = 0
-10:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, -8, -8, -8, 8)
+10:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, -8, 8, 8, 8, -8, 8)
 10:23/0 = 0
 10:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:23/0 = 0
@@ -3633,8 +3633,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_nyvg2")
 }],
 "loop": true,
-"name": &"jalan_kanan",
-"speed": 5.0
+"name": &"jalan",
+"speed": 20.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j6kj6"]
@@ -3662,9 +3662,7 @@ script = ExtResource("4_km0yn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player" unique_id=1834123472]
 position = Vector2(67, 74)
 sprite_frames = SubResource("SpriteFrames_rrhh6")
-animation = &"jalan_kanan"
-frame = 1
-frame_progress = 0.5583193
+animation = &"jalan"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=957713646]
 position = Vector2(58, 102)
