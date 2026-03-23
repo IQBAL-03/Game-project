@@ -4,6 +4,7 @@ const kecepatan = 150.0
 const kekuatan_loncat = -350.0
 
 var bisa_double_jump = false
+var has_key: bool = false
 var gravitasi = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var sprite = $AnimatedSprite2D

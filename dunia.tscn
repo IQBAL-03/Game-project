@@ -6652,7 +6652,7 @@ animation = &"jalan"
 position = Vector2(58, 102)
 shape = SubResource("CircleShape2D_j6kj6")
 
-[node name="key" type="CharacterBody2D" parent="." unique_id=1206762799]
+[node name="key" type="Area2D" parent="." unique_id=1444131180]
 script = ExtResource("11_kcb5e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="key" unique_id=27322899]
@@ -6665,7 +6665,7 @@ animation = &"Key"
 position = Vector2(673, 521)
 shape = SubResource("CircleShape2D_5vr8a")
 
-[node name="key_2" type="CharacterBody2D" parent="." unique_id=1074236707]
+[node name="key_2" type="Area2D" parent="." unique_id=1194559979]
 script = ExtResource("13_5vr8a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="key_2" unique_id=554265179]
