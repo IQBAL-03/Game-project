@@ -1,4 +1,4 @@
-# The Witch Project
+# Game Project
 
 Proyek game platformer sederhana yang dikembangkan menggunakan Godot Engine.
 
