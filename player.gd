@@ -5,6 +5,8 @@ const kekuatan_loncat = -350.0
 
 var bisa_double_jump = false
 var has_key: bool = false
+var bawa_kunci = false
+var carried_keys: Array = []
 var gravitasi = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var sprite = $AnimatedSprite2D

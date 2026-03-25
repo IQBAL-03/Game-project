@@ -13,6 +13,9 @@
 [ext_resource type="Script" uid="uid://dfd7w6e8kbx2g" path="res://key.gd" id="11_kcb5e"]
 [ext_resource type="Texture2D" uid="uid://dsrmberhot0ms" path="res://map/Map/PNG/key.png" id="11_knjot"]
 [ext_resource type="Script" uid="uid://dd10t4ci4ia72" path="res://key_2.gd" id="13_5vr8a"]
+[ext_resource type="Script" uid="uid://de3ru2opds5h6" path="res://chest.gd" id="14_56qte"]
+[ext_resource type="Texture2D" uid="uid://cs4k2pjns4u7" path="res://map/Map/PNG/chest.png" id="15_tdcp2"]
+[ext_resource type="Script" uid="uid://c1uuoxp30ex67" path="res://chest_2.gd" id="16_tdcp2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_56qte"]
 texture = ExtResource("1_uebvl")
@@ -6674,6 +6677,68 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_fujyx"]
 radius = 5.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2syh"]
+atlas = ExtResource("15_tdcp2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muvwf"]
+atlas = ExtResource("15_tdcp2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3m67"]
+atlas = ExtResource("15_tdcp2")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djedn"]
+atlas = ExtResource("15_tdcp2")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0dqgu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2syh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muvwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3m67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djedn")
+}],
+"loop": false,
+"name": &"buka",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1st4"]
+size = Vector2(38, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nyvg2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2syh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muvwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3m67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djedn")
+}],
+"loop": false,
+"name": &"buka_2",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrhh6"]
+size = Vector2(36, 31)
+
 [node name="Dunia" type="Node2D" unique_id=579968787]
 
 [node name="latar" type="TileMapLayer" parent="." unique_id=93660697]
@@ -6726,3 +6791,27 @@ animation = &"Key"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="key_2" unique_id=1180537734]
 position = Vector2(17, 986)
 shape = SubResource("CircleShape2D_fujyx")
+
+[node name="chest" type="Area2D" parent="." unique_id=155704612]
+script = ExtResource("14_56qte")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="chest" unique_id=1478319322]
+position = Vector2(816, 272)
+sprite_frames = SubResource("SpriteFrames_0dqgu")
+animation = &"buka"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chest" unique_id=2125249699]
+position = Vector2(816, 268)
+shape = SubResource("RectangleShape2D_w1st4")
+
+[node name="chest_2" type="Area2D" parent="." unique_id=989467301]
+script = ExtResource("16_tdcp2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="chest_2" unique_id=359434979]
+position = Vector2(224, 991)
+sprite_frames = SubResource("SpriteFrames_nyvg2")
+animation = &"buka_2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chest_2" unique_id=943922929]
+position = Vector2(225, 986.5)
+shape = SubResource("RectangleShape2D_rrhh6")
