@@ -22,6 +22,7 @@ func _ready() -> void:
 	# Setup detection area
 	detection_area = Area2D.new()
 	detection_area.name = "DetectionArea"
+	detection_area.position = animated_sprite.position
 	add_child(detection_area)
 	
 	# Create and configure collision shape
