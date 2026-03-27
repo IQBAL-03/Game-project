@@ -6876,6 +6876,7 @@ shape = SubResource("RectangleShape2D_njxog")
 
 [node name="predator_plant_2" type="Area2D" parent="." unique_id=1324261074]
 script = ExtResource("5_0safm")
+center_adjustment = -81.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="predator_plant_2" unique_id=1969701599]
 position = Vector2(438, 959)
