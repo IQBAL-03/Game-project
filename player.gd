@@ -16,12 +16,14 @@ var timer_lari = 0.0
 const WAKTU_DOUBLE_TAP = 0.25 
 var sedang_lari = false
 var tombol_terakhir = ""
+var sedang_serang = false
 
 @onready var sprite = $AnimatedSprite2D
 
 func _ready():
 	floor_max_angle = deg_to_rad(60)
 	floor_snap_length = 8.0
+	sprite.animation_finished.connect(_on_animation_finished)
 
 func _physics_process(delta):
 	if timer_lari > 0:
@@ -32,7 +34,10 @@ func _physics_process(delta):
 	else:
 		bisa_double_jump = true
 
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and not sedang_serang:
+		serang()
+
+	if Input.is_action_just_pressed("ui_up") and not sedang_serang:
 		if is_on_floor():
 			velocity.y = kekuatan_loncat
 		elif bisa_double_jump:
@@ -41,15 +46,13 @@ func _physics_process(delta):
 
 	var arah = Input.get_axis("ui_left", "ui_right")
 	
-	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
+	if (Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right")) and not sedang_serang:
 		var tombol_skrg = "kiri" if Input.is_action_just_pressed("ui_left") else "kanan"
-		
 		if timer_lari > 0 and tombol_terakhir == tombol_skrg:
 			sedang_lari = true
 		else:
 			timer_lari = WAKTU_DOUBLE_TAP
 			sedang_lari = false
-		
 		tombol_terakhir = tombol_skrg
 
 	if arah == 0:
@@ -57,7 +60,9 @@ func _physics_process(delta):
 
 	kecepatan_skrg = kecepatan_lari if sedang_lari else kecepatan_jalan
 	
-	if arah != 0:
+	if sedang_serang and is_on_floor():
+		velocity.x = move_toward(velocity.x, 0, kecepatan_jalan)
+	elif arah != 0:
 		velocity.x = arah * kecepatan_skrg
 		sprite.flip_h = (arah < 0)
 	else:
@@ -66,7 +71,18 @@ func _physics_process(delta):
 	update_animations(arah)
 	move_and_slide()
 
+func serang():
+	sedang_serang = true
+	sprite.play("serang")
+
+func _on_animation_finished():
+	if sprite.animation == "serang":
+		sedang_serang = false
+
 func update_animations(arah):
+	if sedang_serang:
+		return
+
 	if not is_on_floor():
 		if sprite.animation != "lompat":
 			sprite.play("lompat")
