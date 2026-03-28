@@ -1,14 +1,11 @@
 extends Area2D
-# Configuration properties
 @export var detection_radius: float = 90.0
 @export var animation_speed: float = 1.0
 @export var flip_offset: float = -100
-@export var center_adjustment: float = 0.0 # <--- Tambah ini Bang! Buat geser titik pembagi kiri-kanannya
-# Node references
+@export var center_adjustment: float = 0.0
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var player: CharacterBody2D
 var detection_area: Area2D
-# State tracking
 var is_player_detected: bool = false
 var original_sprite_pos_x: float = 0.0
 @onready var main_collision_shape: CollisionShape2D = $CollisionShape2D
@@ -23,13 +20,11 @@ func _ready() -> void:
 	
 	detection_area = Area2D.new()
 	detection_area.name = "DetectionArea"
-	# Letakkan detection area di tengah-tengah antara posisi normal dan flipped
 	detection_area.position = animated_sprite.position
 	detection_area.position.x = original_sprite_pos_x + (flip_offset / 2.0)
 	add_child(detection_area)
 	
 	var shape = CircleShape2D.new()
-	# Perbesar radius dikit biar lebih stabil mencakup kedua arah
 	shape.radius = detection_radius
 	var collision_shape = CollisionShape2D.new()
 	collision_shape.shape = shape
@@ -43,21 +38,17 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if is_player_detected and is_instance_valid(player):
-		# Pakai titik tengah yang sama kayak predator_plant.gd 
-		# Tapi dikurangi 81 (lewat center_adjustment) biar seimbang kayak yang pertama
 		var stable_center_x = to_global(Vector2(original_sprite_pos_x + center_adjustment, 0)).x
 		var dir_x = player.global_position.x - stable_center_x
 		
 		if abs(dir_x) > 2.0:
 			if dir_x > 0:
-				# Player di KANAN → Posisi asli (hadap kanan buat asset ini)
 				animated_sprite.flip_h = false
 				animated_sprite.position.x = original_sprite_pos_x
 				detection_area.position.x = original_sprite_pos_x
 				if main_collision_shape:
 					main_collision_shape.position.x = original_main_collision_pos_x
 			else:
-				# Player di KIRI → Flip (hadap kiri buat asset ini)
 				animated_sprite.flip_h = true
 				animated_sprite.position.x = original_sprite_pos_x + flip_offset
 				detection_area.position.x = original_sprite_pos_x + flip_offset
@@ -76,7 +67,6 @@ func _on_body_exited(body: Node2D) -> void:
 		is_player_detected = false
 		animated_sprite.stop()
 		animated_sprite.frame = 0
-		# Hapus bagian reset posisi supaya dia tetap menghadap arah terakhir
 		player = null
 func set_detection_radius(radius: float) -> void:
 	if radius <= 0:

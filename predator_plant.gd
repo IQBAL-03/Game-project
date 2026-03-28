@@ -1,15 +1,13 @@
 extends Area2D
 
-# Configuration properties
 @export var detection_radius: float = 100.0
 @export var animation_speed: float = 1.0
-@export var flip_offset: float = 110
-# Node references
+@export var flip_offset: float = 140
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var player: CharacterBody2D
 var detection_area: Area2D
 
-# State tracking
 var is_player_detected: bool = false
 var original_sprite_pos_x: float = 0.0
 @onready var main_collision_shape: CollisionShape2D = $CollisionShape2D
@@ -17,7 +15,6 @@ var original_main_collision_pos_x: float = 0.0
 
 
 func _ready() -> void:
-	# Setup animation
 	original_sprite_pos_x = animated_sprite.position.x
 	if main_collision_shape:
 		original_main_collision_pos_x = main_collision_shape.position.x
@@ -25,24 +22,20 @@ func _ready() -> void:
 	animated_sprite.frame = 0
 	animated_sprite.stop()
 	
-	# Setup detection area
 	detection_area = Area2D.new()
 	detection_area.name = "DetectionArea"
 	detection_area.position = animated_sprite.position
 	add_child(detection_area)
 	
-	# Create and configure collision shape
 	var shape = CircleShape2D.new()
 	shape.radius = detection_radius
 	var collision_shape = CollisionShape2D.new()
 	collision_shape.shape = shape
 	detection_area.add_child(collision_shape)
 	
-	# Configure collision layers
 	detection_area.collision_layer = 0
 	detection_area.collision_mask = 1
 	
-	# Connect signals
 	detection_area.body_entered.connect(_on_body_entered)
 	detection_area.body_exited.connect(_on_body_exited)
 
@@ -52,7 +45,6 @@ func _process(_delta: float) -> void:
 		var stable_center_x = to_global(Vector2(original_sprite_pos_x, 0)).x
 		var dir_x = player.global_position.x - stable_center_x
 		
-		# Kasih toleransi kecil biar gak kedap-kedip berulang
 		if abs(dir_x) > 2.0:
 			if dir_x > 0:
 				animated_sprite.flip_h = true
@@ -69,13 +61,11 @@ func _process(_delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print("Body entered: ", body.name)
 	if body.name == "player":
 		player = body
 		is_player_detected = true
 		animated_sprite.play("predator_plant")
 		animated_sprite.speed_scale = animation_speed
-		print("Player detected! Playing animation")
 
 
 func _on_body_exited(body: Node2D) -> void:
