@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://dfd7w6e8kbx2g" path="res://key.gd" id="11_kcb5e"]
 [ext_resource type="Texture2D" uid="uid://dsrmberhot0ms" path="res://map/Map/PNG/key.png" id="11_knjot"]
 [ext_resource type="Script" uid="uid://dd10t4ci4ia72" path="res://key_2.gd" id="13_5vr8a"]
+[ext_resource type="Texture2D" uid="uid://cf73m1fwaf3pj" path="res://player/Wanderer Magican/Hurt.png" id="14_7f05x"]
 [ext_resource type="Script" uid="uid://de3ru2opds5h6" path="res://chest.gd" id="14_56qte"]
 [ext_resource type="Texture2D" uid="uid://d4aj3sp1a3ljx" path="res://player/Wanderer Magican/Idle.png" id="14_up388"]
 [ext_resource type="Texture2D" uid="uid://cs4k2pjns4u7" path="res://map/Map/PNG/chest.png" id="15_tdcp2"]
@@ -24,6 +25,7 @@
 [ext_resource type="Script" uid="uid://d15aj7idkn6q3" path="res://predator_plant.gd" id="17_rrhh6"]
 [ext_resource type="Texture2D" uid="uid://dii23akyywbxn" path="res://map/Map/PNG/Predator_plant.png" id="18_0safm"]
 [ext_resource type="Texture2D" uid="uid://3m1e4b1r7scj" path="res://player/Wanderer Magican/Attack_1.png" id="18_k2k2b"]
+[ext_resource type="Texture2D" uid="uid://ccnmketgoepui" path="res://player/Wanderer Magican/Dead.png" id="19_kg1tc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_56qte"]
 texture = ExtResource("1_uebvl")
@@ -7204,6 +7206,22 @@ sources/1 = SubResource("TileSetAtlasSource_kcb5e")
 sources/4 = SubResource("TileSetAtlasSource_5vr8a")
 sources/5 = SubResource("TileSetAtlasSource_fujyx")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ybm8"]
+atlas = ExtResource("14_7f05x")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c54p"]
+atlas = ExtResource("14_7f05x")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aw75d"]
+atlas = ExtResource("14_7f05x")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ik24x"]
+atlas = ExtResource("14_7f05x")
+region = Rect2(384, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1rd4l"]
 atlas = ExtResource("14_up388")
 region = Rect2(0, 0, 128, 128)
@@ -7328,6 +7346,22 @@ region = Rect2(768, 0, 128, 128)
 atlas = ExtResource("16_i7lke")
 region = Rect2(896, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_afw5s"]
+atlas = ExtResource("19_kg1tc")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnbbb"]
+atlas = ExtResource("19_kg1tc")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ciauk"]
+atlas = ExtResource("19_kg1tc")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vh7t"]
+atlas = ExtResource("19_kg1tc")
+region = Rect2(384, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7n5kd"]
 atlas = ExtResource("18_k2k2b")
 region = Rect2(0, 0, 128, 128)
@@ -7358,6 +7392,23 @@ region = Rect2(768, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rrhh6"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ybm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c54p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aw75d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ik24x")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1rd4l")
@@ -7470,6 +7521,23 @@ animations = [{
 "loop": true,
 "name": &"lompat",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afw5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnbbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ciauk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vh7t")
+}],
+"loop": true,
+"name": &"mati",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -7737,7 +7805,7 @@ center_adjustment = -81.0
 position = Vector2(439, 959)
 sprite_frames = SubResource("SpriteFrames_fub3s")
 animation = &"predator_plant_2"
-frame_progress = 0.37938523
+frame_progress = 0.9747987
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="predator_plant_2" unique_id=790342904]
 position = Vector2(387.75, 968)
@@ -7758,7 +7826,7 @@ script = ExtResource("4_km0yn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player" unique_id=1834123472]
 position = Vector2(62, 41)
 sprite_frames = SubResource("SpriteFrames_rrhh6")
-animation = &"serang"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=957713646]
 position = Vector2(58, 102)
