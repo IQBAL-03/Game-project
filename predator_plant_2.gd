@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var detection_radius: float = 90.0
+@export var detection_radius: float = 120.0
 @export var attack_speed: float = 1.0
 @export var flip_offset: float = 0.0
 
@@ -44,12 +44,9 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var sprite_global = to_global(sprite_local_center)
-	var distance = sprite_global.distance_to(player.global_position)
 	var dir_x = player.global_position.x - sprite_global.x
 
-	if distance <= detection_radius:
-		animated_sprite.flip_h = false
-
+	if abs(dir_x) <= detection_radius:
 		if not is_attacking:
 			is_attacking = true
 			_play_attack_anim(dir_x)
@@ -72,9 +69,8 @@ func _on_animation_finished() -> void:
 	if anim == "serang_kanan" or anim == "serang_kiri":
 		if is_attacking and player and is_instance_valid(player):
 			var sprite_global = to_global(sprite_local_center)
-			var distance = sprite_global.distance_to(player.global_position)
-			if distance <= detection_radius:
-				var dir_x = player.global_position.x - sprite_global.x
+			var dir_x = player.global_position.x - sprite_global.x
+			if abs(dir_x) <= detection_radius:
 				_play_attack_anim(dir_x)
 			else:
 				animated_sprite.play("idle")
