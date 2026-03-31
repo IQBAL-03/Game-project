@@ -296,7 +296,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1hoff")
 }],
-"loop": true,
+"loop": false,
 "name": &"serang_kanan",
 "speed": 5.0
 }, {
@@ -322,7 +322,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xq8ju")
 }],
-"loop": true,
+"loop": false,
 "name": &"serang_kiri",
 "speed": 5.0
 }]

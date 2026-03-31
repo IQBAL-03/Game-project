@@ -296,7 +296,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jgjk8")
 }],
-"loop": true,
+"loop": false,
 "name": &"serang_kanan",
 "speed": 5.0
 }, {
@@ -322,7 +322,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3lsn3")
 }],
-"loop": true,
+"loop": false,
 "name": &"serang_kiri",
 "speed": 5.0
 }]
@@ -340,7 +340,7 @@ script = ExtResource("1_faunm")
 position = Vector2(21, 22.999996)
 scale = Vector2(1.65625, 1.7187499)
 sprite_frames = SubResource("SpriteFrames_nhygh")
-animation = &"idle"
+animation = &"serang_kanan"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=144796977]
 position = Vector2(29.25, 48.5)

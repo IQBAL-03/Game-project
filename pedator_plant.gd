@@ -83,17 +83,26 @@ func _physics_process(delta: float) -> void:
 		# Player out of range, return to idle
 		if is_attacking:
 			animated_sprite.play("idle")
-			animated_sprite.stop()
-			animated_sprite.frame = 0
 			is_attacking = false
 
 
 func _on_animation_finished() -> void:
 	# Jika animasi serang selesai, kembali ke idle
-	if animated_sprite.animation == "serang_kanan" and is_attacking:
-		animated_sprite.play("idle")
-		animated_sprite.stop()
-		animated_sprite.frame = 0
+	if animated_sprite.animation == "serang_kanan":
+		# Cek apakah player masih dalam range
+		if is_attacking and player and is_instance_valid(player):
+			var distance = global_position.distance_to(player.global_position)
+			if distance <= detection_radius:
+				# Player masih dalam range, serang lagi
+				animated_sprite.play("serang_kanan")
+			else:
+				# Player keluar range, kembali ke idle
+				animated_sprite.play("idle")
+				is_attacking = false
+		else:
+			# Tidak ada player, kembali ke idle
+			animated_sprite.play("idle")
+			is_attacking = false
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
