@@ -27,7 +27,7 @@ func _ready():
 	floor_snap_length = 8.0
 	sprite.animation_finished.connect(_on_animation_finished)
 	
-	# Nonaktifkan AttackBox di awal
+	
 	if attack_box:
 		attack_box.monitoring = false
 		attack_box.monitorable = false
@@ -41,7 +41,7 @@ func _physics_process(delta):
 	else:
 		bisa_double_jump = true
 
-	# Serang dengan klik kiri (hanya sekali per klik)
+	
 	var mouse_pressed = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 	if mouse_pressed and not mouse_was_pressed and not sedang_serang and is_on_floor():
 		serang()
@@ -85,7 +85,7 @@ func serang():
 	sedang_serang = true
 	sprite.play("serang")
 	
-	# Aktifkan AttackBox saat serang
+	
 	if attack_box:
 		attack_box.monitoring = true
 		attack_box.monitorable = true
@@ -94,7 +94,7 @@ func _on_animation_finished():
 	if sprite.animation == "serang":
 		sedang_serang = false
 		
-		# Nonaktifkan AttackBox setelah serang selesai
+		
 		if attack_box:
 			attack_box.monitoring = false
 			attack_box.monitorable = false
