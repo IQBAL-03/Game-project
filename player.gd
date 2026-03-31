@@ -84,24 +84,20 @@ func _physics_process(delta):
 func serang():
 	sedang_serang = true
 	sprite.play("serang")
-	print("Serang dimulai!")
 	
 	# Aktifkan AttackBox saat serang
 	if attack_box:
 		attack_box.monitoring = true
 		attack_box.monitorable = true
-		print("AttackBox AKTIF")
 
 func _on_animation_finished():
 	if sprite.animation == "serang":
 		sedang_serang = false
-		print("Serang selesai!")
 		
 		# Nonaktifkan AttackBox setelah serang selesai
 		if attack_box:
 			attack_box.monitoring = false
 			attack_box.monitorable = false
-			print("AttackBox NONAKTIF")
 
 func update_animations(arah):
 	if sedang_serang:

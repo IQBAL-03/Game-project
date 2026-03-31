@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cshd4ecw5k6yc" path="res://pedator_plant.tscn" id="10_k2k2b"]
 [ext_resource type="Script" uid="uid://dfd7w6e8kbx2g" path="res://key.gd" id="11_kcb5e"]
 [ext_resource type="Texture2D" uid="uid://dsrmberhot0ms" path="res://map/Map/PNG/key.png" id="11_knjot"]
+[ext_resource type="PackedScene" uid="uid://beolnexpcbblb" path="res://predator_plant_2.tscn" id="11_qyymx"]
 [ext_resource type="Script" uid="uid://dd10t4ci4ia72" path="res://key_2.gd" id="13_5vr8a"]
 [ext_resource type="Texture2D" uid="uid://cf73m1fwaf3pj" path="res://player/Wanderer Magican/Hurt.png" id="14_7f05x"]
 [ext_resource type="Script" uid="uid://de3ru2opds5h6" path="res://chest.gd" id="14_56qte"]
@@ -7647,7 +7648,10 @@ tile_set = SubResource("TileSet_ckdwd")
 [node name="predator_plant" parent="." unique_id=179681168 instance=ExtResource("10_k2k2b")]
 position = Vector2(398, 374)
 
-[node name="player" type="CharacterBody2D" parent="." unique_id=1349552438]
+[node name="predator_plant_2" parent="." unique_id=1858045481 instance=ExtResource("11_qyymx")]
+position = Vector2(6, -4)
+
+[node name="player" type="CharacterBody2D" parent="." unique_id=1349552438 groups=["player"]]
 y_sort_enabled = true
 script = ExtResource("4_km0yn")
 

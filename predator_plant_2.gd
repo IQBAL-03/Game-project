@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 # Node references
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var hitbox: Area2D = $Hitbox
+@onready var hitbox: Area2D = $HitBox
 
 # State
 var player: CharacterBody2D
