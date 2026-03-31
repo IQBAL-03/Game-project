@@ -17,13 +17,20 @@ const WAKTU_DOUBLE_TAP = 0.25
 var sedang_lari = false
 var tombol_terakhir = ""
 var sedang_serang = false
+var mouse_was_pressed = false
 
 @onready var sprite = $AnimatedSprite2D
+@onready var attack_box: Area2D = $AttackBox
 
 func _ready():
 	floor_max_angle = deg_to_rad(60)
 	floor_snap_length = 8.0
 	sprite.animation_finished.connect(_on_animation_finished)
+	
+	# Nonaktifkan AttackBox di awal
+	if attack_box:
+		attack_box.monitoring = false
+		attack_box.monitorable = false
 
 func _physics_process(delta):
 	if timer_lari > 0:
@@ -34,8 +41,11 @@ func _physics_process(delta):
 	else:
 		bisa_double_jump = true
 
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and not sedang_serang:
+	# Serang dengan klik kiri (hanya sekali per klik)
+	var mouse_pressed = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	if mouse_pressed and not mouse_was_pressed and not sedang_serang and is_on_floor():
 		serang()
+	mouse_was_pressed = mouse_pressed
 
 	if Input.is_action_just_pressed("ui_up") and not sedang_serang:
 		if is_on_floor():
@@ -74,10 +84,20 @@ func _physics_process(delta):
 func serang():
 	sedang_serang = true
 	sprite.play("serang")
+	
+	# Aktifkan AttackBox saat serang
+	if attack_box:
+		attack_box.monitoring = true
+		attack_box.monitorable = true
 
 func _on_animation_finished():
 	if sprite.animation == "serang":
 		sedang_serang = false
+		
+		# Nonaktifkan AttackBox setelah serang selesai
+		if attack_box:
+			attack_box.monitoring = false
+			attack_box.monitorable = false
 
 func update_animations(arah):
 	if sedang_serang:
