@@ -78,8 +78,8 @@ func _physics_process(delta: float) -> void:
 				animated_sprite.position.x = original_sprite_pos_x
 		
 		
-		if animated_sprite.animation != "serang_kanan":
-			animated_sprite.play("serang_kanan")
+		if animated_sprite.animation != "serang_kiri":
+			animated_sprite.play("serang_kiri")
 			animated_sprite.speed_scale = attack_speed
 	else:
 		
@@ -90,13 +90,13 @@ func _physics_process(delta: float) -> void:
 
 func _on_animation_finished() -> void:
 	
-	if animated_sprite.animation == "serang_kanan":
+	if animated_sprite.animation == "serang_kiri":
 		
 		if is_attacking and player and is_instance_valid(player):
 			var distance = global_position.distance_to(player.global_position)
 			if distance <= detection_radius:
 				
-				animated_sprite.play("serang_kanan")
+				animated_sprite.play("serang_kiri")
 			else:
 				
 				animated_sprite.play("idle")

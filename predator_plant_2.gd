@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var detection_radius: float = 120.0
+@export var detection_radius: float = 10.0
 @export var attack_speed: float = 1.0
 @export var flip_offset: float = 0.0
 
