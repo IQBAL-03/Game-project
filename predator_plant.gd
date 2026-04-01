@@ -14,11 +14,13 @@ var player: CharacterBody2D
 var is_dead: bool = false
 var is_attacking: bool = false
 var original_sprite_pos_x: float = 0.0
+var sprite_local_center: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
 	
 	original_sprite_pos_x = animated_sprite.position.x
+	sprite_local_center = animated_sprite.position
 	
 	
 	animated_sprite.play("idle")
@@ -114,11 +116,12 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		is_attacking = false
 		
 		
-		if player and player.global_position.x > global_position.x:
-			animated_sprite.flip_h = true
+		var sprite_global = to_global(sprite_local_center)
+		if player and is_instance_valid(player) and player.global_position.x > sprite_global.x:
+			
 			animated_sprite.play("mati_kanan")
 		else:
-			animated_sprite.flip_h = false
+			
 			animated_sprite.play("mati_kiri")
 		
 		

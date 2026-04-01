@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dwv3m71cnc1n6" path="res://map/Map/PNG/Spikes.png" id="5_wgj0k"]
 [ext_resource type="Texture2D" uid="uid://bv2540fsncag4" path="res://map/Map/TILED_files/Details.png" id="6_uebvl"]
 [ext_resource type="Texture2D" uid="uid://b64j8guu585oo" path="res://map/Map/TILED_files/Fairys.png" id="7_knjot"]
-[ext_resource type="PackedScene" uid="uid://cshd4ecw5k6yc" path="res://pedator_plant.tscn" id="10_k2k2b"]
+[ext_resource type="PackedScene" uid="uid://cshd4ecw5k6yc" path="res://predator_plant.tscn" id="10_k2k2b"]
 [ext_resource type="Script" uid="uid://dfd7w6e8kbx2g" path="res://key.gd" id="11_kcb5e"]
 [ext_resource type="Texture2D" uid="uid://dsrmberhot0ms" path="res://map/Map/PNG/key.png" id="11_knjot"]
 [ext_resource type="PackedScene" uid="uid://beolnexpcbblb" path="res://predator_plant_2.tscn" id="11_qyymx"]
@@ -7386,7 +7386,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4vh7t")
 }],
-"loop": true,
+"loop": false,
 "name": &"mati",
 "speed": 5.0
 }, {
@@ -7418,7 +7418,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i7lke"]
-size = Vector2(19, 4)
+size = Vector2(23.5, 67)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k2k2b"]
 radius = 35.35534
@@ -7663,13 +7663,13 @@ frame = 6
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=957713646]
-position = Vector2(57.5, 102)
+position = Vector2(55.25, 72)
 shape = SubResource("RectangleShape2D_i7lke")
 
 [node name="AttackBox" type="Area2D" parent="player" unique_id=1368609759]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player/AttackBox" unique_id=196563243]
-position = Vector2(58, 73)
+position = Vector2(62, 74)
 shape = SubResource("CircleShape2D_k2k2b")
 debug_color = Color(0.9852037, 0, 0.34068373, 0.41960785)
 
