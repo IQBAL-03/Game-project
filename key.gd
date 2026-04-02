@@ -25,11 +25,11 @@ func _on_body_entered(body):
 	if body.name == "player" and target_player == null:
 		if body.carried_keys.size() >= 1:
 			return
-		
+
 		target_player = body
 		body.carried_keys.append(self)
 		body.bawa_kunci = true
-		
+
 		top_level = true
-		
+
 		set_deferred("monitoring", false)
