@@ -39,6 +39,7 @@ func _ready():
 		attack_box.monitorable = false
 	
 	if climb_sprite:
+		climb_sprite.position = Vector2(61, 83)
 		climb_sprite.visible = false
 
 func _physics_process(_delta):
