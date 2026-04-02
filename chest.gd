@@ -22,14 +22,13 @@ func buka_peti(player_node):
 	sprite.animation_finished.connect(_on_animasi_selesai, CONNECT_ONE_SHOT)
 
 	var kunci_dipakai = player_node.carried_keys.pop_front()
-	kunci_dipakai.global_position = Vector2(-99999, -99999)
-	kunci_dipakai.target_player = null
+	kunci_dipakai.queue_free()
 
 	player_node.bawa_kunci = player_node.carried_keys.any(func(k): return k.tipe_kunci == "key")
 	player_node.has_key = player_node.carried_keys.any(func(k): return k.tipe_kunci == "key_2")
 
 	for kunci in get_tree().get_nodes_in_group("kunci_group"):
-		if kunci.get("target_player") == null:
+		if kunci.get("target_player") == null and not kunci.is_queued_for_deletion():
 			kunci.set_deferred("monitoring", true)
 
 func _on_animasi_selesai():
