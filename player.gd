@@ -189,8 +189,12 @@ func handle_climbing(_delta: float) -> void:
 	
 	if vertical_input != 0:
 		velocity.y = vertical_input * kecepatan_climb
+		if climb_sprite:
+			climb_sprite.play()
 	else:
 		velocity.y = 0
+		if climb_sprite:
+			climb_sprite.pause()
 	
 	velocity.x = 0
 	
