@@ -7741,7 +7741,7 @@ animation = &"climb"
 frame = 5
 frame_progress = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=957713646]
+[node name="Badan" type="CollisionShape2D" parent="player" unique_id=957713646]
 position = Vector2(57.5, 81.25)
 shape = SubResource("RectangleShape2D_i7lke")
 

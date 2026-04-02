@@ -27,7 +27,7 @@ var nearest_ladder_center = Vector2.INF
 @onready var attack_box: Area2D = $AttackBox
 @onready var climb_sprite: AnimatedSprite2D = $climb
 @onready var tilemap: TileMapLayer = get_parent().get_node("objek")
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape: CollisionShape2D = $Badan
 
 func _ready():
 	floor_max_angle = deg_to_rad(60)

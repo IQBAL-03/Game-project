@@ -5,6 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://mbtqgj6avt13" path="res://predator-plant/PNG/Plant2/Without_shadow/Plant2_Death_without_shadow.png" id="3_njv5v"]
 [ext_resource type="Texture2D" uid="uid://v4dmmokh7rtd" path="res://predator-plant/PNG/Plant2/Without_shadow/Plant2_Attack_without_shadow.png" id="4_hmmkp"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njv5v"]
+size = Vector2(66, 94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmmkp"]
+size = Vector2(80, 95)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_d6gn7"]
 atlas = ExtResource("1_xh5ma")
 region = Rect2(0, 128, 64, 64)
@@ -336,13 +342,23 @@ size = Vector2(67, 71)
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1858045481]
 script = ExtResource("1_d6gn7")
 
+[node name="Reaksi" type="Area2D" parent="." unique_id=1535348982]
+
+[node name="Kanan" type="CollisionShape2D" parent="Reaksi" unique_id=1174467448]
+position = Vector2(484, 974)
+shape = SubResource("RectangleShape2D_njv5v")
+debug_color = Color(0.2047768, 0.6409061, 3.85046e-07, 0.41960785)
+
+[node name="Kiri" type="CollisionShape2D" parent="Reaksi" unique_id=1265162212]
+position = Vector2(411, 974)
+shape = SubResource("RectangleShape2D_hmmkp")
+debug_color = Color(0.9661731, 1.540184e-06, 0.48513335, 0.41960785)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1617208496]
 position = Vector2(442.24997, 977.75)
 scale = Vector2(2.2265618, 2.210938)
 sprite_frames = SubResource("SpriteFrames_uh42u")
-animation = &"serang_kiri"
-frame = 6
-frame_progress = 1.0
+animation = &"serang_kanan"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1872971714]
 position = Vector2(451, 1010.375)
