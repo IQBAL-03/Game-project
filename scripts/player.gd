@@ -12,6 +12,7 @@ var gravitasi = ProjectSettings.get_setting("physics/2d/default_gravity")
 var carried_keys = []
 var bawa_kunci = false
 var has_key = false
+var is_dead = false
 
 var timer_lari = 0.0
 const WAKTU_DOUBLE_TAP = 0.25
@@ -28,6 +29,7 @@ var nearest_ladder_center = Vector2.INF
 @onready var climb_sprite: AnimatedSprite2D = $climb
 @onready var tilemap: TileMapLayer = get_parent().get_node("objek")
 @onready var collision_shape: CollisionShape2D = $Badan
+@onready var health_component: Node = $HealthComponent
 
 func _ready():
 	floor_max_angle = deg_to_rad(60)
@@ -41,8 +43,23 @@ func _ready():
 	if climb_sprite:
 		climb_sprite.position = Vector2(61, 83)
 		climb_sprite.visible = false
+	
+	# Connect health component signals
+	if health_component:
+		health_component.health_changed.connect(_on_health_changed)
+		health_component.died.connect(_on_health_died)
 
 func _physics_process(_delta):
+	# Disable all input and movement when dead
+	if is_dead:
+		velocity.x = 0
+		if is_on_floor():
+			velocity.y = 0
+		else:
+			velocity.y += gravitasi * _delta
+		move_and_slide()
+		return
+	
 	if timer_lari > 0:
 		timer_lari -= _delta
 
@@ -218,3 +235,20 @@ func stop_climbing() -> void:
 	if climb_sprite:
 		sprite.flip_h = climb_sprite.flip_h
 		climb_sprite.visible = false
+
+
+func _on_health_changed(_current: int, _maximum: int) -> void:
+	# Play hurt animation when taking damage (health decreased)
+	# Don't play hurt animation if player is already dead
+	if not is_dead and sprite.sprite_frames.has_animation("hurt"):
+		sprite.play("hurt")
+
+func _on_health_died() -> void:
+	# Player died callback
+	is_dead = true
+	
+	# Play death animation if it exists (using "mati" animation name)
+	if sprite.sprite_frames.has_animation("mati"):
+		sprite.play("mati")
+	elif sprite.sprite_frames.has_animation("death"):
+		sprite.play("death")

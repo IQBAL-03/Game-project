@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cshd4ecw5k6yc"]
 
-[ext_resource type="Script" uid="uid://bmg0olqqlltj" path="res://predator_plant.gd" id="1_faunm"]
+[ext_resource type="Script" uid="uid://cgyd3g4l80q00" path="res://scripts/predator_plant.gd" id="1_faunm"]
 [ext_resource type="Texture2D" uid="uid://ckxubwdsuxy23" path="res://predator-plant/PNG/Plant1/Without_shadow/Plant1_Idle_without_shadow.png" id="1_xtsow"]
 [ext_resource type="Texture2D" uid="uid://y2ipcxqcgxi0" path="res://predator-plant/PNG/Plant1/Without_shadow/Plant1_Death_without_shadow.png" id="2_24fym"]
 [ext_resource type="Texture2D" uid="uid://cg1of8pq2j12b" path="res://predator-plant/PNG/Plant1/Without_shadow/Plant1_Attack_without_shadow.png" id="3_gcdnm"]

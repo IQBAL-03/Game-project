@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cvlrjqwur5xhc"]
+[gd_scene format=4 uid="uid://sbea3po4fxel"]
 
 [ext_resource type="Texture2D" uid="uid://clg3n02unhrcw" path="res://map/Map/PNG/Background/1920x1080/├╖2/Sky_1920x1080├╖2.png" id="1_uebvl"]
 [ext_resource type="Texture2D" uid="uid://t3usbs4ogthq" path="res://map/Map/PNG/cave_entrance.png" id="2_j6kj6"]
@@ -6,26 +6,30 @@
 [ext_resource type="Texture2D" uid="uid://dm48x1j203w4s" path="res://map/Map/PNG/Background/1920x1080/├╖2/Clouds_1920x1080├╖2.png" id="3_fub3s"]
 [ext_resource type="Texture2D" uid="uid://btcasjnvlkny7" path="res://map/Map/PNG/Tileset.png" id="3_km0yn"]
 [ext_resource type="Texture2D" uid="uid://di3fpurw073t5" path="res://map/Map/PNG/Objects.png" id="4_j6kj6"]
-[ext_resource type="Script" uid="uid://c3cdsdjsf3wur" path="res://player.gd" id="4_km0yn"]
+[ext_resource type="Script" uid="uid://buwbfu0pd77qv" path="res://scripts/player.gd" id="4_km0yn"]
 [ext_resource type="Texture2D" uid="uid://d4fxwa3sp0k7i" path="res://player/Wanderer Magican/Walk.png" id="5_ckdwd"]
 [ext_resource type="Texture2D" uid="uid://dwv3m71cnc1n6" path="res://map/Map/PNG/Spikes.png" id="5_wgj0k"]
 [ext_resource type="Texture2D" uid="uid://bv2540fsncag4" path="res://map/Map/TILED_files/Details.png" id="6_uebvl"]
 [ext_resource type="Texture2D" uid="uid://b64j8guu585oo" path="res://map/Map/TILED_files/Fairys.png" id="7_knjot"]
-[ext_resource type="PackedScene" uid="uid://cshd4ecw5k6yc" path="res://predator_plant.tscn" id="10_k2k2b"]
-[ext_resource type="Script" uid="uid://dfd7w6e8kbx2g" path="res://key.gd" id="11_kcb5e"]
+[ext_resource type="PackedScene" uid="uid://cshd4ecw5k6yc" path="res://scenes/predator_plant.tscn" id="10_k2k2b"]
+[ext_resource type="Script" uid="uid://82bu67eyal65" path="res://scripts/key.gd" id="11_kcb5e"]
 [ext_resource type="Texture2D" uid="uid://dsrmberhot0ms" path="res://map/Map/PNG/key.png" id="11_knjot"]
-[ext_resource type="PackedScene" uid="uid://beolnexpcbblb" path="res://predator_plant_2.tscn" id="11_qyymx"]
-[ext_resource type="Script" uid="uid://dd10t4ci4ia72" path="res://key_2.gd" id="13_5vr8a"]
+[ext_resource type="PackedScene" uid="uid://beolnexpcbblb" path="res://scenes/predator_plant_2.tscn" id="11_qyymx"]
+[ext_resource type="Script" uid="uid://b3psekk8xf0so" path="res://scripts/key_2.gd" id="13_5vr8a"]
 [ext_resource type="Texture2D" uid="uid://cf73m1fwaf3pj" path="res://player/Wanderer Magican/Hurt.png" id="14_7f05x"]
-[ext_resource type="Script" uid="uid://de3ru2opds5h6" path="res://chest.gd" id="14_56qte"]
+[ext_resource type="Script" uid="uid://cabjuaaumwrau" path="res://scripts/chest.gd" id="14_56qte"]
 [ext_resource type="Texture2D" uid="uid://d4aj3sp1a3ljx" path="res://player/Wanderer Magican/Idle.png" id="14_up388"]
 [ext_resource type="Texture2D" uid="uid://cs4k2pjns4u7" path="res://map/Map/PNG/chest.png" id="15_tdcp2"]
 [ext_resource type="Texture2D" uid="uid://ddi7sdxk5gdoh" path="res://player/Wanderer Magican/Jump.png" id="16_i7lke"]
 [ext_resource type="Texture2D" uid="uid://dt5pm3pvssbtr" path="res://player/Wanderer Magican/Run.png" id="16_k2k2b"]
-[ext_resource type="Script" uid="uid://c1uuoxp30ex67" path="res://chest_2.gd" id="16_tdcp2"]
+[ext_resource type="Script" uid="uid://dodmptgudxxhb" path="res://scripts/chest_2.gd" id="16_tdcp2"]
+[ext_resource type="Script" uid="uid://cgec2f5bi56h5" path="res://scripts/health_component.gd" id="17_health"]
 [ext_resource type="Texture2D" uid="uid://3m1e4b1r7scj" path="res://player/Wanderer Magican/Attack_1.png" id="18_k2k2b"]
 [ext_resource type="Texture2D" uid="uid://ccnmketgoepui" path="res://player/Wanderer Magican/Dead.png" id="19_kg1tc"]
 [ext_resource type="Texture2D" uid="uid://b6t3jg6goeq1s" path="res://player/Wanderer Magican/climb.png" id="20_7f05x"]
+[ext_resource type="PackedScene" uid="uid://c8j3vx7y8qm2p" path="res://scenes/heart_bar_ui.tscn" id="21_heart"]
+[ext_resource type="Texture2D" uid="uid://mt6lui2ujfew" path="res://player/heart_full.png" id="22_heart_full"]
+[ext_resource type="Texture2D" uid="uid://dabwbhrwaoag2" path="res://player/heart_empty.png" id="23_heart_empty"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_56qte"]
 texture = ExtResource("1_uebvl")
@@ -7762,6 +7766,9 @@ position = Vector2(62, 74)
 shape = SubResource("CircleShape2D_k2k2b")
 debug_color = Color(0.9852037, 0, 0.34068373, 0.41960785)
 
+[node name="HealthComponent" type="Node" parent="player" unique_id=2016317920]
+script = ExtResource("17_health")
+
 [node name="key" type="Area2D" parent="." unique_id=1444131180]
 script = ExtResource("11_kcb5e")
 
@@ -7811,3 +7818,7 @@ animation = &"buka_2"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chest_2" unique_id=943922929]
 position = Vector2(225, 986.5)
 shape = SubResource("RectangleShape2D_rrhh6")
+
+[node name="HeartBarUI" parent="." unique_id=603626429 instance=ExtResource("21_heart")]
+heart_full_texture = ExtResource("22_heart_full")
+heart_empty_texture = ExtResource("23_heart_empty")

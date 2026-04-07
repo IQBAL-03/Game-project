@@ -25,6 +25,7 @@ func _ready() -> void:
 	animated_sprite.play("idle")
 
 	hitbox.area_entered.connect(_on_hitbox_area_entered)
+	hitbox.body_entered.connect(_on_hitbox_body_entered)
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 
 
@@ -122,3 +123,13 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 
 		await animated_sprite.animation_finished
 		queue_free()
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	# Check if the body is the player
+	if body.is_in_group("player") and not is_dead:
+		# Get player's health component
+		var health_component = body.get_node_or_null("HealthComponent")
+		
+		# Null check before calling take_damage
+		if health_component and health_component.has_method("take_damage"):
+			health_component.take_damage(1)
