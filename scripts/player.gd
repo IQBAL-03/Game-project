@@ -19,6 +19,7 @@ const WAKTU_DOUBLE_TAP = 0.25
 var sedang_lari = false
 var tombol_terakhir = ""
 var sedang_serang = false
+var sedang_hurt = false
 var mouse_was_pressed = false
 var is_climbing = false
 var can_climb = false
@@ -132,9 +133,12 @@ func _on_animation_finished():
 		if attack_box:
 			attack_box.monitoring = false
 			attack_box.monitorable = false
+	
+	elif sprite.animation == "hurt":
+		sedang_hurt = false
 
 func update_animations(arah):
-	if sedang_serang:
+	if sedang_serang or sedang_hurt:
 		return
 
 	if not is_on_floor():
@@ -241,6 +245,7 @@ func _on_health_changed(_current: int, _maximum: int) -> void:
 	# Play hurt animation when taking damage (health decreased)
 	# Don't play hurt animation if player is already dead
 	if not is_dead and sprite.sprite_frames.has_animation("hurt"):
+		sedang_hurt = true
 		sprite.play("hurt")
 
 func _on_health_died() -> void:

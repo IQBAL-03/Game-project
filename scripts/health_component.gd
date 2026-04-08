@@ -23,12 +23,13 @@ func _ready() -> void:
 	# Emit initial state
 	health_changed.emit(current_health, max_health)
 
-func take_damage(amount: int) -> void:
+func take_damage(amount) -> void:
 	if current_health <= 0:
 		return
 	
-	# Reduce health
-	current_health -= amount
+	# Reduce health (round up for float values)
+	var damage_amount = ceili(amount) if amount is float else amount
+	current_health -= damage_amount
 	
 	# Clamp to valid range
 	current_health = clampi(current_health, 0, max_health)
