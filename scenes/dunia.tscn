@@ -7293,7 +7293,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ik24x")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 8.0
 }, {
@@ -7509,6 +7509,9 @@ size = Vector2(13, 48.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k2k2b"]
 radius = 35.35534
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mp8a"]
+size = Vector2(71, 57)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rrhh6"]
 atlas = ExtResource("11_knjot")
@@ -7743,9 +7746,9 @@ y_sort_enabled = true
 script = ExtResource("4_km0yn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player" unique_id=1834123472]
-position = Vector2(62, 41)
+position = Vector2(61, 41)
 sprite_frames = SubResource("SpriteFrames_rrhh6")
-animation = &"idle"
+animation = &"serang"
 
 [node name="climb" type="AnimatedSprite2D" parent="player" unique_id=441660315]
 position = Vector2(-99, 83)
@@ -7765,6 +7768,13 @@ shape = SubResource("RectangleShape2D_i7lke")
 position = Vector2(62, 74)
 shape = SubResource("CircleShape2D_k2k2b")
 debug_color = Color(0.9852037, 0, 0.34068373, 0.41960785)
+
+[node name="HurtBox" type="Area2D" parent="player" unique_id=858386267]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/HurtBox" unique_id=2020356898]
+position = Vector2(61.5, 73.5)
+shape = SubResource("RectangleShape2D_3mp8a")
+debug_color = Color(0.7864859, 0.107906334, 0.9999998, 0.41960785)
 
 [node name="HealthComponent" type="Node" parent="player" unique_id=2016317920]
 script = ExtResource("17_health")
