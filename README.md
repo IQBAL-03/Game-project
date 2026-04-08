@@ -54,4 +54,3 @@ Pastikan Anda sudah menginstal **Godot Engine version 4.6.1** atau yang terbaru.
 
 ### 4. Menjalankan Game
 Tekan tombol **F5** atau klik tombol **Play** di pojok kanan atas editor Godot untuk menjalankan game.
-
