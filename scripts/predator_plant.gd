@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $Hitbox
 @onready var reaksi: Area2D = $Reaksi
-@onready var attack_box: Area2D = null  # Will be created dynamically
+@onready var attack_box: Area2D = null  
 
 var player: CharacterBody2D
 var is_dead: bool = false
@@ -31,7 +31,7 @@ func _ready() -> void:
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	animated_sprite.frame_changed.connect(_on_sprite_frame_changed)
 	
-	# Create AttackBox dynamically
+	
 	attack_box = Area2D.new()
 	attack_box.name = "AttackBox"
 	attack_box.monitoring = false
@@ -40,9 +40,9 @@ func _ready() -> void:
 	
 	var attack_collision = CollisionShape2D.new()
 	var attack_shape = RectangleShape2D.new()
-	attack_shape.size = Vector2(60, 60)  # Adjust size as needed
+	attack_shape.size = Vector2(60, 60)  
 	attack_collision.shape = attack_shape
-	attack_collision.position = Vector2(20, 23)  # Same as hitbox position
+	attack_collision.position = Vector2(20, 23)  
 	attack_box.add_child(attack_collision)
 	
 	attack_box.area_entered.connect(_on_attack_box_area_entered)
@@ -84,7 +84,7 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.flip_h = false
 			animated_sprite.position.x = original_sprite_pos_x
 			is_attacking = false
-			# Disable attack box when not attacking
+			
 			if attack_box:
 				attack_box.set_deferred("monitoring", false)
 				attack_box_active = false
@@ -116,7 +116,7 @@ func _on_reaksi_body_shape_exited(_body_rid: RID, body: Node2D, _body_shape_inde
 
 func _on_animation_finished() -> void:
 	if animated_sprite.animation == "serang_kiri":
-		# Disable attack box when attack animation finishes
+		
 		if attack_box:
 			attack_box.set_deferred("monitoring", false)
 			attack_box_active = false
@@ -130,27 +130,27 @@ func _on_animation_finished() -> void:
 			is_attacking = false
 
 func _on_sprite_frame_changed() -> void:
-	# Enable attack box at frame 5 of attack animation (near the end)
+	
 	if animated_sprite.animation == "serang_kiri" and is_attacking:
 		if animated_sprite.frame == 5:
 			if attack_box:
 				attack_box.set_deferred("monitoring", true)
 				attack_box_active = true
 		elif animated_sprite.frame != 5:
-			# Disable on other frames to ensure only frame 5 hits
+			
 			if attack_box and attack_box_active:
 				attack_box.set_deferred("monitoring", false)
 				attack_box_active = false
 
 func _on_attack_box_area_entered(area: Area2D) -> void:
-	# Check if the area is player's HurtBox
+	
 	if area.name == "HurtBox" and attack_box_active and not is_dead:
 		var player_node = area.get_parent()
 		if player_node and player_node.is_in_group("player"):
 			var health_component = player_node.get_node_or_null("HealthComponent")
 			if health_component and health_component.has_method("take_damage"):
 				health_component.take_damage(damage_amount)
-				# Disable attack box after hitting to prevent multiple hits in one attack
+				
 				attack_box.set_deferred("monitoring", false)
 				attack_box_active = false
 

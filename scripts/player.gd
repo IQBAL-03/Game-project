@@ -29,6 +29,7 @@ var nearest_ladder_center = Vector2.INF
 @onready var attack_box: Area2D = $AttackBox
 @onready var climb_sprite: AnimatedSprite2D = $climb
 @onready var tilemap: TileMapLayer = get_parent().get_node("objek")
+@onready var duri_tilemap: TileMapLayer = get_parent().get_node("duri")
 @onready var collision_shape: CollisionShape2D = $Badan
 @onready var health_component: Node = $HealthComponent
 
@@ -45,13 +46,13 @@ func _ready():
 		climb_sprite.position = Vector2(61, 83)
 		climb_sprite.visible = false
 	
-	# Connect health component signals
+	
 	if health_component:
 		health_component.health_changed.connect(_on_health_changed)
 		health_component.died.connect(_on_health_died)
 
 func _physics_process(_delta):
-	# Disable all input and movement when dead
+	
 	if is_dead:
 		velocity.x = 0
 		if is_on_floor():
@@ -65,6 +66,9 @@ func _physics_process(_delta):
 		timer_lari -= _delta
 
 	check_climbable_tile()
+	check_duri_tile()
+	if is_dead:
+		return
 
 	if is_climbing:
 		handle_climbing(_delta)
@@ -156,6 +160,20 @@ func update_animations(arah):
 			sprite.play("idle")
 
 
+func check_duri_tile() -> void:
+	if is_dead or duri_tilemap == null:
+		return
+
+	for x_off in range(-8, 9, 8):
+		for y_off in range(-16, 17, 8):
+			var check_pos = collision_shape.global_position + Vector2(x_off, y_off)
+			var tile_pos = duri_tilemap.local_to_map(duri_tilemap.to_local(check_pos))
+			var tile_data = duri_tilemap.get_cell_tile_data(tile_pos)
+			if tile_data != null:
+				if health_component:
+					health_component.take_damage(health_component.get_max_health())
+				return
+
 func check_climbable_tile() -> void:
 	if tilemap == null:
 		can_climb = false
@@ -242,17 +260,24 @@ func stop_climbing() -> void:
 
 
 func _on_health_changed(_current: int, _maximum: int) -> void:
-	# Play hurt animation when taking damage (health decreased)
-	# Don't play hurt animation if player is already dead
-	if not is_dead and sprite.sprite_frames.has_animation("hurt"):
+	
+	if not is_dead and _current > 0 and sprite.sprite_frames.has_animation("hurt"):
 		sedang_hurt = true
 		sprite.play("hurt")
 
 func _on_health_died() -> void:
-	# Player died callback
 	is_dead = true
+	sedang_hurt = false
+	sedang_serang = false
+
 	
-	# Play death animation if it exists (using "mati" animation name)
+	if is_climbing:
+		is_climbing = false
+		if climb_sprite:
+			climb_sprite.visible = false
+		sprite.visible = true
+
+	
 	if sprite.sprite_frames.has_animation("mati"):
 		sprite.play("mati")
 	elif sprite.sprite_frames.has_animation("death"):
