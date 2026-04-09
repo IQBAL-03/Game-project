@@ -8,7 +8,7 @@ signal health_changed(current: int, maximum: int)
 signal died()
 
 
-@export var max_health: int = 3
+@export var max_health: int = 5
 var current_health: int
 
 func _ready() -> void:

@@ -34,6 +34,7 @@ var nearest_ladder_center = Vector2.INF
 @onready var health_component: Node = $HealthComponent
 
 func _ready():
+	add_to_group("player")
 	floor_max_angle = deg_to_rad(60)
 	floor_snap_length = 8.0
 	sprite.animation_finished.connect(_on_animation_finished)

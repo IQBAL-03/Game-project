@@ -30,6 +30,9 @@
 [ext_resource type="PackedScene" uid="uid://c8j3vx7y8qm2p" path="res://scenes/heart_bar_ui.tscn" id="21_heart"]
 [ext_resource type="Texture2D" uid="uid://mt6lui2ujfew" path="res://player/heart_full.png" id="22_heart_full"]
 [ext_resource type="Texture2D" uid="uid://dabwbhrwaoag2" path="res://player/heart_empty.png" id="23_heart_empty"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="90_hud"]
+[ext_resource type="PackedScene" path="res://scenes/game_over.tscn" id="91_gameover"]
+[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="92_pausemenu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_56qte"]
 texture = ExtResource("1_uebvl")
@@ -8493,6 +8496,8 @@ animation = &"buka_2"
 position = Vector2(225, 986.5)
 shape = SubResource("RectangleShape2D_rrhh6")
 
-[node name="HeartBarUI" parent="." unique_id=603626429 instance=ExtResource("21_heart")]
-heart_full_texture = ExtResource("22_heart_full")
-heart_empty_texture = ExtResource("23_heart_empty")
+[node name="HUD" parent="." instance=ExtResource("90_hud")]
+
+[node name="GameOver" parent="." instance=ExtResource("91_gameover")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("92_pausemenu")]
