@@ -12,7 +12,9 @@ var player: CharacterBody2D
 var is_dead: bool = false
 var is_attacking: bool = false
 var attack_box_active: bool = false
-
+var hit_counter: int = 0
+const MAX_HEALTH: int = 2
+var is_flashing: bool = false
 
 var player_di_kanan: bool = false
 var player_di_kiri: bool = false
@@ -22,7 +24,6 @@ func _ready() -> void:
 	hitbox.area_entered.connect(_on_hitbox_area_entered)
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	animated_sprite.frame_changed.connect(_on_sprite_frame_changed)
-	
 	
 	attack_box = Area2D.new()
 	attack_box.name = "AttackBox"
@@ -52,13 +53,11 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	move_and_slide()
 
-
 	if player_di_kanan or player_di_kiri:
 		if not is_attacking:
 			is_attacking = true
 
 		animated_sprite.speed_scale = attack_speed
-
 
 		var target_anim = "serang_kanan" if player_di_kanan else "serang_kiri"
 
@@ -73,7 +72,6 @@ func _physics_process(delta: float) -> void:
 				attack_box.set_deferred("monitoring", false)
 				attack_box_active = false
 
-
 func _on_reaksi_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, local_shape_index: int) -> void:
 	if body.is_in_group("player"):
 		player = body
@@ -84,7 +82,6 @@ func _on_reaksi_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_ind
 			player_di_kanan = true
 		elif kotak_masuk.name == "Kiri":
 			player_di_kiri = true
-
 
 func _on_reaksi_body_shape_exited(_body_rid: RID, body: Node2D, _body_shape_index: int, local_shape_index: int) -> void:
 	if body.is_in_group("player") and body == player:
@@ -137,20 +134,36 @@ func _on_attack_box_area_entered(area: Area2D) -> void:
 				attack_box.set_deferred("monitoring", false)
 				attack_box_active = false
 
+func show_hit_feedback() -> void:
+	if is_flashing:
+		return
+	
+	is_flashing = true
+	
+	var tween = create_tween()
+	tween.tween_property(animated_sprite, "modulate", Color.RED, 0.1)
+	tween.tween_property(animated_sprite, "modulate", Color.WHITE, 0.1)
+	
+	await tween.finished
+	is_flashing = false
+
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.name == "AttackBox" and not is_dead:
+		hit_counter += 1
+		
+		if hit_counter < MAX_HEALTH:
+			show_hit_feedback()
+			return
+		
 		is_dead = true
 		is_attacking = false
-
-
 		$CollisionShape2D.set_deferred("disabled", true)
-
-
+		
 		if player_di_kanan:
 			animated_sprite.play("mati_kanan")
 		else:
 			animated_sprite.play("mati_kiri")
-
+		
 		await animated_sprite.animation_finished
 		queue_free()
 

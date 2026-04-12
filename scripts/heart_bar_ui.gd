@@ -1,14 +1,11 @@
 extends CanvasLayer
 
-
 @export var heart_full_texture: Texture2D
 @export var heart_empty_texture: Texture2D
 @export var heart_spacing: int = 8
 @export var heart_size: Vector2 = Vector2(40, 40)  
 
-
 @onready var hearts_container: HBoxContainer = $MarginContainer/HBoxContainer
-
 
 var heart_icons: Array[TextureRect] = []
 
@@ -17,10 +14,8 @@ func _ready() -> void:
 	if heart_full_texture == null or heart_empty_texture == null:
 		push_error("Heart textures not assigned in HeartBarUI")
 	
-	
 	if hearts_container:
 		hearts_container.add_theme_constant_override("separation", heart_spacing)
-	
 	
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
@@ -32,9 +27,7 @@ func _ready() -> void:
 			var max_health = health_component.get_max_health()
 			initialize(max_health)
 			
-			
 			health_component.health_changed.connect(_on_health_changed)
-			
 			
 			var current_health = health_component.get_current_health()
 			update_hearts(current_health, max_health)
@@ -50,7 +43,6 @@ func initialize(max_hearts: int) -> void:
 		heart.queue_free()
 	heart_icons.clear()
 	
-	
 	for i in range(max_hearts):
 		var heart_icon = TextureRect.new()
 		heart_icon.texture = heart_full_texture
@@ -64,7 +56,6 @@ func update_hearts(current: int, maximum: int) -> void:
 	
 	if heart_icons.size() != maximum:
 		initialize(maximum)
-	
 	
 	for i in range(heart_icons.size()):
 		if i < current:

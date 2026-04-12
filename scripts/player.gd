@@ -19,7 +19,7 @@ const WAKTU_DOUBLE_TAP = 0.25
 var sedang_lari = false
 var tombol_terakhir = ""
 var sedang_serang = false
-var sedang_hurt = false
+var is_hit_invulnerable = false
 var mouse_was_pressed = false
 var is_climbing = false
 var can_climb = false
@@ -46,7 +46,6 @@ func _ready():
 	if climb_sprite:
 		climb_sprite.position = Vector2(61, 83)
 		climb_sprite.visible = false
-	
 	
 	if health_component:
 		health_component.health_changed.connect(_on_health_changed)
@@ -138,12 +137,9 @@ func _on_animation_finished():
 		if attack_box:
 			attack_box.monitoring = false
 			attack_box.monitorable = false
-	
-	elif sprite.animation == "hurt":
-		sedang_hurt = false
 
 func update_animations(arah):
-	if sedang_serang or sedang_hurt:
+	if sedang_serang:
 		return
 
 	if not is_on_floor():
@@ -159,7 +155,6 @@ func update_animations(arah):
 	else:
 		if sprite.animation != "idle":
 			sprite.play("idle")
-
 
 func check_duri_tile() -> void:
 	if is_dead or duri_tilemap == null:
@@ -197,7 +192,6 @@ func check_climbable_tile() -> void:
 					nearest_ladder_center = tile_center
 					can_climb = true
 
-
 func start_climbing() -> void:
 	is_climbing = true
 	velocity = Vector2.ZERO
@@ -224,7 +218,6 @@ func start_climbing() -> void:
 		else:
 			climb_sprite.flip_h = sprite.flip_h
 
-
 func handle_climbing(_delta: float) -> void:
 	var vertical_input = Input.get_axis("ui_up", "ui_down")
 
@@ -250,7 +243,6 @@ func handle_climbing(_delta: float) -> void:
 
 	move_and_slide()
 
-
 func stop_climbing() -> void:
 	is_climbing = false
 
@@ -259,26 +251,44 @@ func stop_climbing() -> void:
 		sprite.flip_h = climb_sprite.flip_h
 		climb_sprite.visible = false
 
+var prev_health = -1
+
+func is_evading() -> bool:
+	return not is_on_floor() or sedang_lari or is_hit_invulnerable
 
 func _on_health_changed(_current: int, _maximum: int) -> void:
+	if prev_health == -1:
+		prev_health = _current
+		return
 	
-	if not is_dead and _current > 0 and sprite.sprite_frames.has_animation("hurt"):
-		sedang_hurt = true
-		sprite.play("hurt")
+	if not is_dead and _current < prev_health:
+		start_flashing()
+	prev_health = _current
+
+func start_flashing() -> void:
+	if is_hit_invulnerable:
+		return
+	is_hit_invulnerable = true
+	var tween = create_tween()
+	tween.set_loops(5)
+	tween.tween_property(sprite, "modulate", Color(1, 0, 0, 1), 0.1)
+	tween.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 0.1)
+	await tween.finished
+	is_hit_invulnerable = false
+	sprite.modulate = Color(1, 1, 1, 1)
 
 func _on_health_died() -> void:
 	is_dead = true
-	sedang_hurt = false
+	is_hit_invulnerable = false
+	sprite.modulate = Color(1, 1, 1, 1)
 	sedang_serang = false
 
-	
 	if is_climbing:
 		is_climbing = false
 		if climb_sprite:
 			climb_sprite.visible = false
 		sprite.visible = true
 
-	
 	if sprite.sprite_frames.has_animation("mati"):
 		sprite.play("mati")
 	elif sprite.sprite_frames.has_animation("death"):

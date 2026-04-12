@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://dsrmberhot0ms" path="res://map/Map/PNG/key.png" id="11_knjot"]
 [ext_resource type="PackedScene" uid="uid://beolnexpcbblb" path="res://scenes/predator_plant_2.tscn" id="11_qyymx"]
 [ext_resource type="Script" uid="uid://b3psekk8xf0so" path="res://scripts/key_2.gd" id="13_5vr8a"]
-[ext_resource type="Texture2D" uid="uid://cf73m1fwaf3pj" path="res://player/Wanderer Magican/Hurt.png" id="14_7f05x"]
 [ext_resource type="Script" uid="uid://cabjuaaumwrau" path="res://scripts/chest.gd" id="14_56qte"]
 [ext_resource type="Texture2D" uid="uid://d4aj3sp1a3ljx" path="res://player/Wanderer Magican/Idle.png" id="14_up388"]
 [ext_resource type="Texture2D" uid="uid://cs4k2pjns4u7" path="res://map/Map/PNG/chest.png" id="15_tdcp2"]
@@ -27,12 +26,9 @@
 [ext_resource type="Texture2D" uid="uid://3m1e4b1r7scj" path="res://player/Wanderer Magican/Attack_1.png" id="18_k2k2b"]
 [ext_resource type="Texture2D" uid="uid://ccnmketgoepui" path="res://player/Wanderer Magican/Dead.png" id="19_kg1tc"]
 [ext_resource type="Texture2D" uid="uid://b6t3jg6goeq1s" path="res://player/Wanderer Magican/climb.png" id="20_7f05x"]
-[ext_resource type="PackedScene" uid="uid://c8j3vx7y8qm2p" path="res://scenes/heart_bar_ui.tscn" id="21_heart"]
-[ext_resource type="Texture2D" uid="uid://mt6lui2ujfew" path="res://player/heart_full.png" id="22_heart_full"]
-[ext_resource type="Texture2D" uid="uid://dabwbhrwaoag2" path="res://player/heart_empty.png" id="23_heart_empty"]
-[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="90_hud"]
-[ext_resource type="PackedScene" path="res://scenes/game_over.tscn" id="91_gameover"]
-[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="92_pausemenu"]
+[ext_resource type="PackedScene" uid="uid://bhud7tui3a5m8" path="res://scenes/hud.tscn" id="90_hud"]
+[ext_resource type="PackedScene" uid="uid://bgo4r35mn8aa1" path="res://scenes/game_over.tscn" id="91_gameover"]
+[ext_resource type="PackedScene" uid="uid://bpm4ui3qm4561" path="res://scenes/pause_menu.tscn" id="92_pausemenu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_56qte"]
 texture = ExtResource("1_uebvl")
@@ -7757,22 +7753,6 @@ texture = ExtResource("3_km0yn")
 [sub_resource type="TileSet" id="TileSet_d1kcu"]
 sources/0 = SubResource("TileSetAtlasSource_3mp8a")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ybm8"]
-atlas = ExtResource("14_7f05x")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8c54p"]
-atlas = ExtResource("14_7f05x")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aw75d"]
-atlas = ExtResource("14_7f05x")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ik24x"]
-atlas = ExtResource("14_7f05x")
-region = Rect2(384, 0, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_1rd4l"]
 atlas = ExtResource("14_up388")
 region = Rect2(0, 0, 128, 128)
@@ -7943,23 +7923,6 @@ region = Rect2(768, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rrhh6"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4ybm8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8c54p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aw75d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ik24x")
-}],
-"loop": false,
-"name": &"hurt",
-"speed": 8.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1rd4l")
@@ -8415,7 +8378,7 @@ script = ExtResource("4_km0yn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player" unique_id=1834123472]
 position = Vector2(61, 41)
 sprite_frames = SubResource("SpriteFrames_rrhh6")
-animation = &"serang"
+animation = &"idle"
 
 [node name="climb" type="AnimatedSprite2D" parent="player" unique_id=441660315]
 position = Vector2(-99, 83)
@@ -8496,8 +8459,8 @@ animation = &"buka_2"
 position = Vector2(225, 986.5)
 shape = SubResource("RectangleShape2D_rrhh6")
 
-[node name="HUD" parent="." instance=ExtResource("90_hud")]
+[node name="HUD" parent="." unique_id=1491081479 instance=ExtResource("90_hud")]
 
-[node name="GameOver" parent="." instance=ExtResource("91_gameover")]
+[node name="GameOver" parent="." unique_id=1758796778 instance=ExtResource("91_gameover")]
 
-[node name="PauseMenu" parent="." instance=ExtResource("92_pausemenu")]
+[node name="PauseMenu" parent="." unique_id=34701260 instance=ExtResource("92_pausemenu")]
