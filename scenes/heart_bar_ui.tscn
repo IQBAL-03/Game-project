@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8j3vx7y8qm2p"]
+
+[ext_resource type="Script" path="res://scripts/heart_bar_ui.gd" id="1_a2b3c"]
+
+[node name="HeartBarUI" type="CanvasLayer"]
+script = ExtResource("1_a2b3c")
+layer = 100
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
