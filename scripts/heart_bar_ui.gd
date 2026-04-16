@@ -5,7 +5,7 @@ extends CanvasLayer
 @export var heart_spacing: int = 8
 @export var heart_size: Vector2 = Vector2(40, 40)  
 
-@onready var hearts_container: HBoxContainer = $MarginContainer/HBoxContainer
+@onready var hearts_container: HBoxContainer = $Panel/MarginContainer/HBoxContainer
 
 var heart_icons: Array[TextureRect] = []
 
