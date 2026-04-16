@@ -18,16 +18,12 @@ func _ready() -> void:
 
 func _build_ui() -> void:
 	var panel_style = StyleBoxFlat.new()
-	panel_style.bg_color = Color(0.08, 0.16, 0.52, 0.82)
-	panel_style.border_width_left = 3
-	panel_style.border_width_right = 3
-	panel_style.border_width_top = 3
-	panel_style.border_width_bottom = 3
-	panel_style.border_color = Color(0.03, 0.07, 0.28, 1.0)
-	panel_style.corner_radius_top_left = 6
-	panel_style.corner_radius_top_right = 6
-	panel_style.corner_radius_bottom_left = 6
-	panel_style.corner_radius_bottom_right = 6
+	panel_style.bg_color = Color(0, 0, 0, 0)
+	panel_style.draw_center = false
+	panel_style.border_width_left = 0
+	panel_style.border_width_right = 0
+	panel_style.border_width_top = 0
+	panel_style.border_width_bottom = 0
 
 	var panel = PanelContainer.new()
 	panel.position = Vector2(12, 12)
