@@ -258,8 +258,7 @@ func is_evading() -> bool:
 
 func _on_health_changed(_current: int, _maximum: int) -> void:
 	if prev_health == -1:
-		prev_health = _current
-		return
+		prev_health = _maximum
 	
 	if not is_dead and _current < prev_health:
 		start_flashing()
