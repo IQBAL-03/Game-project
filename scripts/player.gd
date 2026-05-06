@@ -167,7 +167,7 @@ func check_duri_tile() -> void:
 			var tile_data = duri_tilemap.get_cell_tile_data(tile_pos)
 			if tile_data != null:
 				if health_component:
-					health_component.take_damage(health_component.get_max_health())
+					health_component.take_damage(health_component.get_max_health(), true)
 				return
 
 func check_climbable_tile() -> void:
@@ -258,8 +258,7 @@ func is_evading() -> bool:
 
 func _on_health_changed(_current: int, _maximum: int) -> void:
 	if prev_health == -1:
-		prev_health = _current
-		return
+		prev_health = _maximum
 	
 	if not is_dead and _current < prev_health:
 		start_flashing()

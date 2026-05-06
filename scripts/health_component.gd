@@ -16,12 +16,12 @@ func _ready() -> void:
 	
 	health_changed.emit(current_health, max_health)
 
-func take_damage(amount) -> void:
+func take_damage(amount, ignore_evasion: bool = false) -> void:
 	if current_health <= 0:
 		return
 	
 	var parent = get_parent()
-	if parent.has_method("is_evading"):
+	if not ignore_evasion and parent.has_method("is_evading"):
 		if parent.is_evading():
 			return
 	
