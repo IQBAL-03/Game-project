@@ -16,8 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://beolnexpcbblb" path="res://scenes/predator_plant_2.tscn" id="11_qyymx"]
 [ext_resource type="Script" uid="uid://b3psekk8xf0so" path="res://scripts/key_2.gd" id="13_5vr8a"]
 [ext_resource type="Texture2D" uid="uid://dvb7bv8l1mqsy" path="res://kinght/Knight_1/Idle.png" id="13_8jwsv"]
+[ext_resource type="Texture2D" uid="uid://bxxdawf4o3ikx" path="res://kinght/Knight_1/Walk.png" id="14_3mp8a"]
 [ext_resource type="Script" uid="uid://cabjuaaumwrau" path="res://scripts/chest.gd" id="14_56qte"]
-[ext_resource type="Texture2D" uid="uid://dp6aq434vs166" path="res://kinght/Knight_1/Walk2.png" id="14_y3n7g"]
 [ext_resource type="Texture2D" uid="uid://cvw5ikhoxwvvh" path="res://kinght/Knight_1/Run.png" id="15_d1kcu"]
 [ext_resource type="Texture2D" uid="uid://cs4k2pjns4u7" path="res://map/Map/PNG/chest.png" id="15_tdcp2"]
 [ext_resource type="Texture2D" uid="uid://doln8cxnqta0v" path="res://kinght/Knight_1/Jump.png" id="16_ggku1"]
@@ -7768,36 +7768,36 @@ region = Rect2(256, 0, 128, 128)
 atlas = ExtResource("13_8jwsv")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8jwsv"]
-atlas = ExtResource("14_y3n7g")
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3n7g"]
+atlas = ExtResource("14_3mp8a")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3mp8a"]
-atlas = ExtResource("14_y3n7g")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jwsv"]
+atlas = ExtResource("14_3mp8a")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d1kcu"]
-atlas = ExtResource("14_y3n7g")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mp8a"]
+atlas = ExtResource("14_3mp8a")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ggku1"]
-atlas = ExtResource("14_y3n7g")
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1kcu"]
+atlas = ExtResource("14_3mp8a")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fs34a"]
-atlas = ExtResource("14_y3n7g")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggku1"]
+atlas = ExtResource("14_3mp8a")
 region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_510ty"]
-atlas = ExtResource("14_y3n7g")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs34a"]
+atlas = ExtResource("14_3mp8a")
 region = Rect2(640, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2xtwg"]
-atlas = ExtResource("14_y3n7g")
+[sub_resource type="AtlasTexture" id="AtlasTexture_510ty"]
+atlas = ExtResource("14_3mp8a")
 region = Rect2(768, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8s1p5"]
-atlas = ExtResource("14_y3n7g")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xtwg"]
+atlas = ExtResource("14_3mp8a")
 region = Rect2(896, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_upux8"]
@@ -7917,6 +7917,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_y3n7g")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8jwsv")
 }, {
 "duration": 1.0,
@@ -7936,9 +7939,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2xtwg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8s1p5")
 }],
 "loop": true,
 "name": &"jalan",
@@ -8293,7 +8293,8 @@ script = ExtResource("4_km0yn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player" unique_id=1834123472]
 position = Vector2(92, 41)
 sprite_frames = SubResource("SpriteFrames_rrhh6")
-animation = &"jalan"
+animation = &"idle"
+frame_progress = 0.5289197
 
 [node name="climb" type="AnimatedSprite2D" parent="player" unique_id=441660315]
 position = Vector2(-99, 83)
