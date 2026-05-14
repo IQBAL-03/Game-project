@@ -60,7 +60,12 @@ var nearest_ladder_center = Vector2.INF
 @onready var collision_shape: CollisionShape2D = $Badan
 
 @onready var health_component: Node = $HealthComponent
+var original_sprite_x = 0.0
+var original_attack_x = 0.0
+var original_hurt_x = 0.0
+var original_badan_x = 0.0
 
+@onready var hurt_box = get_node_or_null("HurtBox")
 
 func _ready():
 
@@ -71,6 +76,15 @@ func _ready():
 	floor_snap_length = 8.0
 
 	sprite.animation_finished.connect(_on_animation_finished)
+
+	if sprite:
+		original_sprite_x = sprite.position.x
+	if collision_shape:
+		original_badan_x = collision_shape.position.x
+	if attack_box and attack_box.has_node("CollisionShape2D"):
+		original_attack_x = attack_box.get_node("CollisionShape2D").position.x
+	if hurt_box and hurt_box.has_node("CollisionShape2D"):
+		original_hurt_x = hurt_box.get_node("CollisionShape2D").position.x
 
 
 	if attack_box:
@@ -213,6 +227,21 @@ func _physics_process(_delta):
 		velocity.x = arah * kecepatan_skrg
 
 		sprite.flip_h = (arah < 0)
+
+		if arah < 0:
+			if sprite and collision_shape:
+				sprite.position.x = original_badan_x - (original_sprite_x - original_badan_x)
+			if attack_box and attack_box.has_node("CollisionShape2D") and collision_shape:
+				attack_box.get_node("CollisionShape2D").position.x = original_badan_x - (original_attack_x - original_badan_x)
+			if hurt_box and hurt_box.has_node("CollisionShape2D") and collision_shape:
+				hurt_box.get_node("CollisionShape2D").position.x = original_badan_x - (original_hurt_x - original_badan_x)
+		else:
+			if sprite:
+				sprite.position.x = original_sprite_x
+			if attack_box and attack_box.has_node("CollisionShape2D"):
+				attack_box.get_node("CollisionShape2D").position.x = original_attack_x
+			if hurt_box and hurt_box.has_node("CollisionShape2D"):
+				hurt_box.get_node("CollisionShape2D").position.x = original_hurt_x
 
 	else:
 
@@ -391,13 +420,25 @@ func start_climbing() -> void:
 
 			climb_sprite.flip_h = false
 
+			if collision_shape:
+				climb_sprite.position.x = 61
+
 		elif ladder_to_left:
 
 			climb_sprite.flip_h = true
 
+			if collision_shape:
+				climb_sprite.position.x = original_badan_x - (61 - original_badan_x)
+
 		else:
 
 			climb_sprite.flip_h = sprite.flip_h
+
+			if collision_shape:
+				if sprite.flip_h:
+					climb_sprite.position.x = original_badan_x - (61 - original_badan_x)
+				else:
+					climb_sprite.position.x = 61
 
 
 func handle_climbing(_delta: float) -> void:
