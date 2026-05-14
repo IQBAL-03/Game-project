@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp6aq434vs166"
-path="res://.godot/imported/Walk2.png-f1d5f99b441a24213431b70350c1b5c2.ctex"
+uid="uid://cbby286ho3wfi"
+path="res://.godot/imported/Main_menu.png-39602001f59b894b802342bc4e896cd8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://kinght/Knight_1/Walk2.png"
-dest_files=["res://.godot/imported/Walk2.png-f1d5f99b441a24213431b70350c1b5c2.ctex"]
+source_file="res://User Interface/PNG/Main_menu.png"
+dest_files=["res://.godot/imported/Main_menu.png-39602001f59b894b802342bc4e896cd8.ctex"]
 
 [params]
 
