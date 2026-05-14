@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://sbea3po4fxel"]
 
+[ext_resource type="PackedScene" uid="uid://da5id0cs0v0xp" path="res://scenes/main_menu.tscn" id="1_8jwsv"]
 [ext_resource type="Texture2D" uid="uid://clg3n02unhrcw" path="res://map/Map/PNG/Background/1920x1080/├╖2/Sky_1920x1080├╖2.png" id="1_uebvl"]
 [ext_resource type="Texture2D" uid="uid://t3usbs4ogthq" path="res://map/Map/PNG/cave_entrance.png" id="2_j6kj6"]
 [ext_resource type="Texture2D" uid="uid://c78jwc507t4sn" path="res://map/Map/PNG/Background/1920x1080/├╖2/Full_bg_1920x1080├╖2.png" id="2_knjot"]
@@ -26,8 +27,7 @@
 [ext_resource type="Script" uid="uid://cgec2f5bi56h5" path="res://scripts/health_component.gd" id="17_health"]
 [ext_resource type="Texture2D" uid="uid://cg1q7uc23g8q4" path="res://kinght/Knight_1/Attack 1.png" id="18_510ty"]
 [ext_resource type="PackedScene" uid="uid://bhud7tui3a5m8" path="res://scenes/hud.tscn" id="90_hud"]
-[ext_resource type="PackedScene" uid="uid://bgo4r35mn8aa1" path="res://scenes/game_over.tscn" id="91_gameover"]
-[ext_resource type="PackedScene" uid="uid://bpm4ui3qm4561" path="res://scenes/pause_menu.tscn" id="92_pausemenu"]
+[ext_resource type="PackedScene" uid="uid://2oa8404k5n4e" path="res://scenes/game_over.tscn" id="91_gameover"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_56qte"]
 texture = ExtResource("1_uebvl")
@@ -8293,8 +8293,7 @@ script = ExtResource("4_km0yn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player" unique_id=1834123472]
 position = Vector2(92, 41)
 sprite_frames = SubResource("SpriteFrames_rrhh6")
-animation = &"idle"
-frame_progress = 0.5289197
+animation = &"mati"
 
 [node name="climb" type="AnimatedSprite2D" parent="player" unique_id=441660315]
 position = Vector2(-99, 83)
@@ -8376,6 +8375,19 @@ shape = SubResource("RectangleShape2D_rrhh6")
 
 [node name="HUD" parent="." unique_id=1491081479 instance=ExtResource("90_hud")]
 
-[node name="GameOver" parent="." unique_id=1758796778 instance=ExtResource("91_gameover")]
+[node name="MainMenu" parent="." unique_id=787964080 instance=ExtResource("1_8jwsv")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -11.0
+offset_top = 5.0
+offset_right = 1927.0
+offset_bottom = 1100.0
+grow_horizontal = 1
+grow_vertical = 1
 
-[node name="PauseMenu" parent="." unique_id=34701260 instance=ExtResource("92_pausemenu")]
+[node name="GameOver" parent="." unique_id=1234567890 instance=ExtResource("91_gameover")]
+offset_left = -14.0
+offset_top = 1.0
+offset_right = 1927.0
+offset_bottom = 1102.0
