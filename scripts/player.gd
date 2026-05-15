@@ -24,6 +24,9 @@ var bawa_kunci = false
 var has_key = false
 
 var is_dead = false
+var is_teleporting = false
+var spawn_position: Vector2
+var last_safe_position: Vector2
 
 
 var timer_lari = 0.0
@@ -68,7 +71,8 @@ var original_badan_x = 0.0
 @onready var hurt_box = get_node_or_null("HurtBox")
 
 func _ready():
-
+	spawn_position = global_position
+	last_safe_position = global_position
 	add_to_group("player")
 
 	floor_max_angle = deg_to_rad(60)
@@ -110,9 +114,10 @@ func _ready():
 
 
 func _physics_process(_delta):
-
+	if is_teleporting:
+		velocity = Vector2.ZERO
+		return
 	
-
 	if is_dead:
 
 		velocity.x = 0
@@ -251,6 +256,10 @@ func _physics_process(_delta):
 	update_animations(arah)
 
 	move_and_slide()
+	
+	# Update posisi aman terakhir saat menyentuh tanah dan TIDAK sedang di atas duri
+	if is_on_floor() and not is_dead and not is_teleporting and not is_on_spikes():
+		last_safe_position = global_position
 
 
 func serang():
@@ -316,29 +325,24 @@ func update_animations(arah):
 
 
 func check_duri_tile() -> void:
-
 	if is_dead or duri_tilemap == null:
-
 		return
 
+	if is_on_spikes():
+		_on_spike_hit()
 
+func is_on_spikes() -> bool:
+	if duri_tilemap == null:
+		return false
+		
 	for x_off in range(-8, 9, 8):
-
 		for y_off in range(-16, 17, 8):
-
 			var check_pos = collision_shape.global_position + Vector2(x_off, y_off)
-
 			var tile_pos = duri_tilemap.local_to_map(duri_tilemap.to_local(check_pos))
-
 			var tile_data = duri_tilemap.get_cell_tile_data(tile_pos)
-
 			if tile_data != null:
-
-				if health_component:
-
-					health_component.take_damage(health_component.get_max_health(), true)
-
-				return
+				return true
+	return false
 
 
 func check_climbable_tile() -> void:
@@ -574,3 +578,64 @@ func _on_health_died() -> void:
 	elif sprite.sprite_frames.has_animation("death"):
 
 		sprite.play("death") 
+
+	# Kembali ke idle jika masih hidup
+	if not is_dead:
+		sprite.play("idle")
+
+func _on_spike_hit() -> void:
+	if is_teleporting or is_dead:
+		return
+		
+	# 1. Jika heart tinggal satu, langsung mati tanpa transisi layar hitam
+	if health_component and health_component.get_current_health() <= 1:
+		if health_component:
+			health_component.take_damage(1, true)
+		return
+		
+	is_teleporting = true
+	
+	# 2. Jalankan animasi death/mati
+	if sprite.sprite_frames.has_animation("mati"):
+		sprite.play("mati")
+	elif sprite.sprite_frames.has_animation("death"):
+		sprite.play("death")
+	
+	# 3. Buat layar gelap (Fade to Black)
+	var fade_layer = CanvasLayer.new()
+	fade_layer.layer = 100
+	add_child(fade_layer)
+	
+	var fade_rect = ColorRect.new()
+	fade_rect.color = Color(0, 0, 0, 0)
+	fade_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	fade_layer.add_child(fade_rect)
+	
+	var tween = create_tween()
+	tween.tween_property(fade_rect, "color", Color(0, 0, 0, 1), 0.5)
+	await tween.finished
+	
+	# 4. Teleport ke zona aman terakhir (seperti Hollow Knight)
+	# Mundur sedikit dari arah hadap (nudge) agar benar-benar menjauh dari tepi duri
+	var nudge_x = 25 if sprite.flip_h else -25
+	global_position = last_safe_position + Vector2(nudge_x, -5)
+	velocity = Vector2.ZERO
+	
+	# 5. Heart berkurang satu
+	if health_component:
+		health_component.take_damage(1, true)
+	
+	# Tunggu sebentar di layar hitam
+	await get_tree().create_timer(0.3).timeout
+	
+	# 6. Layar kembali terang (Fade out)
+	var tween_out = create_tween()
+	tween_out.tween_property(fade_rect, "color", Color(0, 0, 0, 0), 0.5)
+	await tween_out.finished
+	
+	fade_layer.queue_free()
+	is_teleporting = false
+	
+	# Kembali ke idle jika masih hidup
+	if not is_dead:
+		sprite.play("idle")

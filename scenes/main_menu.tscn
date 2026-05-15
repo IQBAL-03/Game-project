@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dsf4bsnnscp2d" path="res://scenes/restart.gd" id="4_jk1qb"]
 [ext_resource type="Script" uid="uid://br8srmubgwnr7" path="res://scenes/settings.gd" id="5_5dd4i"]
 [ext_resource type="Script" uid="uid://bfr345ltycxdm" path="res://scenes/quit.gd" id="6_lgwnu"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="7_mm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_flqon"]
 atlas = ExtResource("1_rtw2f")
@@ -33,6 +34,7 @@ atlas = ExtResource("2_oa1go")
 region = Rect2(13, 402, 56, 12)
 
 [node name="MainMenu" type="Control" unique_id=787964080]
+script = ExtResource("7_mm")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

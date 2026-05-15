@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cqij8dt2nxws1" path="res://scripts/game_over.gd" id="1_gameover_script"]
 [ext_resource type="Texture2D" uid="uid://xhec5cylbvoo" path="res://User Interface/PNG/Win_loose.png" id="1_xeevv"]
 [ext_resource type="Script" uid="uid://dsf4bsnnscp2d" path="res://scenes/restart.gd" id="2_wqhvx"]
-[ext_resource type="Script" uid="uid://clo47g0xjk6ed" path="res://scenes/x.gd" id="4_racf3"]
 [ext_resource type="Texture2D" uid="uid://d0vddgtgmwsou" path="res://User Interface/PNG/Buttons.png" id="5_v3hpu"]
 [ext_resource type="Script" uid="uid://bfr345ltycxdm" path="res://scenes/quit.gd" id="6_irg28"]
 
@@ -70,7 +69,7 @@ offset_bottom = 101.0
 texture_normal = SubResource("AtlasTexture_7m3ot")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("4_racf3")
+script = ExtResource("2_wqhvx")
 
 [node name="quit" type="TextureButton" parent="TextureRect" unique_id=418402016]
 layout_mode = 1

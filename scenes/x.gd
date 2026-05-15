@@ -17,3 +17,8 @@ func _on_pressed() -> void:
 		get_parent().visible = false
 		
 	get_tree().paused = false
+	
+	# Jika player sudah mati, tampilkan game over setelah menu ditutup
+	var game_over = get_tree().root.find_child("GameOver", true, false)
+	if game_over and game_over.has_method("try_show_game_over"):
+		game_over.try_show_game_over()

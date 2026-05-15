@@ -4,7 +4,7 @@ signal health_changed(current: int, maximum: int)
 signal died()
 
 @export var max_health: int = 5
-var current_health: int
+var current_health: float
 
 func _ready() -> void:
 	
@@ -12,7 +12,7 @@ func _ready() -> void:
 		push_error("max_health must be at least 1, setting to 1")
 		max_health = 1
 	
-	current_health = max_health
+	current_health = float(max_health)
 	
 	health_changed.emit(current_health, max_health)
 
@@ -25,26 +25,25 @@ func take_damage(amount, ignore_evasion: bool = false) -> void:
 		if parent.is_evading():
 			return
 	
-	var damage_amount = ceili(amount) if amount is float else amount
-	current_health -= damage_amount
+	current_health -= amount
 	
-	current_health = clampi(current_health, 0, max_health)
+	current_health = clampf(current_health, 0.0, float(max_health))
 	
 	health_changed.emit(current_health, max_health)
 	
 	if current_health <= 0:
 		died.emit()
 
-func heal(amount: int) -> void:
+func heal(amount: float) -> void:
 	
 	current_health += amount
 	
-	current_health = clampi(current_health, 0, max_health)
+	current_health = clampf(current_health, 0.0, float(max_health))
 	
 	health_changed.emit(current_health, max_health)
 
-func get_current_health() -> int:
+func get_current_health() -> float:
 	return current_health
 
-func get_max_health() -> int:
-	return max_health
+func get_max_health() -> float:
+	return float(max_health)
