@@ -8,11 +8,16 @@ extends CharacterBody2D
 @onready var reaksi: Area2D = get_node_or_null("Reaksi")
 @onready var attack_box: Area2D = null  
 
+var health_component: Node = null
+var health_bar_sprite: Sprite2D = null
+var bar_full_tex: Texture2D = null
+var bar_half_tex: Texture2D = null
+var bar_empty_tex: Texture2D = null
+
 var player: CharacterBody2D
 var is_dead: bool = false
 var is_attacking: bool = false
 var attack_box_active: bool = false
-var hit_counter: int = 0
 const MAX_HEALTH: int = 2
 var is_flashing: bool = false
 
@@ -20,6 +25,28 @@ var player_di_kanan: bool = false
 var player_di_kiri: bool = false
 
 func _ready() -> void:
+	# Tambahkan HealthComponent secara dinamis
+	health_component = preload("res://scripts/health_component.gd").new()
+	health_component.name = "HealthComponent"
+	health_component.max_health = MAX_HEALTH
+	add_child(health_component)
+	
+	# Buat texture bar nyawa secara runtime (mirip cara player tapi pakai balok)
+	bar_full_tex = _create_bar_texture(Color(0.8, 0.1, 0.1), Color(0.8, 0.1, 0.1))
+	bar_half_tex = _create_bar_texture(Color(0.8, 0.1, 0.1), Color(0.25, 0.25, 0.25))
+	bar_empty_tex = _create_bar_texture(Color(0.25, 0.25, 0.25), Color(0.25, 0.25, 0.25))
+	
+	# Buat Sprite2D untuk bar nyawa
+	health_bar_sprite = Sprite2D.new()
+	health_bar_sprite.texture = bar_full_tex
+	health_bar_sprite.visible = false
+	health_bar_sprite.position = animated_sprite.position + Vector2(0, -60)
+	add_child(health_bar_sprite)
+	
+	# Connect signals
+	health_component.health_changed.connect(_on_enemy_health_changed)
+	health_component.died.connect(_on_died)
+
 	animated_sprite.play("idle")
 	hitbox.area_entered.connect(_on_hitbox_area_entered)
 	animated_sprite.animation_finished.connect(_on_animation_finished)
@@ -44,7 +71,7 @@ func _ready() -> void:
 		reaksi.body_shape_entered.connect(_on_reaksi_body_shape_entered)
 		reaksi.body_shape_exited.connect(_on_reaksi_body_shape_exited)
 	else:
-		push_error("PREDATOR_PLANT_2: Node 'Reaksi' belum ada! Bikin dulu ya bang Area2D dan Collisionnya.")
+		push_error("PREDATOR_PLANT_2: Node 'Reaksi' belum ada!")
 
 func _physics_process(delta: float) -> void:
 	if is_dead: return
@@ -127,9 +154,9 @@ func _on_attack_box_area_entered(area: Area2D) -> void:
 	if area.name == "HurtBox" and attack_box_active and not is_dead:
 		var player_node = area.get_parent()
 		if player_node and player_node.is_in_group("player"):
-			var health_component = player_node.get_node_or_null("HealthComponent")
-			if health_component and health_component.has_method("take_damage"):
-				health_component.take_damage(damage_amount)
+			var player_health = player_node.get_node_or_null("HealthComponent")
+			if player_health and player_health.has_method("take_damage"):
+				player_health.take_damage(damage_amount)
 				
 				attack_box.set_deferred("monitoring", false)
 				attack_box_active = false
@@ -149,25 +176,51 @@ func show_hit_feedback() -> void:
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.name == "AttackBox" and not is_dead:
-		hit_counter += 1
-		
-		if hit_counter < MAX_HEALTH:
+		if health_component:
+			health_component.take_damage(1)
 			show_hit_feedback()
-			return
-		
-		is_dead = true
-		is_attacking = false
-		$CollisionShape2D.set_deferred("disabled", true)
-		
-		if player_di_kanan:
-			animated_sprite.play("mati_kanan")
-		else:
-			animated_sprite.play("mati_kiri")
-		
-		await animated_sprite.animation_finished
-		queue_free()
+
+func _on_enemy_health_changed(current: float, _maximum: float) -> void:
+	# Sama seperti hud.gd swap texture heart, kita swap texture bar
+	if health_bar_sprite == null:
+		return
+	health_bar_sprite.visible = true
+	if current >= 2:
+		health_bar_sprite.texture = bar_full_tex
+	elif current >= 1:
+		health_bar_sprite.texture = bar_half_tex
+	else:
+		health_bar_sprite.texture = bar_empty_tex
+
+func _on_died() -> void:
+	is_dead = true
+	is_attacking = false
+	$CollisionShape2D.set_deferred("disabled", true)
+	
+	if player_di_kanan:
+		animated_sprite.play("mati_kanan")
+	else:
+		animated_sprite.play("mati_kiri")
+	
+	await animated_sprite.animation_finished
+	queue_free()
 
 func set_animation_speed(speed: float) -> void:
 	if speed <= 0: return
 	attack_speed = speed
 	if is_attacking: animated_sprite.speed_scale = speed
+
+func _create_bar_texture(left_color: Color, right_color: Color) -> ImageTexture:
+	# Buat gambar balok 40x8 pixel (kiri dan kanan bisa beda warna)
+	var img = Image.create(40, 8, false, Image.FORMAT_RGBA8)
+	for x in range(40):
+		for y in range(8):
+			# Border hitam 1 pixel
+			if x == 0 or x == 39 or y == 0 or y == 7:
+				img.set_pixel(x, y, Color(0.1, 0.1, 0.1))
+			# Kiri = setengah pertama, Kanan = setengah kedua
+			elif x < 20:
+				img.set_pixel(x, y, left_color)
+			else:
+				img.set_pixel(x, y, right_color)
+	return ImageTexture.create_from_image(img)
