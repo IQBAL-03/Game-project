@@ -7,6 +7,7 @@ var hearts_container: HBoxContainer = null
 
 var heart_icons: Array[TextureRect] = []
 var heart_full_tex: Texture2D = null
+var heart_half_tex: Texture2D = null
 var heart_empty_tex: Texture2D = null
 
 func _ready() -> void:
@@ -61,6 +62,7 @@ func _setup_hearts(count: int) -> void:
 	heart_icons.clear()
 
 	heart_full_tex = load("res://player/heart_full.png")
+	heart_half_tex = load("res://player/heart_half.png")
 	heart_empty_tex = load("res://player/heart_empty.png")
 
 	for i in range(count):
@@ -71,8 +73,16 @@ func _setup_hearts(count: int) -> void:
 		hearts_container.add_child(tex_rect)
 		heart_icons.append(tex_rect)
 
-func _on_health_changed(current: int, maximum: int) -> void:
-	if heart_icons.size() != maximum:
-		_setup_hearts(maximum)
+func _on_health_changed(current: float, maximum: float) -> void:
+	var max_int = ceili(maximum)
+	if heart_icons.size() != max_int:
+		_setup_hearts(max_int)
+		
 	for i in range(heart_icons.size()):
-		heart_icons[i].texture = heart_full_tex if i < current else heart_empty_tex
+		var heart_val = i + 1
+		if current >= heart_val:
+			heart_icons[i].texture = heart_full_tex
+		elif current >= heart_val - 0.5:
+			heart_icons[i].texture = heart_half_tex
+		else:
+			heart_icons[i].texture = heart_empty_tex

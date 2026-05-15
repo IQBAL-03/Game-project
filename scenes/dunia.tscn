@@ -26,8 +26,10 @@
 [ext_resource type="Texture2D" uid="uid://chr7ynv7hcb6d" path="res://kinght/Knight_1/Dead.png" id="17_fs34a"]
 [ext_resource type="Script" uid="uid://cgec2f5bi56h5" path="res://scripts/health_component.gd" id="17_health"]
 [ext_resource type="Texture2D" uid="uid://cg1q7uc23g8q4" path="res://kinght/Knight_1/Attack 1.png" id="18_510ty"]
+[ext_resource type="Texture2D" uid="uid://dh68y3151hxvk" path="res://kinght/Knight_1/climb.png" id="19_8jwsv"]
 [ext_resource type="PackedScene" uid="uid://bhud7tui3a5m8" path="res://scenes/hud.tscn" id="90_hud"]
 [ext_resource type="PackedScene" uid="uid://2oa8404k5n4e" path="res://scenes/game_over.tscn" id="91_gameover"]
+[ext_resource type="Texture2D" path="res://kinght/Knight_1/Run+Attack.png" id="92_run_attack"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_56qte"]
 texture = ExtResource("1_uebvl")
@@ -7896,6 +7898,34 @@ region = Rect2(384, 0, 128, 128)
 atlas = ExtResource("18_510ty")
 region = Rect2(512, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra1"]
+atlas = ExtResource("92_run_attack")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra2"]
+atlas = ExtResource("92_run_attack")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra3"]
+atlas = ExtResource("92_run_attack")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra4"]
+atlas = ExtResource("92_run_attack")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra5"]
+atlas = ExtResource("92_run_attack")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra6"]
+atlas = ExtResource("92_run_attack")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra7"]
+atlas = ExtResource("92_run_attack")
+region = Rect2(768, 0, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_rrhh6"]
 animations = [{
 "frames": [{
@@ -8035,11 +8065,79 @@ animations = [{
 "loop": false,
 "name": &"serang",
 "speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra7")
+}],
+"loop": false,
+"name": &"lari_serang",
+"speed": 15.0
 }]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s1p5"]
+atlas = ExtResource("19_8jwsv")
+region = Rect2(0, 0, 140, 153)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byicu"]
+atlas = ExtResource("19_8jwsv")
+region = Rect2(140, 0, 140, 153)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ful70"]
+atlas = ExtResource("19_8jwsv")
+region = Rect2(280, 0, 140, 153)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl054"]
+atlas = ExtResource("19_8jwsv")
+region = Rect2(420, 0, 140, 153)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lqh8"]
+atlas = ExtResource("19_8jwsv")
+region = Rect2(560, 0, 140, 153)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bekw"]
+atlas = ExtResource("19_8jwsv")
+region = Rect2(700, 0, 140, 153)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vxw3w"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s1p5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byicu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ful70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl054")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lqh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bekw")
+}],
 "loop": true,
 "name": &"climb",
 "speed": 8.0
@@ -8293,7 +8391,7 @@ script = ExtResource("4_km0yn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player" unique_id=1834123472]
 position = Vector2(92, 41)
 sprite_frames = SubResource("SpriteFrames_rrhh6")
-animation = &"mati"
+animation = &"idle"
 
 [node name="climb" type="AnimatedSprite2D" parent="player" unique_id=441660315]
 position = Vector2(-99, 83)
@@ -8376,6 +8474,7 @@ shape = SubResource("RectangleShape2D_rrhh6")
 [node name="HUD" parent="." unique_id=1491081479 instance=ExtResource("90_hud")]
 
 [node name="MainMenu" parent="." unique_id=787964080 instance=ExtResource("1_8jwsv")]
+visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -8387,6 +8486,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="GameOver" parent="." unique_id=1234567890 instance=ExtResource("91_gameover")]
+visible = false
 offset_left = -14.0
 offset_top = 1.0
 offset_right = 1927.0
