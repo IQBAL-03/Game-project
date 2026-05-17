@@ -214,6 +214,15 @@ func _on_died() -> void:
 	is_attacking = false
 	$CollisionShape2D.set_deferred("disabled", true)
 	
+	var scene_root := get_tree().current_scene
+	if scene_root:
+		Coin.spawn_burst(scene_root, global_position)
+
+
+
+
+
+	
 	if player_di_kanan:
 		animated_sprite.flip_h = false
 		animated_sprite.position.x = original_sprite_pos_x
@@ -225,6 +234,9 @@ func _on_died() -> void:
 	
 	await animated_sprite.animation_finished
 	queue_free()
+
+
+
 
 func _create_bar_texture(left_color: Color, right_color: Color) -> ImageTexture:
 	# Buat gambar balok 40x8 pixel (kiri dan kanan bisa beda warna)

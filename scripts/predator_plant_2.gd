@@ -197,6 +197,15 @@ func _on_died() -> void:
 	is_attacking = false
 	$CollisionShape2D.set_deferred("disabled", true)
 	
+	var scene_root := get_tree().current_scene
+	if scene_root:
+		Coin.spawn_burst(scene_root, animated_sprite.global_position)
+
+
+
+
+
+	
 	if player_di_kanan:
 		animated_sprite.play("mati_kanan")
 	else:
@@ -204,6 +213,10 @@ func _on_died() -> void:
 	
 	await animated_sprite.animation_finished
 	queue_free()
+
+
+
+
 
 func set_animation_speed(speed: float) -> void:
 	if speed <= 0: return
