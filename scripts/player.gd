@@ -32,6 +32,34 @@ var nearest_ladder_center = Vector2.INF
 @onready var health_component: Node = $HealthComponent
 
 func _ready():
+	# Cek apakah udah ada Camera2D di player
+	var camera = get_node_or_null("Camera2D")
+	if not camera:
+		camera = Camera2D.new()
+		camera.name = "Camera2D"
+		add_child(camera)
+		
+	# Pastikan posisinya selalu pas di tengah sprite
+	camera.position = Vector2(62, 40)
+	
+	# Matikan limit biar kamera selalu fokus (nggak nyangkut di pinggir)
+	camera.limit_left = -10000000
+	camera.limit_top = -10000000
+	camera.limit_right = 10000000
+	camera.limit_bottom = 10000000
+	
+	# INI DIA BIANG KEROKNYA: Drag margin (box tak kasat mata di tengah layar)
+	# Kita matikan biar kamera nggak nunggu karakter nyentuh pinggir layar buat gerak
+	camera.drag_horizontal_enabled = false
+	camera.drag_vertical_enabled = false
+	
+	# Matikan smoothing biar ngikutnya INSTAN 100% tanpa delay sekecil apapun
+	camera.position_smoothing_enabled = false
+	
+	# Set zoom biar pas
+	camera.zoom = Vector2(2.0, 2.0)
+	camera.make_current()
+
 	floor_max_angle = deg_to_rad(60)
 	floor_snap_length = 8.0
 	sprite.animation_finished.connect(_on_animation_finished)
