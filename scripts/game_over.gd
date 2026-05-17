@@ -7,7 +7,8 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	z_index = 100
 	z_as_relative = false
-	
+	ButtonHover.apply_to_tree(self)
+
 	# Tunggu frame pertama agar player selesai di-load
 	await get_tree().process_frame
 	_connect_to_player()
