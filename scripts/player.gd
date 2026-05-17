@@ -27,6 +27,8 @@ var is_dead = false
 var is_teleporting = false
 var spawn_position: Vector2
 var last_safe_position: Vector2
+var coins = 0
+
 
 
 var timer_lari = 0.0
@@ -639,3 +641,9 @@ func _on_spike_hit() -> void:
 	# Kembali ke idle jika masih hidup
 	if not is_dead:
 		sprite.play("idle")
+
+func collect_coin(amount: int = 1) -> void:
+	coins += amount
+	var hud_nodes = get_tree().get_nodes_in_group("hud")
+	if hud_nodes.size() > 0:
+		hud_nodes[0].update_coins(coins)
