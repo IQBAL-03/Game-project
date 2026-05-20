@@ -99,7 +99,7 @@ func _on_health_changed(current: float, maximum: float) -> void:
 	var max_int = ceili(maximum)
 	if heart_icons.size() != max_int:
 		_setup_hearts(max_int)
-		
+
 	for i in range(heart_icons.size()):
 		var heart_val = i + 1
 		if current >= heart_val:
@@ -114,13 +114,13 @@ func update_coins(count: int) -> void:
 		coin_label.text = str(count)
 
 func _create_coin_icon() -> ImageTexture:
-	# Buat gambar koin emas 16x16 pixel secara runtime
+
 	var size = 16
 	var img = Image.create(size, size, false, Image.FORMAT_RGBA8)
 	var center = Vector2(size / 2.0, size / 2.0)
 	var radius = 7.0
 	var inner_radius = 5.5
-	
+
 	for x in range(size):
 		for y in range(size):
 			var dist = Vector2(x + 0.5, y + 0.5).distance_to(center)
@@ -132,12 +132,12 @@ func _create_coin_icon() -> ImageTexture:
 					img.set_pixel(x, y, Color(0.7, 0.55, 0.1))
 			else:
 				img.set_pixel(x, y, Color(0, 0, 0, 0))
-	
-	# Highlight kilau
+
+
 	for x in range(4, 7):
 		for y in range(3, 5):
 			var dist = Vector2(x + 0.5, y + 0.5).distance_to(center)
 			if dist <= inner_radius:
 				img.set_pixel(x, y, Color(1.0, 0.95, 0.6))
-	
+
 	return ImageTexture.create_from_image(img)

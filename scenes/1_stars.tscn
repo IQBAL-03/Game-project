@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://clo47g0xjk6ed" path="res://scripts/x.gd" id="2_cx7hs"]
 [ext_resource type="Script" uid="uid://dsf4bsnnscp2d" path="res://scripts/restart.gd" id="3_g8v3y"]
 [ext_resource type="Texture2D" uid="uid://cbby286ho3wfi" path="res://User Interface/PNG/Main_menu.png" id="4_m5u5j"]
+[ext_resource type="Script" path="res://scripts/stars.gd" id="5_stars"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4f5l1"]
 atlas = ExtResource("1_sdfjs")
@@ -26,6 +28,8 @@ atlas = ExtResource("1_sdfjs")
 region = Rect2(146, 332, 29, 13)
 
 [node name="1Stars" type="Control" unique_id=378074496]
+script = ExtResource("5_stars")
+
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

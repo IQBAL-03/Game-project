@@ -29,28 +29,28 @@ var player_di_kanan: bool = false
 var player_di_kiri: bool = false
 
 func _ready() -> void:
-	# Tambahkan HealthComponent secara dinamis
+
 	health_component = preload("res://scripts/health_component.gd").new()
 	health_component.name = "HealthComponent"
 	health_component.max_health = MAX_HEALTH
 	add_child(health_component)
-	
-	# Buat texture bar nyawa secara runtime (mirip cara player tapi pakai balok)
+
+
 	bar_full_tex = _create_bar_texture(Color(0.8, 0.1, 0.1), Color(0.8, 0.1, 0.1))
 	bar_half_tex = _create_bar_texture(Color(0.8, 0.1, 0.1), Color(0.25, 0.25, 0.25))
 	bar_empty_tex = _create_bar_texture(Color(0.25, 0.25, 0.25), Color(0.25, 0.25, 0.25))
-	
-	# Buat Sprite2D untuk bar nyawa
+
+
 	health_bar_sprite = Sprite2D.new()
 	health_bar_sprite.texture = bar_full_tex
 	health_bar_sprite.visible = false
 	health_bar_sprite.position = animated_sprite.position + Vector2(0, -40)
 	add_child(health_bar_sprite)
-	
-	# Connect signals
+
+
 	health_component.health_changed.connect(_on_enemy_health_changed)
 	health_component.died.connect(_on_died)
-	
+
 	original_sprite_pos_x = animated_sprite.position.x
 	sprite_local_center = animated_sprite.position
 
@@ -59,20 +59,20 @@ func _ready() -> void:
 	hitbox.area_entered.connect(_on_hitbox_area_entered)
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	animated_sprite.frame_changed.connect(_on_sprite_frame_changed)
-	
+
 	attack_box = Area2D.new()
 	attack_box.name = "AttackBox"
 	attack_box.monitoring = false
 	attack_box.monitorable = false
 	add_child(attack_box)
-	
+
 	var attack_collision = CollisionShape2D.new()
 	var attack_shape = RectangleShape2D.new()
 	attack_shape.size = Vector2(60, 60)  
 	attack_collision.shape = attack_shape
 	attack_collision.position = Vector2(20, 23)  
 	attack_box.add_child(attack_collision)
-	
+
 	attack_box.area_entered.connect(_on_attack_box_area_entered)
 
 	if reaksi:
@@ -110,7 +110,7 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.flip_h = false
 			animated_sprite.position.x = original_sprite_pos_x
 			is_attacking = false
-			
+
 			if attack_box:
 				attack_box.set_deferred("monitoring", false)
 				attack_box_active = false
@@ -140,7 +140,7 @@ func _on_reaksi_body_shape_exited(_body_rid: RID, body: Node2D, _body_shape_inde
 
 func _on_animation_finished() -> void:
 	if animated_sprite.animation == "serang_kiri":
-		
+
 		if attack_box:
 			attack_box.set_deferred("monitoring", false)
 			attack_box_active = false
@@ -154,40 +154,40 @@ func _on_animation_finished() -> void:
 			is_attacking = false
 
 func _on_sprite_frame_changed() -> void:
-	
+
 	if animated_sprite.animation == "serang_kiri" and is_attacking:
 		if animated_sprite.frame == 5:
 			if attack_box:
 				attack_box.set_deferred("monitoring", true)
 				attack_box_active = true
 		elif animated_sprite.frame != 5:
-			
+
 			if attack_box and attack_box_active:
 				attack_box.set_deferred("monitoring", false)
 				attack_box_active = false
 
 func _on_attack_box_area_entered(area: Area2D) -> void:
-	
+
 	if area.name == "HurtBox" and attack_box_active and not is_dead:
 		var player_node = area.get_parent()
 		if player_node and player_node.is_in_group("player"):
 			var player_health = player_node.get_node_or_null("HealthComponent")
 			if player_health and player_health.has_method("take_damage"):
 				player_health.take_damage(damage_amount)
-				
+
 				attack_box.set_deferred("monitoring", false)
 				attack_box_active = false
 
 func show_hit_feedback() -> void:
 	if is_flashing:
 		return
-	
+
 	is_flashing = true
-	
+
 	var tween = create_tween()
 	tween.tween_property(animated_sprite, "modulate", Color.RED, 0.1)
 	tween.tween_property(animated_sprite, "modulate", Color.WHITE, 0.1)
-	
+
 	await tween.finished
 	is_flashing = false
 
@@ -198,7 +198,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 			show_hit_feedback()
 
 func _on_enemy_health_changed(current: float, _maximum: float) -> void:
-	# Sama seperti hud.gd swap texture heart, kita swap texture bar
+
 	if health_bar_sprite == null:
 		return
 	health_bar_sprite.visible = true
@@ -213,16 +213,12 @@ func _on_died() -> void:
 	is_dead = true
 	is_attacking = false
 	$CollisionShape2D.set_deferred("disabled", true)
-	
+
 	var scene_root := get_tree().current_scene
 	if scene_root:
 		Coin.spawn_burst(scene_root, global_position)
 
 
-
-
-
-	
 	if player_di_kanan:
 		animated_sprite.flip_h = false
 		animated_sprite.position.x = original_sprite_pos_x
@@ -231,22 +227,20 @@ func _on_died() -> void:
 		animated_sprite.flip_h = false
 		animated_sprite.position.x = original_sprite_pos_x
 		animated_sprite.play("mati_kiri")
-	
+
 	await animated_sprite.animation_finished
 	queue_free()
 
 
-
-
 func _create_bar_texture(left_color: Color, right_color: Color) -> ImageTexture:
-	# Buat gambar balok 40x8 pixel (kiri dan kanan bisa beda warna)
+
 	var img = Image.create(40, 8, false, Image.FORMAT_RGBA8)
 	for x in range(40):
 		for y in range(8):
-			# Border hitam 1 pixel
+
 			if x == 0 or x == 39 or y == 0 or y == 7:
 				img.set_pixel(x, y, Color(0.1, 0.1, 0.1))
-			# Kiri = setengah pertama, Kanan = setengah kedua
+
 			elif x < 20:
 				img.set_pixel(x, y, left_color)
 			else:
