@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://vco0xe8myc0v"]
+
+[ext_resource type="Texture2D" uid="uid://xhec5cylbvoo" path="res://User Interface/PNG/Win_loose.png" id="1_sdfjs"]
+[ext_resource type="Script" uid="uid://clo47g0xjk6ed" path="res://scripts/x.gd" id="2_cx7hs"]
+[ext_resource type="Script" uid="uid://dsf4bsnnscp2d" path="res://scripts/restart.gd" id="3_g8v3y"]
+[ext_resource type="Texture2D" uid="uid://cbby286ho3wfi" path="res://User Interface/PNG/Main_menu.png" id="4_m5u5j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f5l1"]
+atlas = ExtResource("1_sdfjs")
+region = Rect2(11, 203, 90, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m50nf"]
+atlas = ExtResource("1_sdfjs")
+region = Rect2(89, 205, 9, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2dfm"]
+atlas = ExtResource("1_sdfjs")
+region = Rect2(114, 300, 29, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8xcb"]
+atlas = ExtResource("4_m5u5j")
+region = Rect2(189, 146, 56, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61vtg"]
+atlas = ExtResource("1_sdfjs")
+region = Rect2(146, 332, 29, 13)
+
+[node name="1Stars" type="Control" unique_id=378074496]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=268251824]
+layout_mode = 0
+offset_left = 615.0
+offset_top = 208.0
+offset_right = 1282.0
+offset_bottom = 835.0
+texture = SubResource("AtlasTexture_4f5l1")
+
+[node name="x" type="TextureButton" parent="TextureRect" unique_id=1872970483]
+layout_mode = 0
+offset_left = 577.0
+offset_top = 18.0
+offset_right = 644.0
+offset_bottom = 103.0
+texture_normal = SubResource("AtlasTexture_m50nf")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_cx7hs")
+
+[node name="again" type="TextureButton" parent="TextureRect" unique_id=614993751]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 404.0
+offset_right = 243.0
+offset_bottom = 475.0
+texture_normal = SubResource("AtlasTexture_c2dfm")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_g8v3y")
+
+[node name="quit" type="TextureButton" parent="TextureRect" unique_id=1182241878]
+layout_mode = 0
+offset_left = 257.0
+offset_top = 507.0
+offset_right = 427.0
+offset_bottom = 578.0
+texture_normal = SubResource("AtlasTexture_y8xcb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="next" type="TextureButton" parent="TextureRect" unique_id=986525110]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 402.0
+offset_right = 608.0
+offset_bottom = 473.0
+texture_normal = SubResource("AtlasTexture_61vtg")
+ignore_texture_size = true
+stretch_mode = 0
