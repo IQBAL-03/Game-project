@@ -517,6 +517,21 @@ func stop_climbing() -> void:
 		sprite.flip_h = climb_sprite.flip_h
 
 		climb_sprite.visible = false
+		
+		if sprite.flip_h:
+			if sprite:
+				sprite.position.x = original_badan_x - (original_sprite_x - original_badan_x)
+			if attack_box and attack_box.has_node("CollisionShape2D"):
+				attack_box.get_node("CollisionShape2D").position.x = original_badan_x - (original_attack_x - original_badan_x)
+			if hurt_box and hurt_box.has_node("CollisionShape2D"):
+				hurt_box.get_node("CollisionShape2D").position.x = original_badan_x - (original_hurt_x - original_badan_x)
+		else:
+			if sprite:
+				sprite.position.x = original_sprite_x
+			if attack_box and attack_box.has_node("CollisionShape2D"):
+				attack_box.get_node("CollisionShape2D").position.x = original_attack_x
+			if hurt_box and hurt_box.has_node("CollisionShape2D"):
+				hurt_box.get_node("CollisionShape2D").position.x = original_hurt_x
 
 
 var prev_health = -1
