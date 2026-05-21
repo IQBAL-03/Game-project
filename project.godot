@@ -12,14 +12,18 @@ config_version=5
 
 config/name="The Knight"
 run/main_scene="res://scenes/dunia.tscn"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/stretch/mode="canvas_items"
+window/size/mode=3
+window/size/resizable=true
+window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
 
@@ -63,5 +67,6 @@ ui_down={
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/canvas_textures/default_texture_filter=0
-rendering_device/driver.windows="d3d12"

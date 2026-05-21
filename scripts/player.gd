@@ -331,13 +331,30 @@ func check_duri_tile() -> void:
 		_on_spike_hit()
 
 func is_on_spikes() -> bool:
-	if duri_tilemap == null:
+	if duri_tilemap == null or collision_shape == null or collision_shape.shape == null:
 		return false
 
-	for x_off in range(-8, 9, 8):
-		for y_off in range(-16, 17, 8):
-			var check_pos = collision_shape.global_position + Vector2(x_off, y_off)
-			var tile_pos = duri_tilemap.local_to_map(duri_tilemap.to_local(check_pos))
+	var shape = collision_shape.shape as RectangleShape2D
+	if not shape:
+		return false
+
+	var half_extents = shape.size * 0.5
+	var global_pos = collision_shape.global_position
+
+	var top_left_local = duri_tilemap.to_local(global_pos - half_extents)
+	var bottom_right_local = duri_tilemap.to_local(global_pos + half_extents)
+
+	var map_min = duri_tilemap.local_to_map(top_left_local)
+	var map_max = duri_tilemap.local_to_map(bottom_right_local)
+
+	var start_x = min(map_min.x, map_max.x)
+	var end_x = max(map_min.x, map_max.x)
+	var start_y = min(map_min.y, map_max.y)
+	var end_y = max(map_min.y, map_max.y)
+
+	for x in range(start_x, end_x + 1):
+		for y in range(start_y, end_y + 1):
+			var tile_pos = Vector2i(x, y)
 			var tile_data = duri_tilemap.get_cell_tile_data(tile_pos)
 			if tile_data != null:
 				return true
@@ -345,43 +362,43 @@ func is_on_spikes() -> bool:
 
 
 func check_climbable_tile() -> void:
-
-	if tilemap == null:
-
+	if tilemap == null or collision_shape == null or collision_shape.shape == null:
 		can_climb = false
-
 		return
 
+	var shape = collision_shape.shape as RectangleShape2D
+	if not shape:
+		can_climb = false
+		return
 
 	can_climb = false
-
 	nearest_ladder_center = Vector2.INF
-
 	var min_dist = INF
 
+	var half_extents = shape.size * 0.5
+	var global_pos = collision_shape.global_position
 
-	for x_off in range(-8, 9, 8):
+	var top_left_local = tilemap.to_local(global_pos - half_extents)
+	var bottom_right_local = tilemap.to_local(global_pos + half_extents)
 
-		for y_off in range(-16, 17, 8):
+	var map_min = tilemap.local_to_map(top_left_local)
+	var map_max = tilemap.local_to_map(bottom_right_local)
 
-			var check_pos = collision_shape.global_position + Vector2(x_off, y_off)
+	var start_x = min(map_min.x, map_max.x)
+	var end_x = max(map_min.x, map_max.x)
+	var start_y = min(map_min.y, map_max.y)
+	var end_y = max(map_min.y, map_max.y)
 
-			var tile_pos = tilemap.local_to_map(tilemap.to_local(check_pos))
-
+	for x in range(start_x, end_x + 1):
+		for y in range(start_y, end_y + 1):
+			var tile_pos = Vector2i(x, y)
 			var tile_data = tilemap.get_cell_tile_data(tile_pos)
-
 			if tile_data and tile_data.get_custom_data("climbable"):
-
 				var tile_center = tilemap.to_global(tilemap.map_to_local(tile_pos))
-
-				var dist = abs(collision_shape.global_position.x - tile_center.x)
-
+				var dist = abs(global_pos.x - tile_center.x)
 				if dist < min_dist:
-
 					min_dist = dist
-
 					nearest_ladder_center = tile_center
-
 					can_climb = true
 
 
