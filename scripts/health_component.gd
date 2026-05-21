@@ -1,57 +1,49 @@
 extends Node
 
-# Health Component
-# Manages health state and damage logic for entities
-
-# Signals
 signal health_changed(current: int, maximum: int)
 signal died()
 
-# Properties
-@export var max_health: int = 3
-var current_health: int
+@export var max_health: int = 5
+var current_health: float
 
 func _ready() -> void:
-	# Validate max_health
+
 	if max_health < 1:
 		push_error("max_health must be at least 1, setting to 1")
 		max_health = 1
-	
-	# Initialize current health to max
-	current_health = max_health
-	
-	# Emit initial state
+
+	current_health = float(max_health)
+
 	health_changed.emit(current_health, max_health)
 
-func take_damage(amount: int) -> void:
+func take_damage(amount, ignore_evasion: bool = false) -> void:
 	if current_health <= 0:
 		return
-	
-	# Reduce health
+
+	var parent = get_parent()
+	if not ignore_evasion and parent.has_method("is_evading"):
+		if parent.is_evading():
+			return
+
 	current_health -= amount
-	
-	# Clamp to valid range
-	current_health = clampi(current_health, 0, max_health)
-	
-	# Emit health changed signal
+
+	current_health = clampf(current_health, 0.0, float(max_health))
+
 	health_changed.emit(current_health, max_health)
-	
-	# Check for death
+
 	if current_health <= 0:
 		died.emit()
 
-func heal(amount: int) -> void:
-	# Increase health
+func heal(amount: float) -> void:
+
 	current_health += amount
-	
-	# Clamp to valid range
-	current_health = clampi(current_health, 0, max_health)
-	
-	# Emit health changed signal
+
+	current_health = clampf(current_health, 0.0, float(max_health))
+
 	health_changed.emit(current_health, max_health)
 
-func get_current_health() -> int:
+func get_current_health() -> float:
 	return current_health
 
-func get_max_health() -> int:
-	return max_health
+func get_max_health() -> float:
+	return float(max_health)

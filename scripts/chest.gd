@@ -21,6 +21,11 @@ func buka_peti(player_node):
 	sprite.play("buka")
 	sprite.animation_finished.connect(_on_animasi_selesai, CONNECT_ONE_SHOT)
 
+	var scene_root := get_tree().current_scene
+	if scene_root:
+		Coin.spawn_burst(scene_root, sprite.global_position)
+
+
 	var kunci_dipakai = player_node.carried_keys.pop_front()
 	kunci_dipakai.queue_free()
 

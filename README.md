@@ -1,4 +1,6 @@
-# Game Project
+# Game Project!
+![Godot](https://img.shields.io/badge/Godot-4.6.1-green) ![License](https://img.shields.io/badge/License-MIT-yellow)
+
 
 Proyek game platformer sederhana yang dikembangkan menggunakan Godot Engine.
 
@@ -40,7 +42,7 @@ Proyek game platformer sederhana yang dikembangkan menggunakan Godot Engine.
 ### 1. Clone Repositori
 Clone proyek ini ke penyimpanan lokal Anda menggunakan Git:
 ```bash
-git clone https://github.com/IQBAL-03/The-Witch-Project.git
+git clone https://github.com/IQBAL-03/Game-project.git
 ```
 
 ### 2. Persiapan Godot Engine

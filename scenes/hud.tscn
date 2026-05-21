@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bhud7tui3a5m8"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_hud01"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud01")
+process_mode = 3
