@@ -1,4 +1,4 @@
-# Game Project
+# Game Project!
 ![Godot](https://img.shields.io/badge/Godot-4.6.1-green) ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 
