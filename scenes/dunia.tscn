@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://sbea3po4fxel"]
 
-[ext_resource type="PackedScene" path="res://scenes/main_menu.tscn" id="1_8jwsv"]
+[ext_resource type="PackedScene" uid="uid://da5id0cs0v0xp" path="res://scenes/main_menu.tscn" id="1_8jwsv"]
 [ext_resource type="Texture2D" uid="uid://clg3n02unhrcw" path="res://map/Map/PNG/Background/1920x1080/├╖2/Sky_1920x1080├╖2.png" id="1_uebvl"]
 [ext_resource type="Texture2D" uid="uid://t3usbs4ogthq" path="res://map/Map/PNG/cave_entrance.png" id="2_j6kj6"]
 [ext_resource type="Texture2D" uid="uid://c78jwc507t4sn" path="res://map/Map/PNG/Background/1920x1080/├╖2/Full_bg_1920x1080├╖2.png" id="2_knjot"]
@@ -28,6 +28,9 @@
 [ext_resource type="Script" uid="uid://cgec2f5bi56h5" path="res://scripts/health_component.gd" id="17_health"]
 [ext_resource type="Texture2D" uid="uid://cg1q7uc23g8q4" path="res://kinght/Knight_1/Attack 1.png" id="18_510ty"]
 [ext_resource type="Texture2D" uid="uid://dh68y3151hxvk" path="res://kinght/Knight_1/climb.png" id="19_8jwsv"]
+[ext_resource type="Texture2D" uid="uid://ckf6c3pbobjlp" path="res://kinght/Knight_1/Protect.png" id="22_510ty"]
+[ext_resource type="Texture2D" uid="uid://bav0jd50w6kw8" path="res://kinght/Knight_1/pick up.png" id="23_mf77c"]
+[ext_resource type="PackedScene" uid="uid://dirjo4xydjtw0" path="res://scenes/equietment.tscn" id="30_ggku1"]
 [ext_resource type="PackedScene" uid="uid://bhud7tui3a5m8" path="res://scenes/hud.tscn" id="90_hud"]
 [ext_resource type="PackedScene" uid="uid://2oa8404k5n4e" path="res://scenes/game_over.tscn" id="91_gameover"]
 [ext_resource type="Texture2D" uid="uid://dcxyqsuxih10j" path="res://kinght/Knight_1/Run+Attack.png" id="92_run_attack"]
@@ -8118,6 +8121,30 @@ region = Rect2(560, 0, 140, 153)
 atlas = ExtResource("19_8jwsv")
 region = Rect2(700, 0, 140, 153)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_skokr"]
+atlas = ExtResource("22_510ty")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etbfs"]
+atlas = ExtResource("23_mf77c")
+region = Rect2(0, 0, 143, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gd8bg"]
+atlas = ExtResource("23_mf77c")
+region = Rect2(143, 0, 143, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xgc5"]
+atlas = ExtResource("23_mf77c")
+region = Rect2(286, 0, 143, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ree1j"]
+atlas = ExtResource("23_mf77c")
+region = Rect2(429, 0, 143, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ni4s"]
+atlas = ExtResource("23_mf77c")
+region = Rect2(572, 0, 143, 162)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_vxw3w"]
 animations = [{
 "frames": [{
@@ -8141,6 +8168,34 @@ animations = [{
 }],
 "loop": true,
 "name": &"climb",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skokr")
+}],
+"loop": true,
+"name": &"deffend",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etbfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gd8bg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xgc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ree1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ni4s")
+}],
+"loop": false,
+"name": &"interaksi",
 "speed": 8.0
 }]
 
@@ -8334,6 +8389,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1st4"]
 size = Vector2(38, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_510ty"]
+size = Vector2(42, 31.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mf77c"]
+size = Vector2(36, 31)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_nyvg2"]
 animations = [{
 "frames": [{
@@ -8407,8 +8468,7 @@ animation = &"idle"
 position = Vector2(-99, 83)
 scale = Vector2(0.74489796, 0.76373625)
 sprite_frames = SubResource("SpriteFrames_vxw3w")
-animation = &"climb"
-frame_progress = 1.0
+animation = &"interaksi"
 
 [node name="Badan" type="CollisionShape2D" parent="player" unique_id=957713646]
 position = Vector2(57.5, 81.25)
@@ -8469,6 +8529,16 @@ animation = &"buka"
 position = Vector2(816, 268)
 shape = SubResource("RectangleShape2D_w1st4")
 
+[node name="kanan" type="CollisionShape2D" parent="chest" unique_id=703210367]
+position = Vector2(833.25, 268)
+shape = SubResource("RectangleShape2D_510ty")
+debug_color = Color(0.2047768, 0.6409061, 3.85046e-07, 0.41960785)
+
+[node name="kiri" type="CollisionShape2D" parent="chest" unique_id=1352847774]
+position = Vector2(799, 268)
+shape = SubResource("RectangleShape2D_mf77c")
+debug_color = Color(0.9661731, 1.540184e-06, 0.48513335, 0.41960785)
+
 [node name="chest_2" type="Area2D" parent="." unique_id=989467301]
 script = ExtResource("16_tdcp2")
 
@@ -8481,10 +8551,23 @@ animation = &"buka_2"
 position = Vector2(225, 986.5)
 shape = SubResource("RectangleShape2D_rrhh6")
 
+[node name="kanan" type="CollisionShape2D" parent="chest_2" unique_id=1796572337]
+position = Vector2(246, 986)
+shape = SubResource("RectangleShape2D_510ty")
+debug_color = Color(0.2047768, 0.6409061, 3.85046e-07, 0.41960785)
+
+[node name="kiri" type="CollisionShape2D" parent="chest_2" unique_id=1863052587]
+position = Vector2(205, 987)
+shape = SubResource("RectangleShape2D_mf77c")
+debug_color = Color(0.9661731, 1.540184e-06, 0.48513335, 0.41960785)
+
 [node name="HUD" parent="." unique_id=1491081479 instance=ExtResource("90_hud")]
 
 [node name="MenuLayer" type="CanvasLayer" parent="." unique_id=4578912]
 process_mode = 3
+
+[node name="Equietment" parent="MenuLayer" unique_id=1141969343 instance=ExtResource("30_ggku1")]
+visible = false
 
 [node name="MainMenu" parent="MenuLayer" unique_id=787964080 instance=ExtResource("1_8jwsv")]
 visible = false

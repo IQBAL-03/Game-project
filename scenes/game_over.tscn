@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cqij8dt2nxws1" path="res://scripts/game_over.gd" id="1_gameover_script"]
 [ext_resource type="Texture2D" uid="uid://xhec5cylbvoo" path="res://User Interface/PNG/Win_loose.png" id="1_xeevv"]
-[ext_resource type="Script" uid="uid://dsf4bsnnscp2d" path="res://scripts/restart.gd" id="2_wqhvx"]
+[ext_resource type="Script" path="res://scripts/restart.gd" id="2_wqhvx"]
 [ext_resource type="Texture2D" uid="uid://d0vddgtgmwsou" path="res://User Interface/PNG/Buttons.png" id="5_v3hpu"]
-[ext_resource type="Script" uid="uid://bfr345ltycxdm" path="res://scripts/quit.gd" id="6_irg28"]
+[ext_resource type="Script" path="res://scripts/quit.gd" id="6_irg28"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqhvx"]
 atlas = ExtResource("1_xeevv")
@@ -30,6 +30,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gameover_script")
+
+[node name="DarkOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1225428104]
 layout_mode = 1

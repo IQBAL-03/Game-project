@@ -17,11 +17,10 @@ var bisa_double_jump = false
 var gravitasi = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
-var carried_keys = []
+var inventory_keys = []
+const MAX_KEYS = 2
 
-var bawa_kunci = false
-
-var has_key = false
+var nearby_chest = null
 
 var is_dead = false
 var is_teleporting = false
@@ -138,6 +137,10 @@ func _physics_process(_delta):
 	if timer_lari > 0:
 
 		timer_lari -= _delta
+
+
+	if Input.is_action_just_pressed("interact") and nearby_chest:
+		interact_with_chest()
 
 
 	check_climbable_tile()
@@ -674,3 +677,67 @@ func collect_coin(amount: int = 1) -> void:
 	var hud_nodes = get_tree().get_nodes_in_group("hud")
 	if hud_nodes.size() > 0:
 		hud_nodes[0].update_coins(coins)
+
+func interact_with_chest() -> void:
+	if inventory_keys.size() == 0:
+		return
+	
+	if nearby_chest and nearby_chest.has_method("try_open"):
+		var key_type = inventory_keys[0]
+		if nearby_chest.try_open(key_type):
+			if climb_sprite and climb_sprite.sprite_frames.has_animation("interaksi"):
+				var side = ""
+				if nearby_chest.has_method("get_interaction_side"):
+					side = nearby_chest.get_interaction_side()
+				
+				climb_sprite.visible = true
+				sprite.visible = false
+				
+				if side == "kiri":
+					climb_sprite.flip_h = false
+					if collision_shape:
+						climb_sprite.position.x = 61
+				else:
+					climb_sprite.flip_h = true
+					if collision_shape:
+						climb_sprite.position.x = original_badan_x - (61 - original_badan_x)
+				
+				climb_sprite.play("interaksi")
+				await climb_sprite.animation_finished
+				climb_sprite.visible = false
+				sprite.visible = true
+			
+			inventory_keys.remove_at(0)
+			update_equipment_ui()
+
+func show_no_key_notification() -> void:
+	print("Butuh kunci")
+
+func set_nearby_chest(chest) -> void:
+	nearby_chest = chest
+
+func clear_nearby_chest(chest) -> void:
+	if nearby_chest == chest:
+		nearby_chest = null
+
+func add_key_to_inventory(key_type: String) -> bool:
+	if inventory_keys.size() >= MAX_KEYS:
+		show_inventory_full_notification()
+		return false
+	
+	inventory_keys.append(key_type)
+	update_equipment_ui()
+	return true
+
+func show_inventory_full_notification() -> void:
+	print("Inventory penuh!")
+
+func update_equipment_ui() -> void:
+	var equipment_nodes = get_tree().get_nodes_in_group("equipment")
+	if equipment_nodes.size() > 0:
+		var equipment = equipment_nodes[0]
+		for i in range(inventory_keys.size()):
+			var slot_name = "item_" + str(i + 1)
+			var slot = equipment.get_node_or_null("TextureRect/" + slot_name)
+			if slot:
+				slot.show_key_icon(inventory_keys[i])
