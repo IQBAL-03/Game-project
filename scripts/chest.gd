@@ -2,39 +2,66 @@ extends Area2D
 
 @onready var sprite = $AnimatedSprite2D
 var sudah_terbuka = false
+var required_key_type = "key"
+
+var player_di_kanan: bool = false
+var player_di_kiri: bool = false
 
 func _ready():
 	sprite.sprite_frames.set_animation_loop("buka", false)
 	sprite.animation = "buka"
 	sprite.frame = 0
 	sprite.stop()
-	body_entered.connect(_on_body_entered)
+	body_shape_entered.connect(_on_body_shape_entered)
+	body_shape_exited.connect(_on_body_shape_exited)
 
-func _on_body_entered(body):
-	if body.name == "player" and not sudah_terbuka:
-		if body.carried_keys.size() > 0:
-			buka_peti(body)
+func _on_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, local_shape_index: int) -> void:
+	if body.name == "player":
+		var owner_id = shape_find_owner(local_shape_index)
+		var kotak_masuk = shape_owner_get_owner(owner_id)
+		
+		if kotak_masuk.name == "kanan":
+			player_di_kanan = true
+		elif kotak_masuk.name == "kiri":
+			player_di_kiri = true
+		
+		body.set_nearby_chest(self)
 
-func buka_peti(player_node):
+func _on_body_shape_exited(_body_rid: RID, body: Node2D, _body_shape_index: int, local_shape_index: int) -> void:
+	if body.name == "player":
+		var owner_id = shape_find_owner(local_shape_index)
+		var kotak_keluar = shape_owner_get_owner(owner_id)
+		
+		if kotak_keluar.name == "kanan":
+			player_di_kanan = false
+		elif kotak_keluar.name == "kiri":
+			player_di_kiri = false
+		
+		if not player_di_kanan and not player_di_kiri:
+			body.clear_nearby_chest(self)
+
+func get_interaction_side() -> String:
+	if player_di_kiri:
+		return "kiri"
+	elif player_di_kanan:
+		return "kanan"
+	return ""
+
+func try_open(_key_type: String) -> bool:
+	if sudah_terbuka:
+		return false
+	
+	buka_peti()
+	return true
+
+func buka_peti():
 	sudah_terbuka = true
-
 	sprite.play("buka")
 	sprite.animation_finished.connect(_on_animasi_selesai, CONNECT_ONE_SHOT)
-
+	
 	var scene_root := get_tree().current_scene
 	if scene_root:
 		Coin.spawn_burst(scene_root, sprite.global_position)
-
-
-	var kunci_dipakai = player_node.carried_keys.pop_front()
-	kunci_dipakai.queue_free()
-
-	player_node.bawa_kunci = player_node.carried_keys.any(func(k): return k.tipe_kunci == "key")
-	player_node.has_key = player_node.carried_keys.any(func(k): return k.tipe_kunci == "key_2")
-
-	for kunci in get_tree().get_nodes_in_group("kunci_group"):
-		if kunci.get("target_player") == null and not kunci.is_queued_for_deletion():
-			kunci.set_deferred("monitoring", true)
 
 func _on_animasi_selesai():
 	sprite.stop()

@@ -31,7 +31,9 @@ func _build_ui() -> void:
 	panel_style.border_width_bottom = 0
 
 	var panel = PanelContainer.new()
-	panel.position = Vector2(12, 12)
+	panel.set_anchors_preset(Control.PRESET_TOP_LEFT)
+	panel.offset_left = 12
+	panel.offset_top = 12
 	panel.add_theme_stylebox_override("panel", panel_style)
 	add_child(panel)
 

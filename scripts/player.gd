@@ -17,11 +17,10 @@ var bisa_double_jump = false
 var gravitasi = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
-var carried_keys = []
+var inventory_keys = []
+const MAX_KEYS = 2
 
-var bawa_kunci = false
-
-var has_key = false
+var nearby_chest = null
 
 var is_dead = false
 var is_teleporting = false
@@ -138,6 +137,10 @@ func _physics_process(_delta):
 	if timer_lari > 0:
 
 		timer_lari -= _delta
+
+
+	if Input.is_action_just_pressed("interact") and nearby_chest:
+		interact_with_chest()
 
 
 	check_climbable_tile()
@@ -331,13 +334,30 @@ func check_duri_tile() -> void:
 		_on_spike_hit()
 
 func is_on_spikes() -> bool:
-	if duri_tilemap == null:
+	if duri_tilemap == null or collision_shape == null or collision_shape.shape == null:
 		return false
 
-	for x_off in range(-8, 9, 8):
-		for y_off in range(-16, 17, 8):
-			var check_pos = collision_shape.global_position + Vector2(x_off, y_off)
-			var tile_pos = duri_tilemap.local_to_map(duri_tilemap.to_local(check_pos))
+	var shape = collision_shape.shape as RectangleShape2D
+	if not shape:
+		return false
+
+	var half_extents = shape.size * 0.5
+	var global_pos = collision_shape.global_position
+
+	var top_left_local = duri_tilemap.to_local(global_pos - half_extents)
+	var bottom_right_local = duri_tilemap.to_local(global_pos + half_extents)
+
+	var map_min = duri_tilemap.local_to_map(top_left_local)
+	var map_max = duri_tilemap.local_to_map(bottom_right_local)
+
+	var start_x = min(map_min.x, map_max.x)
+	var end_x = max(map_min.x, map_max.x)
+	var start_y = min(map_min.y, map_max.y)
+	var end_y = max(map_min.y, map_max.y)
+
+	for x in range(start_x, end_x + 1):
+		for y in range(start_y, end_y + 1):
+			var tile_pos = Vector2i(x, y)
 			var tile_data = duri_tilemap.get_cell_tile_data(tile_pos)
 			if tile_data != null:
 				return true
@@ -345,43 +365,43 @@ func is_on_spikes() -> bool:
 
 
 func check_climbable_tile() -> void:
-
-	if tilemap == null:
-
+	if tilemap == null or collision_shape == null or collision_shape.shape == null:
 		can_climb = false
-
 		return
 
+	var shape = collision_shape.shape as RectangleShape2D
+	if not shape:
+		can_climb = false
+		return
 
 	can_climb = false
-
 	nearest_ladder_center = Vector2.INF
-
 	var min_dist = INF
 
+	var half_extents = shape.size * 0.5
+	var global_pos = collision_shape.global_position
 
-	for x_off in range(-8, 9, 8):
+	var top_left_local = tilemap.to_local(global_pos - half_extents)
+	var bottom_right_local = tilemap.to_local(global_pos + half_extents)
 
-		for y_off in range(-16, 17, 8):
+	var map_min = tilemap.local_to_map(top_left_local)
+	var map_max = tilemap.local_to_map(bottom_right_local)
 
-			var check_pos = collision_shape.global_position + Vector2(x_off, y_off)
+	var start_x = min(map_min.x, map_max.x)
+	var end_x = max(map_min.x, map_max.x)
+	var start_y = min(map_min.y, map_max.y)
+	var end_y = max(map_min.y, map_max.y)
 
-			var tile_pos = tilemap.local_to_map(tilemap.to_local(check_pos))
-
+	for x in range(start_x, end_x + 1):
+		for y in range(start_y, end_y + 1):
+			var tile_pos = Vector2i(x, y)
 			var tile_data = tilemap.get_cell_tile_data(tile_pos)
-
 			if tile_data and tile_data.get_custom_data("climbable"):
-
 				var tile_center = tilemap.to_global(tilemap.map_to_local(tile_pos))
-
-				var dist = abs(collision_shape.global_position.x - tile_center.x)
-
+				var dist = abs(global_pos.x - tile_center.x)
 				if dist < min_dist:
-
 					min_dist = dist
-
 					nearest_ladder_center = tile_center
-
 					can_climb = true
 
 
@@ -500,6 +520,21 @@ func stop_climbing() -> void:
 		sprite.flip_h = climb_sprite.flip_h
 
 		climb_sprite.visible = false
+		
+		if sprite.flip_h:
+			if sprite:
+				sprite.position.x = original_badan_x - (original_sprite_x - original_badan_x)
+			if attack_box and attack_box.has_node("CollisionShape2D"):
+				attack_box.get_node("CollisionShape2D").position.x = original_badan_x - (original_attack_x - original_badan_x)
+			if hurt_box and hurt_box.has_node("CollisionShape2D"):
+				hurt_box.get_node("CollisionShape2D").position.x = original_badan_x - (original_hurt_x - original_badan_x)
+		else:
+			if sprite:
+				sprite.position.x = original_sprite_x
+			if attack_box and attack_box.has_node("CollisionShape2D"):
+				attack_box.get_node("CollisionShape2D").position.x = original_attack_x
+			if hurt_box and hurt_box.has_node("CollisionShape2D"):
+				hurt_box.get_node("CollisionShape2D").position.x = original_hurt_x
 
 
 var prev_health = -1
@@ -642,3 +677,67 @@ func collect_coin(amount: int = 1) -> void:
 	var hud_nodes = get_tree().get_nodes_in_group("hud")
 	if hud_nodes.size() > 0:
 		hud_nodes[0].update_coins(coins)
+
+func interact_with_chest() -> void:
+	if inventory_keys.size() == 0:
+		return
+	
+	if nearby_chest and nearby_chest.has_method("try_open"):
+		var key_type = inventory_keys[0]
+		if nearby_chest.try_open(key_type):
+			if climb_sprite and climb_sprite.sprite_frames.has_animation("interaksi"):
+				var side = ""
+				if nearby_chest.has_method("get_interaction_side"):
+					side = nearby_chest.get_interaction_side()
+				
+				climb_sprite.visible = true
+				sprite.visible = false
+				
+				if side == "kiri":
+					climb_sprite.flip_h = false
+					if collision_shape:
+						climb_sprite.position.x = 61
+				else:
+					climb_sprite.flip_h = true
+					if collision_shape:
+						climb_sprite.position.x = original_badan_x - (61 - original_badan_x)
+				
+				climb_sprite.play("interaksi")
+				await climb_sprite.animation_finished
+				climb_sprite.visible = false
+				sprite.visible = true
+			
+			inventory_keys.remove_at(0)
+			update_equipment_ui()
+
+func show_no_key_notification() -> void:
+	print("Butuh kunci")
+
+func set_nearby_chest(chest) -> void:
+	nearby_chest = chest
+
+func clear_nearby_chest(chest) -> void:
+	if nearby_chest == chest:
+		nearby_chest = null
+
+func add_key_to_inventory(key_type: String) -> bool:
+	if inventory_keys.size() >= MAX_KEYS:
+		show_inventory_full_notification()
+		return false
+	
+	inventory_keys.append(key_type)
+	update_equipment_ui()
+	return true
+
+func show_inventory_full_notification() -> void:
+	print("Inventory penuh!")
+
+func update_equipment_ui() -> void:
+	var equipment_nodes = get_tree().get_nodes_in_group("equipment")
+	if equipment_nodes.size() > 0:
+		var equipment = equipment_nodes[0]
+		for i in range(inventory_keys.size()):
+			var slot_name = "item_" + str(i + 1)
+			var slot = equipment.get_node_or_null("TextureRect/" + slot_name)
+			if slot:
+				slot.show_key_icon(inventory_keys[i])

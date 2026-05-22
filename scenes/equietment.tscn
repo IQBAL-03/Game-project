@@ -1,0 +1,336 @@
+[gd_scene format=3 uid="uid://dirjo4xydjtw0"]
+
+[ext_resource type="Texture2D" uid="uid://4bs3pu6bylf2" path="res://User Interface/PNG/Equipment.png" id="1_ekvgd"]
+[ext_resource type="Script" uid="uid://cekulb0wgswmt" path="res://scripts/equietment.gd" id="2_n6582"]
+[ext_resource type="Script" uid="uid://bxmwqdq1fywyc" path="res://scripts/item_1.gd" id="3_t6vae"]
+[ext_resource type="Script" uid="uid://cq2jm4nj08krs" path="res://scripts/item_2.gd" id="4_rsnss"]
+[ext_resource type="Script" uid="uid://djpvalbco0uyr" path="res://scripts/item_3.gd" id="5_mob0t"]
+[ext_resource type="Script" uid="uid://txtdiptg57y3" path="res://scripts/item_4.gd" id="7_b38ex"]
+[ext_resource type="Script" path="res://scripts/x.gd" id="7_x"]
+[ext_resource type="Script" uid="uid://drq54ccexr0yj" path="res://scripts/item_5.gd" id="8_jsssc"]
+[ext_resource type="Script" uid="uid://daar6s2f1sy5l" path="res://scripts/item_6.gd" id="9_djgeo"]
+[ext_resource type="Script" uid="uid://ba81py0bdo5us" path="res://scripts/item_7.gd" id="10_ukhke"]
+[ext_resource type="Script" uid="uid://khyc6k8we1th" path="res://scripts/item_8.gd" id="11_fjwvc"]
+[ext_resource type="Script" uid="uid://bjpdbp86r7j1r" path="res://scripts/item_9.gd" id="12_hyxlb"]
+[ext_resource type="Script" uid="uid://d0wyvm0res2fx" path="res://scripts/item_10.gd" id="13_ccwre"]
+[ext_resource type="Script" uid="uid://cxcv3qu1beqqk" path="res://scripts/item_11.gd" id="14_atpq7"]
+[ext_resource type="Script" uid="uid://dk3vsnalhbdpq" path="res://scripts/item_12.gd" id="15_3j22t"]
+[ext_resource type="Script" uid="uid://c4e0rmqul1cbo" path="res://scripts/item_13.gd" id="16_djgeo"]
+[ext_resource type="Script" uid="uid://bi8bujcsxuofi" path="res://scripts/item_14.gd" id="17_ukhke"]
+[ext_resource type="Script" uid="uid://dhumegrp1dm6j" path="res://scripts/item_15.gd" id="18_fjwvc"]
+[ext_resource type="Script" uid="uid://bvtwgyf7ajhiv" path="res://scripts/item_16.gd" id="19_hyxlb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2nmf"]
+atlas = ExtResource("1_ekvgd")
+region = Rect2(70, 96, 85, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6vae"]
+atlas = ExtResource("1_ekvgd")
+region = Rect2(143, 194, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsnss"]
+atlas = ExtResource("1_ekvgd")
+region = Rect2(81, 321, 14, 14)
+
+[node name="Equietment" type="Control" unique_id=1141969343]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_n6582")
+
+[node name="DarkOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2114499380]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41700003
+anchor_top = 0.07300001
+anchor_right = 0.65800005
+anchor_bottom = 0.86100006
+offset_left = -116.640076
+offset_top = -32.840004
+offset_right = 160.6399
+offset_bottom = 40.119934
+texture = SubResource("AtlasTexture_n2nmf")
+
+[node name="x" type="TextureButton" parent="TextureRect" unique_id=148037323]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.84900004
+anchor_top = 0.018000001
+anchor_right = 0.961
+anchor_bottom = 0.075
+offset_left = 6.73999
+offset_top = 5.367998
+offset_right = 5.8599854
+offset_bottom = 52.699997
+texture_normal = SubResource("AtlasTexture_t6vae")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("7_x")
+
+[node name="item_1" type="TextureButton" parent="TextureRect" unique_id=712779985]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.256
+anchor_right = 0.89300007
+anchor_bottom = 0.367
+offset_left = -34.979996
+offset_top = -50.544006
+offset_right = -445.82007
+offset_bottom = -3.1080017
+texture_normal = SubResource("AtlasTexture_rsnss")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_t6vae")
+
+[node name="item_2" type="TextureButton" parent="TextureRect" unique_id=527503930]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.256
+anchor_right = 0.33600003
+anchor_bottom = 0.367
+offset_left = 105.020004
+offset_top = -49.544006
+offset_right = 108.359985
+offset_bottom = -2.1080017
+texture_normal = SubResource("AtlasTexture_rsnss")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("4_rsnss")
+
+[node name="item_3" type="TextureButton" parent="TextureRect" unique_id=308408063]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.256
+anchor_right = 0.33600003
+anchor_bottom = 0.367
+offset_left = 244.02
+offset_top = -50.544006
+offset_right = 247.35999
+offset_bottom = -3.1080017
+texture_normal = SubResource("AtlasTexture_rsnss")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_mob0t")
+
+[node name="item_4" type="TextureButton" parent="TextureRect" unique_id=293517574]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.256
+anchor_right = 0.33600003
+anchor_bottom = 0.367
+offset_left = 383.02002
+offset_top = -51.544006
+offset_right = 388.36
+offset_bottom = -0.10800171
+texture_normal = SubResource("AtlasTexture_rsnss")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("7_b38ex")
+
+[node name="item_5" type="TextureButton" parent="TextureRect" unique_id=1491045697]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.256
+anchor_right = 0.33600003
+anchor_bottom = 0.367
+offset_left = -36.979996
+offset_top = 122.45599
+offset_right = -29.640015
+offset_bottom = 171.892
+texture_normal = SubResource("AtlasTexture_rsnss")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("8_jsssc")
+
+[node name="item_6" type="TextureButton" parent="TextureRect" unique_id=129715719]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.256
+anchor_right = 0.33600003
+anchor_bottom = 0.367
+offset_left = 104.020004
+offset_top = 122.45599
+offset_right = 108.359985
+offset_bottom = 172.892
+texture_normal = SubResource("AtlasTexture_rsnss")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("9_djgeo")
+
+[node name="item_7" type="TextureButton" parent="TextureRect" unique_id=1388849958]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.256
+anchor_right = 0.33600003
+anchor_bottom = 0.367
+offset_left = 242.02
+offset_top = 122.45599
+offset_right = 249.35999
+offset_bottom = 170.892
+texture_normal = SubResource("AtlasTexture_rsnss")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("10_ukhke")
+
+[node name="item_8" type="TextureButton" parent="TextureRect" unique_id=632668293]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.256
+anchor_right = 0.33600003
+anchor_bottom = 0.367
+offset_left = 382.02002
+offset_top = 120.45599
+offset_right = 388.36
+offset_bottom = 171.892
+texture_normal = SubResource("AtlasTexture_rsnss")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("11_fjwvc")
+
+[node name="item_9" type="TextureButton" parent="TextureRect" unique_id=331276795]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.256
+anchor_right = 0.33600003
+anchor_bottom = 0.367
+offset_left = -34.979996
+offset_top = 296.456
+offset_right = -30.640015
+offset_bottom = 345.892
+texture_normal = SubResource("AtlasTexture_rsnss")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("12_hyxlb")
+
+[node name="item_10" type="TextureButton" parent="TextureRect" unique_id=401582964]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.256
+anchor_right = 0.33600003
+anchor_bottom = 0.367
+offset_left = 104.020004
+offset_top = 295.456
+offset_right = 108.359985
+offset_bottom = 345.892
+texture_normal = SubResource("AtlasTexture_rsnss")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("13_ccwre")
+
+[node name="item_11" type="TextureButton" parent="TextureRect" unique_id=171845342]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.256
+anchor_right = 0.33600003
+anchor_bottom = 0.367
+offset_left = 243.02
+offset_top = 294.456
+offset_right = 248.35999
+offset_bottom = 345.892
+texture_normal = SubResource("AtlasTexture_rsnss")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("14_atpq7")
+
+[node name="item_12" type="TextureButton" parent="TextureRect" unique_id=251287020]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.256
+anchor_right = 0.33600003
+anchor_bottom = 0.367
+offset_left = 383.02002
+offset_top = 296.456
+offset_right = 386.36
+offset_bottom = 345.892
+texture_normal = SubResource("AtlasTexture_rsnss")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("15_3j22t")
+
+[node name="item_13" type="TextureButton" parent="TextureRect" unique_id=1240613763]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.256
+anchor_right = 0.33600003
+anchor_bottom = 0.367
+offset_left = -34.979996
+offset_top = 469.456
+offset_right = -28.640015
+offset_bottom = 520.89197
+texture_normal = SubResource("AtlasTexture_rsnss")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("16_djgeo")
+
+[node name="item_14" type="TextureButton" parent="TextureRect" unique_id=1086496609]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.256
+anchor_right = 0.33600003
+anchor_bottom = 0.367
+offset_left = 104.020004
+offset_top = 470.456
+offset_right = 108.359985
+offset_bottom = 519.89197
+texture_normal = SubResource("AtlasTexture_rsnss")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("17_ukhke")
+
+[node name="item_15" type="TextureButton" parent="TextureRect" unique_id=4597203]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.256
+anchor_right = 0.33600003
+anchor_bottom = 0.367
+offset_left = 243.02
+offset_top = 470.456
+offset_right = 248.35999
+offset_bottom = 519.89197
+texture_normal = SubResource("AtlasTexture_rsnss")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("18_fjwvc")
+
+[node name="item_16" type="TextureButton" parent="TextureRect" unique_id=1318283690]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.256
+anchor_right = 0.33600003
+anchor_bottom = 0.367
+offset_left = 383.02002
+offset_top = 467.456
+offset_right = 386.36
+offset_bottom = 517.89197
+texture_normal = SubResource("AtlasTexture_rsnss")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("19_hyxlb")

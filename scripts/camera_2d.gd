@@ -1,16 +1,45 @@
 extends Camera2D
 
+const DESIGN_SIZE := Vector2(1920.0, 1080.0)
+
 @export var camera_zoom: Vector2 = Vector2(1.0, 1.0)
 @export var left_limit: int = 0
 @export var top_limit: int = 0
 @export var right_limit: int = 6663
 @export var bottom_limit: int = 1080
 
+@export_group("Smooth follow")
+@export var smooth_follow: bool = true
+@export_range(1.0, 30.0, 0.5) var smoothing_speed: float = 12.0
+@export var physics_interpolation_on_player: bool = true
 
+@export_group("Debug")
 @export var debug_limits: bool = false
 
 func _ready() -> void:
-	zoom = camera_zoom
+	_apply_limits()
+	_apply_viewport_zoom()
+	position_smoothing_enabled = smooth_follow
+	position_smoothing_speed = smoothing_speed
+	if physics_interpolation_on_player:
+		var body := get_parent() as CharacterBody2D
+		if body:
+			body.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_ON
+	if not get_viewport().size_changed.is_connected(_on_viewport_size_changed):
+		get_viewport().size_changed.connect(_on_viewport_size_changed)
+
+func _on_viewport_size_changed() -> void:
+	_apply_viewport_zoom()
+
+func _apply_viewport_zoom() -> void:
+	var size := get_viewport().get_visible_rect().size
+	var fit := minf(size.x / DESIGN_SIZE.x, size.y / DESIGN_SIZE.y)
+	if fit < 1.0:
+		zoom = camera_zoom * Vector2(fit, fit)
+	else:
+		zoom = camera_zoom
+
+func _apply_limits() -> void:
 	limit_left = left_limit
 	limit_top = top_limit
 	limit_right = right_limit

@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://cbby286ho3wfi" path="res://User Interface/PNG/Main_menu.png" id="1_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://d0vddgtgmwsou" path="res://User Interface/PNG/Buttons.png" id="2_oa1go"]
-[ext_resource type="Script" uid="uid://clo47g0xjk6ed" path="res://scripts/x.gd" id="2_tbmy8"]
+[ext_resource type="Script" path="res://scripts/x.gd" id="2_tbmy8"]
 [ext_resource type="Script" uid="uid://dk7y4a4t306c4" path="res://scripts/resume.gd" id="3_tbmy8"]
-[ext_resource type="Script" uid="uid://dsf4bsnnscp2d" path="res://scripts/restart.gd" id="4_jk1qb"]
-[ext_resource type="Script" uid="uid://br8srmubgwnr7" path="res://scripts/settings.gd" id="5_5dd4i"]
-[ext_resource type="Script" uid="uid://bfr345ltycxdm" path="res://scripts/quit.gd" id="6_lgwnu"]
+[ext_resource type="Script" path="res://scripts/restart.gd" id="4_jk1qb"]
+[ext_resource type="Script" path="res://scripts/settings.gd" id="5_5dd4i"]
+[ext_resource type="Script" path="res://scripts/quit.gd" id="6_lgwnu"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="7_mm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_flqon"]
@@ -41,6 +41,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="DarkOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=215119655]
 layout_mode = 1
