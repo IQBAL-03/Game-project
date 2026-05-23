@@ -154,9 +154,12 @@ func _on_attack_box_area_entered(area: Area2D) -> void:
 	if area.name == "HurtBox" and attack_box_active and not is_dead:
 		var player_node = area.get_parent()
 		if player_node and player_node.is_in_group("player"):
+			var actual_damage = damage_amount
+			if player_node.has_method("is_player_defending") and player_node.is_player_defending():
+				actual_damage = 0
 			var player_health = player_node.get_node_or_null("HealthComponent")
 			if player_health and player_health.has_method("take_damage"):
-				player_health.take_damage(damage_amount)
+				player_health.take_damage(actual_damage)
 
 				attack_box.set_deferred("monitoring", false)
 				attack_box_active = false

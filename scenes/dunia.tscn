@@ -16,24 +16,24 @@
 [ext_resource type="Texture2D" uid="uid://dsrmberhot0ms" path="res://map/Map/PNG/key.png" id="11_knjot"]
 [ext_resource type="PackedScene" uid="uid://beolnexpcbblb" path="res://scenes/predator_plant_2.tscn" id="11_qyymx"]
 [ext_resource type="Script" uid="uid://b3psekk8xf0so" path="res://scripts/key_2.gd" id="13_5vr8a"]
-[ext_resource type="Texture2D" uid="uid://dvb7bv8l1mqsy" path="res://kinght/Knight_1/Idle.png" id="13_8jwsv"]
+[ext_resource type="Texture2D" uid="uid://dvb7bv8l1mqsy" path="res://knight/Knight_1/Idle.png" id="13_8jwsv"]
 [ext_resource type="Script" uid="uid://ceupgwdwg1ghf" path="res://scripts/camera_2d.gd" id="13_d1kcu"]
-[ext_resource type="Texture2D" uid="uid://bxxdawf4o3ikx" path="res://kinght/Knight_1/Walk.png" id="14_3mp8a"]
+[ext_resource type="Texture2D" uid="uid://bxxdawf4o3ikx" path="res://knight/Knight_1/Walk.png" id="14_3mp8a"]
 [ext_resource type="Script" uid="uid://cabjuaaumwrau" path="res://scripts/chest.gd" id="14_56qte"]
-[ext_resource type="Texture2D" uid="uid://cvw5ikhoxwvvh" path="res://kinght/Knight_1/Run.png" id="15_d1kcu"]
+[ext_resource type="Texture2D" uid="uid://cvw5ikhoxwvvh" path="res://knight/Knight_1/Run.png" id="15_d1kcu"]
 [ext_resource type="Texture2D" uid="uid://cs4k2pjns4u7" path="res://map/Map/PNG/chest.png" id="15_tdcp2"]
-[ext_resource type="Texture2D" uid="uid://doln8cxnqta0v" path="res://kinght/Knight_1/Jump.png" id="16_ggku1"]
+[ext_resource type="Texture2D" uid="uid://doln8cxnqta0v" path="res://knight/Knight_1/Jump.png" id="16_ggku1"]
 [ext_resource type="Script" uid="uid://dodmptgudxxhb" path="res://scripts/chest_2.gd" id="16_tdcp2"]
-[ext_resource type="Texture2D" uid="uid://chr7ynv7hcb6d" path="res://kinght/Knight_1/Dead.png" id="17_fs34a"]
+[ext_resource type="Texture2D" uid="uid://chr7ynv7hcb6d" path="res://knight/Knight_1/Dead.png" id="17_fs34a"]
 [ext_resource type="Script" uid="uid://cgec2f5bi56h5" path="res://scripts/health_component.gd" id="17_health"]
-[ext_resource type="Texture2D" uid="uid://cg1q7uc23g8q4" path="res://kinght/Knight_1/Attack 1.png" id="18_510ty"]
-[ext_resource type="Texture2D" uid="uid://dh68y3151hxvk" path="res://kinght/Knight_1/climb.png" id="19_8jwsv"]
-[ext_resource type="Texture2D" uid="uid://ckf6c3pbobjlp" path="res://kinght/Knight_1/Protect.png" id="22_510ty"]
-[ext_resource type="Texture2D" uid="uid://bav0jd50w6kw8" path="res://kinght/Knight_1/pick up.png" id="23_mf77c"]
+[ext_resource type="Texture2D" uid="uid://cg1q7uc23g8q4" path="res://knight/Knight_1/Attack 1.png" id="18_510ty"]
+[ext_resource type="Texture2D" uid="uid://dh68y3151hxvk" path="res://knight/Knight_1/climb.png" id="19_8jwsv"]
+[ext_resource type="Texture2D" uid="uid://ckf6c3pbobjlp" path="res://knight/Knight_1/Protect.png" id="22_510ty"]
+[ext_resource type="Texture2D" uid="uid://bav0jd50w6kw8" path="res://knight/Knight_1/pick up.png" id="23_mf77c"]
 [ext_resource type="PackedScene" uid="uid://dirjo4xydjtw0" path="res://scenes/equietment.tscn" id="30_ggku1"]
 [ext_resource type="PackedScene" uid="uid://bhud7tui3a5m8" path="res://scenes/hud.tscn" id="90_hud"]
 [ext_resource type="PackedScene" uid="uid://2oa8404k5n4e" path="res://scenes/game_over.tscn" id="91_gameover"]
-[ext_resource type="Texture2D" uid="uid://dcxyqsuxih10j" path="res://kinght/Knight_1/Run+Attack.png" id="92_run_attack"]
+[ext_resource type="Texture2D" uid="uid://dcxyqsuxih10j" path="res://knight/Knight_1/Run+Attack.png" id="92_run_attack"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_56qte"]
 texture = ExtResource("1_uebvl")
@@ -8121,29 +8121,25 @@ region = Rect2(560, 0, 140, 153)
 atlas = ExtResource("19_8jwsv")
 region = Rect2(700, 0, 140, 153)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_skokr"]
-atlas = ExtResource("22_510ty")
-region = Rect2(0, 0, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_etbfs"]
 atlas = ExtResource("23_mf77c")
-region = Rect2(0, 0, 143, 162)
+region = Rect2(0, 0, 137, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gd8bg"]
 atlas = ExtResource("23_mf77c")
-region = Rect2(143, 0, 143, 162)
+region = Rect2(137, 0, 137, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8xgc5"]
 atlas = ExtResource("23_mf77c")
-region = Rect2(286, 0, 143, 162)
+region = Rect2(274, 0, 137, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ree1j"]
 atlas = ExtResource("23_mf77c")
-region = Rect2(429, 0, 143, 162)
+region = Rect2(411, 0, 137, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ni4s"]
 atlas = ExtResource("23_mf77c")
-region = Rect2(572, 0, 143, 162)
+region = Rect2(548, 0, 137, 140)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vxw3w"]
 animations = [{
@@ -8172,14 +8168,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_skokr")
-}],
-"loop": true,
-"name": &"deffend",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_etbfs")
 }, {
 "duration": 1.0,
@@ -8196,6 +8184,21 @@ animations = [{
 }],
 "loop": false,
 "name": &"interaksi",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skokr"]
+atlas = ExtResource("22_510ty")
+region = Rect2(0, 0, 89, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_upux8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skokr")
+}],
+"loop": true,
+"name": &"deffend",
 "speed": 8.0
 }]
 
@@ -8465,10 +8468,15 @@ sprite_frames = SubResource("SpriteFrames_rrhh6")
 animation = &"idle"
 
 [node name="climb" type="AnimatedSprite2D" parent="player" unique_id=441660315]
-position = Vector2(-99, 83)
-scale = Vector2(0.74489796, 0.76373625)
+position = Vector2(-334.00006, 71.00001)
+scale = Vector2(0.71551466, 0.6461538)
 sprite_frames = SubResource("SpriteFrames_vxw3w")
 animation = &"interaksi"
+
+[node name="deff" type="AnimatedSprite2D" parent="player" unique_id=1901922228]
+position = Vector2(-700, 32)
+sprite_frames = SubResource("SpriteFrames_upux8")
+animation = &"deffend"
 
 [node name="Badan" type="CollisionShape2D" parent="player" unique_id=957713646]
 position = Vector2(57.5, 81.25)
