@@ -49,12 +49,16 @@ var can_climb = false
 
 var nearest_ladder_center = Vector2.INF
 
+var is_defending = false
+
 
 @onready var sprite = $AnimatedSprite2D
 
 @onready var attack_box: Area2D = $AttackBox
 
 @onready var climb_sprite: AnimatedSprite2D = $climb
+
+@onready var deff_sprite: AnimatedSprite2D = $deff
 
 @onready var tilemap: TileMapLayer = get_parent().get_node("objek")
 
@@ -104,6 +108,12 @@ func _ready():
 
 		climb_sprite.visible = false
 
+	if deff_sprite:
+
+		deff_sprite.position = Vector2(61, 55)
+
+		deff_sprite.visible = false
+
 
 	if health_component:
 
@@ -148,6 +158,30 @@ func _physics_process(_delta):
 	check_duri_tile()
 
 	if is_dead:
+
+		return
+
+
+	if Input.is_action_pressed("ui_shift"):
+
+		if not is_defending:
+
+			start_defending()
+
+	else:
+
+		if is_defending:
+
+			stop_defending()
+
+
+	if is_defending:
+
+		velocity.x = 0
+
+		velocity.y += gravitasi * _delta
+
+		move_and_slide()
 
 		return
 
@@ -741,3 +775,57 @@ func update_equipment_ui() -> void:
 			var slot = equipment.get_node_or_null("TextureRect/" + slot_name)
 			if slot:
 				slot.show_key_icon(inventory_keys[i])
+
+func start_defending() -> void:
+
+	is_defending = true
+
+	sprite.visible = false
+
+	if deff_sprite:
+
+		deff_sprite.visible = true
+
+		deff_sprite.flip_h = sprite.flip_h
+
+		if sprite.flip_h:
+
+			deff_sprite.position = Vector2(original_badan_x - (61 - original_badan_x), 55)
+
+		else:
+
+			deff_sprite.position = Vector2(61, 45)
+
+		if deff_sprite.sprite_frames and deff_sprite.sprite_frames.has_animation("defend"):
+
+			deff_sprite.play("defend")
+
+		elif deff_sprite.sprite_frames and deff_sprite.sprite_frames.has_animation("deff"):
+
+			deff_sprite.play("deff")
+
+		else:
+
+			deff_sprite.play()
+
+func stop_defending() -> void:
+
+	is_defending = false
+
+	if deff_sprite:
+
+		deff_sprite.visible = false
+
+	sprite.visible = true
+
+	if not is_on_floor():
+
+		sprite.play("lompat")
+
+	else:
+
+		sprite.play("idle")
+
+func is_player_defending() -> bool:
+
+	return is_defending
