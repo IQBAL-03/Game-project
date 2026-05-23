@@ -730,11 +730,11 @@ func interact_with_chest() -> void:
 				if side == "kiri":
 					climb_sprite.flip_h = false
 					if collision_shape:
-						climb_sprite.position.x = 61
+						climb_sprite.position = Vector2(61, 50)
 				else:
 					climb_sprite.flip_h = true
 					if collision_shape:
-						climb_sprite.position.x = original_badan_x - (61 - original_badan_x)
+						climb_sprite.position = Vector2(original_badan_x - (61 - original_badan_x), 70)
 				
 				climb_sprite.play("interaksi")
 				await climb_sprite.animation_finished

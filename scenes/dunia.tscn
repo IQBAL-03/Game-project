@@ -8123,23 +8123,23 @@ region = Rect2(700, 0, 140, 153)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_etbfs"]
 atlas = ExtResource("23_mf77c")
-region = Rect2(0, 0, 143, 162)
+region = Rect2(0, 0, 137, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gd8bg"]
 atlas = ExtResource("23_mf77c")
-region = Rect2(143, 0, 143, 162)
+region = Rect2(137, 0, 137, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8xgc5"]
 atlas = ExtResource("23_mf77c")
-region = Rect2(286, 0, 143, 162)
+region = Rect2(274, 0, 137, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ree1j"]
 atlas = ExtResource("23_mf77c")
-region = Rect2(429, 0, 143, 162)
+region = Rect2(411, 0, 137, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ni4s"]
 atlas = ExtResource("23_mf77c")
-region = Rect2(572, 0, 143, 162)
+region = Rect2(548, 0, 137, 140)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vxw3w"]
 animations = [{
@@ -8468,13 +8468,13 @@ sprite_frames = SubResource("SpriteFrames_rrhh6")
 animation = &"idle"
 
 [node name="climb" type="AnimatedSprite2D" parent="player" unique_id=441660315]
-position = Vector2(-99, 83)
-scale = Vector2(0.74489796, 0.76373625)
+position = Vector2(-334.00006, 71.00001)
+scale = Vector2(0.71551466, 0.6461538)
 sprite_frames = SubResource("SpriteFrames_vxw3w")
-animation = &"climb"
+animation = &"interaksi"
 
 [node name="deff" type="AnimatedSprite2D" parent="player" unique_id=1901922228]
-position = Vector2(-99, 74)
+position = Vector2(-700, 32)
 sprite_frames = SubResource("SpriteFrames_upux8")
 animation = &"deffend"
 
