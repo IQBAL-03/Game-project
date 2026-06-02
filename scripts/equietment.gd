@@ -7,7 +7,7 @@ func _ready() -> void:
 	visible = false
 
 func _input(event):
-	if event is InputEventKey and event.pressed and event.keycode == KEY_E:
+	if event is InputEventKey and event.pressed and (event.keycode == KEY_E or event.keycode == KEY_B):
 		toggle_equipment()
 
 func toggle_equipment():
