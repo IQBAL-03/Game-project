@@ -19,6 +19,8 @@
 [ext_resource type="Script" uid="uid://bi8bujcsxuofi" path="res://scripts/item_14.gd" id="17_ukhke"]
 [ext_resource type="Script" uid="uid://dhumegrp1dm6j" path="res://scripts/item_15.gd" id="18_fjwvc"]
 [ext_resource type="Script" uid="uid://bvtwgyf7ajhiv" path="res://scripts/item_16.gd" id="19_hyxlb"]
+[ext_resource type="Script" uid="uid://cw0uayfmn6sy7" path="res://scripts/kiri.gd" id="20_fjwvc"]
+[ext_resource type="Script" uid="uid://dska4lyom2nrd" path="res://scripts/kanan.gd" id="21_hyxlb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n2nmf"]
 atlas = ExtResource("1_ekvgd")
@@ -32,6 +34,14 @@ region = Rect2(143, 194, 9, 9)
 atlas = ExtResource("1_ekvgd")
 region = Rect2(81, 321, 14, 14)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccwre"]
+atlas = ExtResource("1_ekvgd")
+region = Rect2(127, 314, 6, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukhke"]
+atlas = ExtResource("1_ekvgd")
+region = Rect2(156, 316, 4, 7)
+
 [node name="Equietment" type="Control" unique_id=1141969343]
 layout_mode = 3
 anchors_preset = 15
@@ -41,7 +51,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_n6582")
 
-[node name="DarkOverlay" type="ColorRect" parent="."]
+[node name="DarkOverlay" type="ColorRect" parent="." unique_id=2063739030]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -334,3 +344,27 @@ texture_normal = SubResource("AtlasTexture_rsnss")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("19_hyxlb")
+
+[node name="kanan" type="TextureButton" parent="TextureRect" unique_id=1148240251]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 636.0
+offset_top = 457.0
+offset_right = 688.0
+offset_bottom = 565.0
+texture_normal = SubResource("AtlasTexture_ccwre")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("21_hyxlb")
+
+[node name="kiri" type="TextureButton" parent="TextureRect" unique_id=50726586]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 52.0
+offset_top = 478.0
+offset_right = 87.0
+offset_bottom = 555.0
+texture_normal = SubResource("AtlasTexture_ukhke")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("20_fjwvc")
