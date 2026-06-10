@@ -18,7 +18,7 @@ var gravitasi = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 var inventory_keys = []
-const MAX_KEYS = 2
+const MAX_KEYS = 99
 
 var nearby_chest = null
 
@@ -717,7 +717,14 @@ func interact_with_chest() -> void:
 		return
 	
 	if nearby_chest and nearby_chest.has_method("try_open"):
-		var key_type = inventory_keys[0]
+		var req_key = nearby_chest.get("required_key_type")
+		var key_index = -1
+		if req_key != null:
+			key_index = inventory_keys.find(req_key)
+		if key_index == -1:
+			key_index = 0
+		
+		var key_type = inventory_keys[key_index]
 		if nearby_chest.try_open(key_type):
 			if climb_sprite and climb_sprite.sprite_frames.has_animation("interaksi"):
 				var side = ""
@@ -741,7 +748,7 @@ func interact_with_chest() -> void:
 				climb_sprite.visible = false
 				sprite.visible = true
 			
-			inventory_keys.remove_at(0)
+			inventory_keys.remove_at(key_index)
 			update_equipment_ui()
 
 func show_no_key_notification() -> void:
@@ -754,12 +761,12 @@ func clear_nearby_chest(chest) -> void:
 	if nearby_chest == chest:
 		nearby_chest = null
 
-func add_key_to_inventory(key_type: String) -> bool:
+func add_key_to_inventory(_key_type: String) -> bool:
 	if inventory_keys.size() >= MAX_KEYS:
 		show_inventory_full_notification()
 		return false
 	
-	inventory_keys.append(key_type)
+	inventory_keys.append("key")
 	update_equipment_ui()
 	return true
 
@@ -770,11 +777,47 @@ func update_equipment_ui() -> void:
 	var equipment_nodes = get_tree().get_nodes_in_group("equipment")
 	if equipment_nodes.size() > 0:
 		var equipment = equipment_nodes[0]
-		for i in range(inventory_keys.size()):
+		var unique_keys = []
+		var key_counts = {}
+		for k in inventory_keys:
+			if not key_counts.has(k):
+				unique_keys.append(k)
+				key_counts[k] = 0
+			key_counts[k] += 1
+		
+		for i in range(16):
 			var slot_name = "item_" + str(i + 1)
 			var slot = equipment.get_node_or_null("TextureRect/" + slot_name)
 			if slot:
-				slot.show_key_icon(inventory_keys[i])
+				slot.clip_contents = false
+				if i < unique_keys.size():
+					var k_type = unique_keys[i]
+					slot.show_key_icon(k_type)
+					var count = key_counts[k_type]
+					var label = slot.get_node_or_null("CountLabel")
+					if not label:
+						label = Label.new()
+						label.name = "CountLabel"
+						slot.add_child(label)
+						label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+						label.set_anchors_preset(Control.PRESET_FULL_RECT)
+						label.offset_right = 0
+						label.add_theme_font_size_override("font_size", 20)
+						label.add_theme_color_override("font_color", Color.WHITE)
+						label.add_theme_color_override("font_outline_color", Color.BLACK)
+						label.add_theme_constant_override("outline_size", 6)
+						label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+						label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+					if count > 1:
+						label.text = str(count)
+						label.visible = true
+					else:
+						label.visible = false
+				else:
+					slot.texture_normal = null
+					var label = slot.get_node_or_null("CountLabel")
+					if label:
+						label.visible = false
 
 func start_defending() -> void:
 

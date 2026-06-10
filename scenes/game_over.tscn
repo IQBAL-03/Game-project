@@ -31,7 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gameover_script")
 
-[node name="DarkOverlay" type="ColorRect" parent="."]
+[node name="DarkOverlay" type="ColorRect" parent="." unique_id=1792136799]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,10 +76,10 @@ anchor_left = 0.84900004
 anchor_top = 0.018000001
 anchor_right = 0.961
 anchor_bottom = 0.075
-offset_left = 0.13497925
-offset_top = 0.40199947
-offset_right = 0.014984131
-offset_bottom = 0.17499924
+offset_left = 13.685974
+offset_top = 9.749991
+offset_right = 4.565979
+offset_bottom = 55.124992
 texture_normal = SubResource("AtlasTexture_7m3ot")
 ignore_texture_size = true
 stretch_mode = 0
