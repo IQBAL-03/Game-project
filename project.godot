@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The Knight"
-run/main_scene="res://scenes/dunia.res"
+run/main_scene="uid://dpjcxcc3fqbcg"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
