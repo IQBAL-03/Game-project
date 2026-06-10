@@ -60,9 +60,9 @@ var is_defending = false
 
 @onready var deff_sprite: AnimatedSprite2D = $deff
 
-@onready var tilemap: TileMapLayer = get_parent().get_node("objek")
+@onready var tilemap: TileMapLayer = get_node("/root/Dunia_1/objek")
 
-@onready var duri_tilemap: TileMapLayer = get_parent().get_node("duri")
+@onready var duri_tilemap: TileMapLayer = get_node("/root/Dunia_1/duri")
 
 @onready var collision_shape: CollisionShape2D = $Badan
 
