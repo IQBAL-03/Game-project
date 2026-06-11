@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqx7coinscene01"]
+[gd_scene format=3 uid="uid://gejfhtyig11y"]
 
-[ext_resource type="Script" path="res://scripts/coin.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/Objects/coin.gd" id="1_script"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pickup"]
 radius = 15.0

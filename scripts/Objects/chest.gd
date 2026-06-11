@@ -1,15 +1,17 @@
 extends Area2D
 
+@export var animation_name: String = "buka"
+@export var required_key_type: String = "key"
+
 @onready var sprite = $AnimatedSprite2D
 var sudah_terbuka = false
-var required_key_type = "key"
 
 var player_di_kanan: bool = false
 var player_di_kiri: bool = false
 
 func _ready():
-	sprite.sprite_frames.set_animation_loop("buka", false)
-	sprite.animation = "buka"
+	sprite.sprite_frames.set_animation_loop(animation_name, false)
+	sprite.animation = animation_name
 	sprite.frame = 0
 	sprite.stop()
 	body_shape_entered.connect(_on_body_shape_entered)
@@ -56,7 +58,7 @@ func try_open(_key_type: String) -> bool:
 
 func buka_peti():
 	sudah_terbuka = true
-	sprite.play("buka")
+	sprite.play(animation_name)
 	sprite.animation_finished.connect(_on_animasi_selesai, CONNECT_ONE_SHOT)
 	
 	var scene_root := get_tree().current_scene

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://b2qbt7f3a6055"]
 
 [ext_resource type="Texture2D" uid="uid://xhec5cylbvoo" path="res://User Interface/PNG/Win_loose.png" id="1_o7ev3"]
-[ext_resource type="Script" uid="uid://clo47g0xjk6ed" path="res://scripts/x.gd" id="2_ys0r6"]
-[ext_resource type="Script" uid="uid://dsf4bsnnscp2d" path="res://scripts/restart.gd" id="3_rue8b"]
+[ext_resource type="Script" uid="uid://clo47g0xjk6ed" path="res://scripts/UI/x.gd" id="2_ys0r6"]
+[ext_resource type="Script" uid="uid://dsf4bsnnscp2d" path="res://scripts/UI/restart.gd" id="3_rue8b"]
 [ext_resource type="Texture2D" uid="uid://cbby286ho3wfi" path="res://User Interface/PNG/Main_menu.png" id="4_kup17"]
-[ext_resource type="Script" path="res://scripts/stars.gd" id="5_stars"]
+[ext_resource type="Script" path="res://scripts/UI/stars.gd" id="5_stars"]
 
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ds6ui"]

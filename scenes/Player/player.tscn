@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b34ym3xf6qg1k"]
 
-[ext_resource type="Script" uid="uid://buwbfu0pd77qv" path="res://scripts/player.gd" id="1_jej6c"]
-[ext_resource type="Script" uid="uid://ceupgwdwg1ghf" path="res://scripts/camera_2d.gd" id="2_f1ej7"]
+[ext_resource type="Script" uid="uid://buwbfu0pd77qv" path="res://scripts/Player/player.gd" id="1_jej6c"]
+[ext_resource type="Script" uid="uid://ceupgwdwg1ghf" path="res://scripts/Core/camera_2d.gd" id="2_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://dvb7bv8l1mqsy" path="res://knight/Knight_1/Idle.png" id="3_oprun"]
 [ext_resource type="Texture2D" uid="uid://bxxdawf4o3ikx" path="res://knight/Knight_1/Walk.png" id="4_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://cvw5ikhoxwvvh" path="res://knight/Knight_1/Run.png" id="5_qfm1y"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dh68y3151hxvk" path="res://knight/Knight_1/climb.png" id="10_a38lo"]
 [ext_resource type="Texture2D" uid="uid://bav0jd50w6kw8" path="res://knight/Knight_1/pick up.png" id="11_4ni07"]
 [ext_resource type="Texture2D" uid="uid://ckf6c3pbobjlp" path="res://knight/Knight_1/Protect.png" id="12_l71n6"]
-[ext_resource type="Script" uid="uid://cgec2f5bi56h5" path="res://scripts/health_component.gd" id="13_ke2ow"]
+[ext_resource type="Script" uid="uid://cgec2f5bi56h5" path="res://scripts/Core/health_component.gd" id="13_ke2ow"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mf77c"]
 atlas = ExtResource("3_oprun")

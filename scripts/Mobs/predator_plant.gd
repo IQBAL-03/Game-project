@@ -3,10 +3,14 @@ extends CharacterBody2D
 @export var attack_speed: float = 1.0
 @export var flip_offset: float = 0.0
 @export var damage_amount: float = 0.5
+@export var health_bar_offset: Vector2 = Vector2(0, -40)
+@export var attack_collision_size: Vector2 = Vector2(60, 60)
+@export var attack_collision_position: Vector2 = Vector2(20, 23)
+@export var has_two_directions: bool = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var hitbox: Area2D = $Hitbox
-@onready var reaksi: Area2D = $Reaksi
+@onready var hitbox: Area2D = get_node_or_null("Hitbox") if not has_two_directions else get_node_or_null("HitBox")
+@onready var reaksi: Area2D = get_node_or_null("Reaksi")
 @onready var attack_box: Area2D = null  
 
 var health_component: Node = null
@@ -30,7 +34,7 @@ var player_di_kiri: bool = false
 
 func _ready() -> void:
 
-	health_component = preload("res://scripts/health_component.gd").new()
+	health_component = preload("res://scripts/Core/health_component.gd").new()
 	health_component.name = "HealthComponent"
 	health_component.max_health = MAX_HEALTH
 	add_child(health_component)
@@ -44,7 +48,7 @@ func _ready() -> void:
 	health_bar_sprite = Sprite2D.new()
 	health_bar_sprite.texture = bar_full_tex
 	health_bar_sprite.visible = false
-	health_bar_sprite.position = animated_sprite.position + Vector2(0, -40)
+	health_bar_sprite.position = animated_sprite.position + health_bar_offset
 	add_child(health_bar_sprite)
 
 
@@ -68,9 +72,9 @@ func _ready() -> void:
 
 	var attack_collision = CollisionShape2D.new()
 	var attack_shape = RectangleShape2D.new()
-	attack_shape.size = Vector2(60, 60)  
+	attack_shape.size = attack_collision_size
 	attack_collision.shape = attack_shape
-	attack_collision.position = Vector2(20, 23)  
+	attack_collision.position = attack_collision_position
 	attack_box.add_child(attack_collision)
 
 	attack_box.area_entered.connect(_on_attack_box_area_entered)
@@ -78,7 +82,7 @@ func _ready() -> void:
 	if reaksi:
 		reaksi.body_shape_entered.connect(_on_reaksi_body_shape_entered)
 		reaksi.body_shape_exited.connect(_on_reaksi_body_shape_exited)
-	else:
+	elif not has_two_directions:
 		push_error("Node Reaksi belum ada!")
 
 func _physics_process(delta: float) -> void:
@@ -93,23 +97,30 @@ func _physics_process(delta: float) -> void:
 		if not is_attacking:
 			is_attacking = true
 
-		if player_di_kanan:
-			animated_sprite.flip_h = true
-			animated_sprite.position.x = original_sprite_pos_x + flip_offset
+		animated_sprite.speed_scale = attack_speed
+
+		if has_two_directions:
+			var target_anim = "serang_kanan" if player_di_kanan else "serang_kiri"
+			if animated_sprite.animation != target_anim:
+				animated_sprite.play(target_anim)
 		else:
-			animated_sprite.flip_h = false
-			animated_sprite.position.x = original_sprite_pos_x
+			if player_di_kanan:
+				animated_sprite.flip_h = true
+				animated_sprite.position.x = original_sprite_pos_x + flip_offset
+			else:
+				animated_sprite.flip_h = false
+				animated_sprite.position.x = original_sprite_pos_x
 
-		if animated_sprite.animation != "serang_kiri":
-			animated_sprite.play("serang_kiri")
-			animated_sprite.speed_scale = attack_speed
+			if animated_sprite.animation != "serang_kiri":
+				animated_sprite.play("serang_kiri")
 	else:
-
 		if is_attacking:
-			animated_sprite.play("idle")
-			animated_sprite.flip_h = false
-			animated_sprite.position.x = original_sprite_pos_x
 			is_attacking = false
+			animated_sprite.play("idle")
+			
+			if not has_two_directions:
+				animated_sprite.flip_h = false
+				animated_sprite.position.x = original_sprite_pos_x
 
 			if attack_box:
 				attack_box.set_deferred("monitoring", false)
@@ -139,29 +150,33 @@ func _on_reaksi_body_shape_exited(_body_rid: RID, body: Node2D, _body_shape_inde
 			player_di_kiri = false
 
 func _on_animation_finished() -> void:
-	if animated_sprite.animation == "serang_kiri":
-
+	var anim = animated_sprite.animation
+	if anim == "serang_kiri" or anim == "serang_kanan":
 		if attack_box:
 			attack_box.set_deferred("monitoring", false)
 			attack_box_active = false
 
 		if is_attacking and (player_di_kanan or player_di_kiri):
-			animated_sprite.play("serang_kiri")
+			if has_two_directions:
+				var target_anim = "serang_kanan" if player_di_kanan else "serang_kiri"
+				animated_sprite.play(target_anim)
+			else:
+				animated_sprite.play("serang_kiri")
 		else:
 			animated_sprite.play("idle")
-			animated_sprite.flip_h = false
-			animated_sprite.position.x = original_sprite_pos_x
+			if not has_two_directions:
+				animated_sprite.flip_h = false
+				animated_sprite.position.x = original_sprite_pos_x
 			is_attacking = false
 
 func _on_sprite_frame_changed() -> void:
-
-	if animated_sprite.animation == "serang_kiri" and is_attacking:
+	var anim = animated_sprite.animation
+	if (anim == "serang_kiri" or anim == "serang_kanan") and is_attacking:
 		if animated_sprite.frame == 5:
 			if attack_box:
 				attack_box.set_deferred("monitoring", true)
 				attack_box_active = true
 		elif animated_sprite.frame != 5:
-
 			if attack_box and attack_box_active:
 				attack_box.set_deferred("monitoring", false)
 				attack_box_active = false
@@ -219,17 +234,20 @@ func _on_died() -> void:
 
 	var scene_root := get_tree().current_scene
 	if scene_root:
-		Coin.spawn_burst(scene_root, global_position)
+		Coin.spawn_burst(scene_root, animated_sprite.global_position if has_two_directions else global_position)
 
-
-	if player_di_kanan:
-		animated_sprite.flip_h = false
-		animated_sprite.position.x = original_sprite_pos_x
-		animated_sprite.play("mati_kanan")
+	if has_two_directions:
+		if player_di_kanan:
+			animated_sprite.play("mati_kanan")
+		else:
+			animated_sprite.play("mati_kiri")
 	else:
 		animated_sprite.flip_h = false
 		animated_sprite.position.x = original_sprite_pos_x
-		animated_sprite.play("mati_kiri")
+		if player_di_kanan:
+			animated_sprite.play("mati_kanan")
+		else:
+			animated_sprite.play("mati_kiri")
 
 	await animated_sprite.animation_finished
 	queue_free()

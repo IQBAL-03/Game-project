@@ -9,15 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://dwv3m71cnc1n6" path="res://map/Map/PNG/Spikes.png" id="7_ai0r4"]
 [ext_resource type="Texture2D" uid="uid://bv2540fsncag4" path="res://map/Map/TILED_files/Details.png" id="8_tdev4"]
 [ext_resource type="Texture2D" uid="uid://b64j8guu585oo" path="res://map/Map/TILED_files/Fairys.png" id="9_nydv0"]
-[ext_resource type="PackedScene" uid="uid://cshd4ecw5k6yc" path="res://scenes/predator_plant.tscn" id="10_ga82n"]
-[ext_resource type="PackedScene" uid="uid://beolnexpcbblb" path="res://scenes/predator_plant_2.tscn" id="11_ecnia"]
-[ext_resource type="PackedScene" uid="uid://b34ym3xf6qg1k" path="res://scenes/player.tscn" id="12_a24a8"]
-[ext_resource type="PackedScene" uid="uid://dcg7xor4jncph" path="res://scenes/key.tscn" id="25_x34e7"]
-[ext_resource type="PackedScene" uid="uid://0c5x1pw5125c" path="res://scenes/chest.res" id="26_vbu55"]
-[ext_resource type="PackedScene" uid="uid://bhud7tui3a5m8" path="res://scenes/hud.tscn" id="31_grrfx"]
-[ext_resource type="PackedScene" uid="uid://dirjo4xydjtw0" path="res://scenes/equietment.tscn" id="32_dxnyl"]
-[ext_resource type="PackedScene" uid="uid://da5id0cs0v0xp" path="res://scenes/main_menu.tscn" id="33_jv5yy"]
-[ext_resource type="PackedScene" uid="uid://2oa8404k5n4e" path="res://scenes/game_over.tscn" id="34_8rats"]
+[ext_resource type="PackedScene" uid="uid://cshd4ecw5k6yc" path="res://scenes/Mobs/predator_plant.tscn" id="10_ga82n"]
+[ext_resource type="PackedScene" uid="uid://beolnexpcbblb" path="res://scenes/Mobs/predator_plant_2.tscn" id="11_ecnia"]
+[ext_resource type="PackedScene" uid="uid://b34ym3xf6qg1k" path="res://scenes/Player/player.tscn" id="12_a24a8"]
+[ext_resource type="PackedScene" path="res://scenes/Objects/key.tscn" id="13_ptinw"]
+[ext_resource type="PackedScene" path="res://scenes/Objects/chest.res" id="14_6tv6i"]
+[ext_resource type="PackedScene" uid="uid://bhud7tui3a5m8" path="res://scenes/UI/hud.tscn" id="31_grrfx"]
+[ext_resource type="PackedScene" uid="uid://dirjo4xydjtw0" path="res://scenes/UI/equietment.tscn" id="32_dxnyl"]
+[ext_resource type="PackedScene" uid="uid://da5id0cs0v0xp" path="res://scenes/UI/main_menu.tscn" id="33_jv5yy"]
+[ext_resource type="PackedScene" uid="uid://2oa8404k5n4e" path="res://scenes/UI/game_over.tscn" id="34_8rats"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_56qte"]
 texture = ExtResource("1_68rvi")
@@ -7782,15 +7782,13 @@ position = Vector2(6, -4)
 
 [node name="Player" parent="." unique_id=1461829643 instance=ExtResource("12_a24a8")]
 
-[node name="Key" parent="." unique_id=1708731510 instance=ExtResource("25_x34e7")]
+[node name="Key" parent="." unique_id=1708731510 instance=ExtResource("13_ptinw")]
 
-[node name="Key2" parent="." unique_id=543559354 instance=ExtResource("25_x34e7")]
-position = Vector2(-652, 462)
+[node name="Key2" parent="." unique_id=1628683404 instance=ExtResource("13_ptinw")]
 
-[node name="Chest" parent="." unique_id=1127733681 instance=ExtResource("26_vbu55")]
+[node name="Chest" parent="." unique_id=1127733681 instance=ExtResource("14_6tv6i")]
 
-[node name="Chest2" parent="." unique_id=267537977 instance=ExtResource("26_vbu55")]
-position = Vector2(-592, 720)
+[node name="Chest2" parent="." unique_id=977878378 instance=ExtResource("14_6tv6i")]
 
 [node name="HUD" parent="." unique_id=1491081479 instance=ExtResource("31_grrfx")]
 
