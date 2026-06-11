@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://b84gp4gppj2p7"]
+
+[ext_resource type="Script" uid="uid://cabjuaaumwrau" path="res://scripts/Objects/chest.gd" id="1_iwx8e"]
+[ext_resource type="Texture2D" uid="uid://cs4k2pjns4u7" path="res://map/Map/PNG/chest.png" id="2_oi41x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2syh"]
+atlas = ExtResource("2_oi41x")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muvwf"]
+atlas = ExtResource("2_oi41x")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3m67"]
+atlas = ExtResource("2_oi41x")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djedn"]
+atlas = ExtResource("2_oi41x")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tehuq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2syh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muvwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3m67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djedn")
+}],
+"loop": false,
+"name": &"buka",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7s0kw"]
+size = Vector2(38, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0aa4v"]
+size = Vector2(42, 31.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfj1s"]
+size = Vector2(36, 31)
+
+[node name="Chest" type="Node2D" unique_id=1127733681]
+
+[node name="chest" type="Area2D" parent="." unique_id=1152342326]
+script = ExtResource("1_iwx8e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="chest" unique_id=1626405546]
+position = Vector2(816, 272)
+sprite_frames = SubResource("SpriteFrames_tehuq")
+animation = &"buka"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chest" unique_id=1528721615]
+position = Vector2(816, 268)
+shape = SubResource("RectangleShape2D_7s0kw")
+
+[node name="kanan" type="CollisionShape2D" parent="chest" unique_id=1086297026]
+position = Vector2(833.25, 268)
+shape = SubResource("RectangleShape2D_0aa4v")
+debug_color = Color(0.2047768, 0.6409061, 3.85046e-07, 0.41960785)
+
+[node name="kiri" type="CollisionShape2D" parent="chest" unique_id=303793169]
+position = Vector2(799, 268)
+shape = SubResource("RectangleShape2D_rfj1s")
+debug_color = Color(0.9661731, 1.540184e-06, 0.48513335, 0.41960785)
