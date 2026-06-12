@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://cbby286ho3wfi" path="res://User Interface/PNG/Main_menu.png" id="1_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://d0vddgtgmwsou" path="res://User Interface/PNG/Buttons.png" id="2_oa1go"]
-[ext_resource type="Script" path="res://scripts/x.gd" id="2_tbmy8"]
-[ext_resource type="Script" uid="uid://dk7y4a4t306c4" path="res://scripts/resume.gd" id="3_tbmy8"]
-[ext_resource type="Script" path="res://scripts/restart.gd" id="4_jk1qb"]
-[ext_resource type="Script" path="res://scripts/settings.gd" id="5_5dd4i"]
-[ext_resource type="Script" path="res://scripts/quit.gd" id="6_lgwnu"]
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="7_mm"]
+[ext_resource type="Script" path="res://scripts/UI/x.gd" id="2_tbmy8"]
+[ext_resource type="Script" uid="uid://dk7y4a4t306c4" path="res://scripts/UI/resume.gd" id="3_tbmy8"]
+[ext_resource type="Script" path="res://scripts/UI/restart.gd" id="4_jk1qb"]
+[ext_resource type="Script" path="res://scripts/UI/settings.gd" id="5_5dd4i"]
+[ext_resource type="Script" path="res://scripts/UI/quit.gd" id="6_lgwnu"]
+[ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="7_mm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_flqon"]
 atlas = ExtResource("1_rtw2f")

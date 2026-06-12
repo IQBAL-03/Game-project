@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://2oa8404k5n4e"]
 
-[ext_resource type="Script" uid="uid://cqij8dt2nxws1" path="res://scripts/game_over.gd" id="1_gameover_script"]
+[ext_resource type="Script" uid="uid://cqij8dt2nxws1" path="res://scripts/UI/game_over.gd" id="1_gameover_script"]
 [ext_resource type="Texture2D" uid="uid://xhec5cylbvoo" path="res://User Interface/PNG/Win_loose.png" id="1_xeevv"]
-[ext_resource type="Script" path="res://scripts/restart.gd" id="2_wqhvx"]
+[ext_resource type="Script" path="res://scripts/UI/restart.gd" id="2_wqhvx"]
 [ext_resource type="Texture2D" uid="uid://d0vddgtgmwsou" path="res://User Interface/PNG/Buttons.png" id="5_v3hpu"]
-[ext_resource type="Script" path="res://scripts/quit.gd" id="6_irg28"]
+[ext_resource type="Script" path="res://scripts/UI/quit.gd" id="6_irg28"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqhvx"]
 atlas = ExtResource("1_xeevv")

@@ -1,7 +1,7 @@
 class_name Coin
 extends Area2D
 
-const COIN_SCENE := preload("res://scenes/coin.tscn")
+const COIN_SCENE := preload("res://scenes/Objects/coin.tscn")
 
 @export var coin_value: int = 1
 

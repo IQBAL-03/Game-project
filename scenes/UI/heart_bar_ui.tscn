@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8j3vx7y8qm2p"]
 
-[ext_resource type="Script" path="res://scripts/heart_bar_ui.gd" id="1_a2b3c"]
+[ext_resource type="Script" path="res://scripts/UI/heart_bar_ui.gd" id="1_a2b3c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0, 0, 0, 0)

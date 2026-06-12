@@ -26,7 +26,7 @@ var player_di_kiri: bool = false
 
 func _ready() -> void:
 
-	health_component = preload("res://scripts/health_component.gd").new()
+	health_component = preload("res://scripts/Core/health_component.gd").new()
 	health_component.name = "HealthComponent"
 	health_component.max_health = MAX_HEALTH
 	add_child(health_component)
