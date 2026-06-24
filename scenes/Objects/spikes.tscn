@@ -90,9 +90,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a7hup")
 }],
-"loop": true,
+"loop": false,
 "name": &"spikes",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qq7wy"]
@@ -101,15 +101,20 @@ size = Vector2(32, 50)
 [node name="Spikes" type="Node2D" unique_id=945383307]
 
 [node name="Area2D" type="Area2D" parent="." unique_id=10344139]
+script = ExtResource("2_7y6ex")
 
 [node name="Spikes" type="AnimatedSprite2D" parent="Area2D" unique_id=1440075416]
 position = Vector2(458, 276)
 sprite_frames = SubResource("SpriteFrames_ao3rn")
 animation = &"spikes"
-frame = 6
-frame_progress = 0.78822714
+frame = 11
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=740955179]
 position = Vector2(458, 271)
 shape = SubResource("RectangleShape2D_qq7wy")
-script = ExtResource("2_7y6ex")
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="Area2D" method="_on_area_exited"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

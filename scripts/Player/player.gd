@@ -668,6 +668,8 @@ func _on_spike_hit() -> void:
 	elif sprite.sprite_frames.has_animation("death"):
 		sprite.play("death")
 
+	await sprite.animation_finished
+
 
 	var fade_layer = CanvasLayer.new()
 	fade_layer.layer = 100
@@ -705,6 +707,8 @@ func _on_spike_hit() -> void:
 
 	if not is_dead:
 		sprite.play("idle")
+
+
 
 func collect_coin(amount: int = 1) -> void:
 	coins += amount
