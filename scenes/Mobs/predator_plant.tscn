@@ -359,6 +359,8 @@ position = Vector2(21, 22.999996)
 scale = Vector2(1.65625, 1.7187499)
 sprite_frames = SubResource("SpriteFrames_nhygh")
 animation = &"serang_kanan"
+frame = 6
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=144796977]
 position = Vector2(29.25, 48.5)

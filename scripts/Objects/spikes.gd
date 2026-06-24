@@ -50,8 +50,7 @@ func _on_body_entered(body: Node2D) -> void:
 		trigger_all_spikes()
 		if not players_inside.has(body):
 			players_inside.append(body)
-		if $Spikes.frame >= 4:
-			deal_damage_and_tp(body)
+		deal_damage_and_tp(body)
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -65,8 +64,7 @@ func _on_area_entered(area: Area2D) -> void:
 		if player_node and player_node.is_in_group("player"):
 			if not players_inside.has(player_node):
 				players_inside.append(player_node)
-			if $Spikes.frame >= 4:
-				deal_damage_and_tp(player_node)
+			deal_damage_and_tp(player_node)
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.name == "HurtBox":
