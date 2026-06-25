@@ -241,7 +241,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5o5t8")
 }],
-"loop": true,
+"loop": false,
 "name": &"mati_kanan",
 "speed": 5.0
 }, {
@@ -276,7 +276,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kvig8")
 }],
-"loop": true,
+"loop": false,
 "name": &"mati_kiri",
 "speed": 5.0
 }, {
@@ -356,9 +356,7 @@ debug_color = Color(0.9661731, 1.540184e-06, 0.48513335, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1035259305]
 sprite_frames = SubResource("SpriteFrames_xxqg8")
-animation = &"idle"
-frame = 1
-frame_progress = 0.72250575
+animation = &"mati_kiri"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=972074253]
 position = Vector2(4.5, 14.5)
