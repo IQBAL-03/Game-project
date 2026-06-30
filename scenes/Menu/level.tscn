@@ -1,0 +1,229 @@
+[gd_scene format=3 uid="uid://mefs4a5ohinj"]
+
+[ext_resource type="Script" uid="uid://bcik2ql5y63ol" path="res://scripts/Menu/level.gd" id="1_abcde"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.25, 0.23, 0.21, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.4, 0.45, 0.5, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Level" type="Control" unique_id=585614480]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_abcde")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1689059170]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=629562445]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1039014193]
+custom_minimum_size = Vector2(850, 550)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="TitleBg" type="ColorRect" parent="CenterContainer/Panel" unique_id=927529851]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_top = -25.0
+offset_right = 180.0
+offset_bottom = 35.0
+grow_horizontal = 2
+color = Color(0.75, 0.2, 0.15, 1)
+
+[node name="Title" type="Label" parent="CenterContainer/Panel/TitleBg" unique_id=1322227708]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "LEVELS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/Panel" unique_id=1216750259]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -180.0
+offset_right = 350.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 6
+
+[node name="Level1" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=584760100]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "1"
+
+[node name="Level2" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=471542611]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="Level3" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=626403846]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="Level4" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=1041886862]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="Level5" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=1582631744]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="Level6" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=382013485]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="Level7" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=1346818671]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="Level8" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=2118112909]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="Level9" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=503758354]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="Level10" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=1725428934]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="Level11" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=695412987]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="Level12" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=1293913474]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="Level13" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=13799019]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="Level14" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=919701650]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="Level15" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=54647710]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="Level16" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=4700257]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="Level17" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=380715938]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="Level18" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=2130431866]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "Lck"
+
+[node name="CloseButton" type="Button" parent="CenterContainer/Panel" unique_id=2103772722]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "X"
