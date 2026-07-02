@@ -1,18 +1,45 @@
 [gd_scene format=3 uid="uid://mefs4a5ohinj"]
 
 [ext_resource type="Script" uid="uid://bcik2ql5y63ol" path="res://scripts/Menu/level.gd" id="1_abcde"]
+[ext_resource type="Texture2D" uid="uid://ch4pyqbxl8v7e" path="res://User Interface/PNG/Levels.png" id="2_7vxex"]
+[ext_resource type="Script" uid="uid://clo47g0xjk6ed" path="res://scripts/UI/x.gd" id="3_3wtdn"]
+[ext_resource type="Script" uid="uid://bfr345ltycxdm" path="res://scripts/UI/quit.gd" id="3_pb2kh"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
-bg_color = Color(0.25, 0.23, 0.21, 1)
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-border_color = Color(0.4, 0.45, 0.5, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wtdn"]
+atlas = ExtResource("2_7vxex")
+region = Rect2(135, 0, 114, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb2kh"]
+atlas = ExtResource("2_7vxex")
+region = Rect2(88, 162, 17, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1yj1"]
+atlas = ExtResource("2_7vxex")
+region = Rect2(164, 196, 9, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rfaw"]
+atlas = ExtResource("2_7vxex")
+region = Rect2(120, 162, 17, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77crd"]
+atlas = ExtResource("2_7vxex")
+region = Rect2(211, 193, 9, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcn2w"]
+atlas = ExtResource("2_7vxex")
+region = Rect2(256, 147, 32, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_445u1"]
+atlas = ExtResource("2_7vxex")
+region = Rect2(87, 193, 9, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rh3yb"]
+atlas = ExtResource("2_7vxex")
+region = Rect2(61, 146, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsev4"]
+atlas = ExtResource("2_7vxex")
+region = Rect2(56, 162, 17, 19)
 
 [node name="Level" type="Control" unique_id=585614480]
 layout_mode = 3
@@ -23,7 +50,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_abcde")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1689059170]
+[node name="DarkOverlay" type="ColorRect" parent="." unique_id=1795705686]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,198 +59,317 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.7)
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=629562445]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1050206058]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 2468.0
+offset_bottom = 2141.0
+texture = SubResource("AtlasTexture_3wtdn")
+
+[node name="level_1" type="TextureButton" parent="TextureRect" unique_id=1447282777]
+layout_mode = 0
+offset_left = 357.0
+offset_top = 313.0
+offset_right = 714.0
+offset_bottom = 682.0
+texture_normal = SubResource("AtlasTexture_pb2kh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_2" type="TextureButton" parent="TextureRect" unique_id=1452455034]
+layout_mode = 0
+offset_left = 1063.0
+offset_top = 313.0
+offset_right = 1420.0
+offset_bottom = 682.0
+texture_normal = SubResource("AtlasTexture_pb2kh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_3" type="TextureButton" parent="TextureRect" unique_id=341646179]
+layout_mode = 0
+offset_left = 1750.0
+offset_top = 309.0
+offset_right = 2107.0
+offset_bottom = 678.0
+texture_normal = SubResource("AtlasTexture_pb2kh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_4" type="TextureButton" parent="TextureRect" unique_id=1149469913]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 820.0
+offset_right = 725.0
+offset_bottom = 1189.0
+texture_normal = SubResource("AtlasTexture_pb2kh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_5" type="TextureButton" parent="TextureRect" unique_id=1439462320]
+layout_mode = 0
+offset_left = 1059.0
+offset_top = 842.0
+offset_right = 1416.0
+offset_bottom = 1211.0
+texture_normal = SubResource("AtlasTexture_pb2kh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_6" type="TextureButton" parent="TextureRect" unique_id=132219447]
+layout_mode = 0
+offset_left = 1751.0
+offset_top = 824.0
+offset_right = 2108.0
+offset_bottom = 1193.0
+texture_normal = SubResource("AtlasTexture_pb2kh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_7" type="TextureButton" parent="TextureRect" unique_id=913305909]
+layout_mode = 0
+offset_left = 359.0
+offset_top = 1340.0
+offset_right = 716.0
+offset_bottom = 1709.0
+texture_normal = SubResource("AtlasTexture_pb2kh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_8" type="TextureButton" parent="TextureRect" unique_id=172850241]
+layout_mode = 0
+offset_left = 1052.0
+offset_top = 1335.0
+offset_right = 1409.0
+offset_bottom = 1704.0
+texture_normal = SubResource("AtlasTexture_pb2kh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_9" type="TextureButton" parent="TextureRect" unique_id=2093554547]
+layout_mode = 0
+offset_left = 1746.0
+offset_top = 1346.0
+offset_right = 2103.0
+offset_bottom = 1715.0
+texture_normal = SubResource("AtlasTexture_pb2kh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="panah" type="TextureButton" parent="TextureRect" unique_id=1606751301]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 673.0
+offset_right = 579.0
+offset_bottom = 758.0
+texture_normal = SubResource("AtlasTexture_g1yj1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_terkunci_2" type="TextureButton" parent="TextureRect" unique_id=417706849]
+layout_mode = 0
+offset_left = 1061.0
+offset_top = 313.0
+offset_right = 1423.0
+offset_bottom = 682.0
+texture_normal = SubResource("AtlasTexture_4rfaw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_terkunci_3" type="TextureButton" parent="TextureRect" unique_id=816735968]
+layout_mode = 0
+offset_left = 1748.0
+offset_top = 312.0
+offset_right = 2110.0
+offset_bottom = 681.0
+texture_normal = SubResource("AtlasTexture_4rfaw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_terkunci_4" type="TextureButton" parent="TextureRect" unique_id=825090910]
+layout_mode = 0
+offset_left = 363.0
+offset_top = 820.0
+offset_right = 725.0
+offset_bottom = 1189.0
+texture_normal = SubResource("AtlasTexture_4rfaw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_terkunci_5" type="TextureButton" parent="TextureRect" unique_id=635049992]
+layout_mode = 0
+offset_left = 1054.0
+offset_top = 841.0
+offset_right = 1416.0
+offset_bottom = 1210.0
+texture_normal = SubResource("AtlasTexture_4rfaw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_terkunci_6" type="TextureButton" parent="TextureRect" unique_id=1829234512]
+layout_mode = 0
+offset_left = 1752.0
+offset_top = 825.0
+offset_right = 2114.0
+offset_bottom = 1194.0
+texture_normal = SubResource("AtlasTexture_4rfaw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_terkunci_7" type="TextureButton" parent="TextureRect" unique_id=795200884]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 1343.0
+offset_right = 716.0
+offset_bottom = 1712.0
+texture_normal = SubResource("AtlasTexture_4rfaw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_terkunci_8" type="TextureButton" parent="TextureRect" unique_id=1633440428]
+layout_mode = 0
+offset_left = 1049.0
+offset_top = 1334.0
+offset_right = 1411.0
+offset_bottom = 1703.0
+texture_normal = SubResource("AtlasTexture_4rfaw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_terkunci_9" type="TextureButton" parent="TextureRect" unique_id=80637322]
+layout_mode = 0
+offset_left = 1745.0
+offset_top = 1345.0
+offset_right = 2107.0
+offset_bottom = 1714.0
+texture_normal = SubResource("AtlasTexture_4rfaw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="gembok_2" type="TextureButton" parent="TextureRect" unique_id=946930621]
+layout_mode = 0
+offset_left = 1185.0
+offset_top = 462.0
+offset_right = 1295.0
+offset_bottom = 617.0
+texture_normal = SubResource("AtlasTexture_77crd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="gembok_3" type="TextureButton" parent="TextureRect" unique_id=31537458]
+layout_mode = 0
+offset_left = 1873.0
+offset_top = 462.0
+offset_right = 1983.0
+offset_bottom = 617.0
+texture_normal = SubResource("AtlasTexture_77crd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="gembok_4" type="TextureButton" parent="TextureRect" unique_id=436000099]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 964.0
+offset_right = 603.0
+offset_bottom = 1119.0
+texture_normal = SubResource("AtlasTexture_77crd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="gembok_5" type="TextureButton" parent="TextureRect" unique_id=357931410]
+layout_mode = 0
+offset_left = 1182.0
+offset_top = 974.0
+offset_right = 1292.0
+offset_bottom = 1129.0
+texture_normal = SubResource("AtlasTexture_77crd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="gembok_6" type="TextureButton" parent="TextureRect" unique_id=1224693480]
+layout_mode = 0
+offset_left = 1885.0
+offset_top = 962.0
+offset_right = 1995.0
+offset_bottom = 1117.0
+texture_normal = SubResource("AtlasTexture_77crd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="gembok_7" type="TextureButton" parent="TextureRect" unique_id=1155742329]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 1489.0
+offset_right = 587.0
+offset_bottom = 1644.0
+texture_normal = SubResource("AtlasTexture_77crd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="gembok_8" type="TextureButton" parent="TextureRect" unique_id=1904877630]
+layout_mode = 0
+offset_left = 1177.0
+offset_top = 1484.0
+offset_right = 1287.0
+offset_bottom = 1639.0
+texture_normal = SubResource("AtlasTexture_77crd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="gembok_9" type="TextureButton" parent="TextureRect" unique_id=1300593042]
+layout_mode = 0
+offset_left = 1873.0
+offset_top = 1481.0
+offset_right = 1983.0
+offset_bottom = 1636.0
+texture_normal = SubResource("AtlasTexture_77crd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="quit" type="TextureButton" parent="TextureRect" unique_id=724899660]
+layout_mode = 0
+offset_left = 885.0
+offset_top = 1848.0
+offset_right = 1576.0
+offset_bottom = 2042.0
+texture_normal = SubResource("AtlasTexture_fcn2w")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_pb2kh")
+
+[node name="next" type="TextureButton" parent="TextureRect" unique_id=590842059]
+layout_mode = 0
+offset_left = 2074.0
+offset_top = 1817.0
+offset_right = 2268.0
+offset_bottom = 2041.0
+texture_normal = SubResource("AtlasTexture_445u1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="x" type="TextureButton" parent="TextureRect" unique_id=26666848]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = -1
+anchor_left = 0.84900004
+anchor_top = 0.018000001
+anchor_right = 0.961
+anchor_bottom = 0.075
+offset_left = 111.76196
+offset_top = -6.484001
+offset_right = 33.017822
+offset_bottom = 35.649994
+texture_normal = SubResource("AtlasTexture_rh3yb")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_3wtdn")
 
-[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1039014193]
-custom_minimum_size = Vector2(850, 550)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
-
-[node name="TitleBg" type="ColorRect" parent="CenterContainer/Panel" unique_id=927529851]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -180.0
-offset_top = -25.0
-offset_right = 180.0
-offset_bottom = 35.0
-grow_horizontal = 2
-color = Color(0.75, 0.2, 0.15, 1)
-
-[node name="Title" type="Label" parent="CenterContainer/Panel/TitleBg" unique_id=1322227708]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 28
-text = "LEVELS"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/Panel" unique_id=1216750259]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -350.0
-offset_top = -180.0
-offset_right = 350.0
-offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 20
-columns = 6
-
-[node name="Level1" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=584760100]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "1"
-
-[node name="Level2" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=471542611]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="Level3" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=626403846]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="Level4" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=1041886862]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="Level5" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=1582631744]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="Level6" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=382013485]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="Level7" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=1346818671]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="Level8" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=2118112909]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="Level9" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=503758354]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="Level10" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=1725428934]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="Level11" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=695412987]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="Level12" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=1293913474]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="Level13" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=13799019]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="Level14" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=919701650]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="Level15" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=54647710]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="Level16" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=4700257]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="Level17" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=380715938]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="Level18" type="Button" parent="CenterContainer/Panel/GridContainer" unique_id=2130431866]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-disabled = true
-text = "Lck"
-
-[node name="CloseButton" type="Button" parent="CenterContainer/Panel" unique_id=2103772722]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "X"
+[node name="open" type="TextureButton" parent="TextureRect" unique_id=1326251096]
+layout_mode = 0
+offset_left = 357.0
+offset_top = 312.0
+offset_right = 714.0
+offset_bottom = 681.0
+texture_normal = SubResource("AtlasTexture_hsev4")
+ignore_texture_size = true
+stretch_mode = 0
