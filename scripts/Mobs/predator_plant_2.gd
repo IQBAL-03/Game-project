@@ -199,6 +199,8 @@ func _on_died() -> void:
 	is_dead = true
 	is_attacking = false
 	$CollisionShape2D.set_deferred("disabled", true)
+	
+	LevelTracker.predator_killed(get_path())
 
 	var scene_root := get_tree().current_scene
 	if scene_root:

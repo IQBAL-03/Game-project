@@ -15,6 +15,10 @@ run/main_scene="uid://mefs4a5ohinj"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+LevelTracker="*res://scripts/Core/level_tracker.gd"
+
 [display]
 
 window/size/viewport_width=1920
