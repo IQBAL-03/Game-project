@@ -1,13 +1,13 @@
-[gd_scene format=4 uid="uid://djtvswxux3a0h"]
+[gd_scene format=4 uid="uid://c0v8bjjl4bcrg"]
 
-[ext_resource type="Texture2D" uid="uid://clg3n02unhrcw" path="res://map/Map/PNG/Background/1920x1080/├╖2/Sky_1920x1080├╖2.png" id="1_hh3yi"]
-[ext_resource type="Texture2D" uid="uid://c78jwc507t4sn" path="res://map/Map/PNG/Background/1920x1080/├╖2/Full_bg_1920x1080├╖2.png" id="2_qji5n"]
-[ext_resource type="Texture2D" uid="uid://bicf4thobjd2w" path="res://User Interface/PNG/button.png" id="3_qji5n"]
-[ext_resource type="Script" uid="uid://bdp45kkhv15s3" path="res://scripts/UI/play.gd" id="4_qji5n"]
-[ext_resource type="Script" uid="uid://dnqao2hxn1rn3" path="res://scripts/UI/quit_home.gd" id="5_qji5n"]
+[ext_resource type="Texture2D" uid="uid://clg3n02unhrcw" path="res://map/Map/PNG/Background/1920x1080/├╖2/Sky_1920x1080├╖2.png" id="1_kx5jl"]
+[ext_resource type="Texture2D" uid="uid://c78jwc507t4sn" path="res://map/Map/PNG/Background/1920x1080/├╖2/Full_bg_1920x1080├╖2.png" id="2_wqg4d"]
+[ext_resource type="Texture2D" uid="uid://bicf4thobjd2w" path="res://User Interface/PNG/button.png" id="3_jct13"]
+[ext_resource type="Script" uid="uid://bdp45kkhv15s3" path="res://scripts/UI/play.gd" id="4_8krf6"]
+[ext_resource type="Script" uid="uid://dnqao2hxn1rn3" path="res://scripts/UI/quit_home.gd" id="5_qaayy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wcxig"]
-texture = ExtResource("1_hh3yi")
+texture = ExtResource("1_kx5jl")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1990,7 +1990,7 @@ texture = ExtResource("1_hh3yi")
 59:32/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hist0"]
-texture = ExtResource("2_qji5n")
+texture = ExtResource("2_wqg4d")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -3977,15 +3977,15 @@ sources/2 = SubResource("TileSetAtlasSource_wcxig")
 sources/6 = SubResource("TileSetAtlasSource_hist0")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8o366"]
-atlas = ExtResource("3_qji5n")
+atlas = ExtResource("3_jct13")
 region = Rect2(256, 151, 84, 19)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h1evo"]
-atlas = ExtResource("3_qji5n")
+atlas = ExtResource("3_jct13")
 region = Rect2(256, 198, 83, 19)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4nfyx"]
-atlas = ExtResource("3_qji5n")
+atlas = ExtResource("3_jct13")
 region = Rect2(256, 232, 84, 19)
 
 [node name="Home" type="Node2D" unique_id=743007158]
@@ -4002,7 +4002,7 @@ offset_bottom = 726.0
 texture_normal = SubResource("AtlasTexture_8o366")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("4_qji5n")
+script = ExtResource("4_8krf6")
 
 [node name="options" type="TextureButton" parent="." unique_id=924195475]
 offset_left = 1660.0
@@ -4021,4 +4021,4 @@ offset_bottom = 964.0
 texture_normal = SubResource("AtlasTexture_4nfyx")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("5_qji5n")
+script = ExtResource("5_qaayy")
