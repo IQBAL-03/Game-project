@@ -31,6 +31,7 @@ var sprite_local_center: Vector2 = Vector2.ZERO
 
 var player_di_kanan: bool = false
 var player_di_kiri: bool = false
+var visibility_notifier: VisibleOnScreenNotifier2D
 
 func _ready() -> void:
 
@@ -85,6 +86,12 @@ func _ready() -> void:
 	elif not has_two_directions:
 		push_error("Node Reaksi belum ada!")
 
+	visibility_notifier = VisibleOnScreenNotifier2D.new()
+	visibility_notifier.rect = Rect2(-200, -200, 400, 400)
+	add_child(visibility_notifier)
+	visibility_notifier.screen_entered.connect(_on_screen_entered)
+	visibility_notifier.screen_exited.connect(_on_screen_exited)
+
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
@@ -125,6 +132,14 @@ func _physics_process(delta: float) -> void:
 			if attack_box:
 				attack_box.set_deferred("monitoring", false)
 				attack_box_active = false
+
+func _on_screen_entered() -> void:
+	set_physics_process(true)
+	set_process(true)
+
+func _on_screen_exited() -> void:
+	set_physics_process(false)
+	set_process(false)
 
 func _on_reaksi_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, local_shape_index: int) -> void:
 	if body.is_in_group("player"):

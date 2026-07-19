@@ -12,5 +12,11 @@ func _ready() -> void:
 	mouse_exited.connect(_on_mouse_exited)
 
 func _on_pressed() -> void:
+	var main_menu = get_parent().get_parent()
+
+	if main_menu is Control:
+		main_menu.visible = false
+	else:
+		get_parent().visible = false
+
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/Menu/level.tscn")

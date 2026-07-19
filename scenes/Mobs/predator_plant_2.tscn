@@ -345,28 +345,28 @@ script = ExtResource("1_b1tdr")
 [node name="Reaksi" type="Area2D" parent="." unique_id=1535348982]
 
 [node name="Kanan" type="CollisionShape2D" parent="Reaksi" unique_id=1174467448]
-position = Vector2(484, 974)
+position = Vector2(86, 55)
 shape = SubResource("RectangleShape2D_njv5v")
 debug_color = Color(0.2047768, 0.6409061, 3.85046e-07, 0.41960785)
 
 [node name="Kiri" type="CollisionShape2D" parent="Reaksi" unique_id=1265162212]
-position = Vector2(411, 974)
+position = Vector2(13, 55)
 shape = SubResource("RectangleShape2D_hmmkp")
 debug_color = Color(0.9661731, 1.540184e-06, 0.48513335, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1617208496]
-position = Vector2(442.24997, 977.75)
+position = Vector2(45.000008, 59)
 scale = Vector2(2.2265618, 2.210938)
 sprite_frames = SubResource("SpriteFrames_uh42u")
 animation = &"serang_kanan"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1872971714]
-position = Vector2(451, 1010.375)
+position = Vector2(53, 91.375)
 shape = SubResource("RectangleShape2D_xh5ma")
 
 [node name="HitBox" type="Area2D" parent="." unique_id=2141105367]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1615877170]
-position = Vector2(446.5, 976.5)
+position = Vector2(48.5, 57.5)
 shape = SubResource("RectangleShape2D_d6gn7")
 debug_color = Color(0.75136167, 0.45917493, 0, 0.41960785)
