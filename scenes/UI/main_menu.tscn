@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://cbby286ho3wfi" path="res://User Interface/PNG/Main_menu.png" id="1_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://d0vddgtgmwsou" path="res://User Interface/PNG/Buttons.png" id="2_oa1go"]
-[ext_resource type="Script" path="res://scripts/UI/x.gd" id="2_tbmy8"]
+[ext_resource type="Script" uid="uid://clo47g0xjk6ed" path="res://scripts/UI/x.gd" id="2_tbmy8"]
 [ext_resource type="Script" uid="uid://dk7y4a4t306c4" path="res://scripts/UI/resume.gd" id="3_tbmy8"]
-[ext_resource type="Script" path="res://scripts/UI/restart.gd" id="4_jk1qb"]
-[ext_resource type="Script" path="res://scripts/UI/settings.gd" id="5_5dd4i"]
-[ext_resource type="Script" path="res://scripts/UI/quit.gd" id="6_lgwnu"]
-[ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="7_mm"]
+[ext_resource type="Script" uid="uid://dsf4bsnnscp2d" path="res://scripts/UI/restart.gd" id="4_jk1qb"]
+[ext_resource type="Script" uid="uid://br8srmubgwnr7" path="res://scripts/UI/settings.gd" id="5_5dd4i"]
+[ext_resource type="Script" uid="uid://bfr345ltycxdm" path="res://scripts/UI/quit.gd" id="6_lgwnu"]
+[ext_resource type="Script" uid="uid://bkbu01r2j8gd2" path="res://scripts/UI/main_menu.gd" id="7_mm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_flqon"]
 atlas = ExtResource("1_rtw2f")
@@ -34,15 +34,15 @@ atlas = ExtResource("2_oa1go")
 region = Rect2(13, 402, 56, 12)
 
 [node name="MainMenu" type="Control" unique_id=787964080]
-script = ExtResource("7_mm")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("7_mm")
 
-[node name="DarkOverlay" type="ColorRect" parent="."]
+[node name="DarkOverlay" type="ColorRect" parent="." unique_id=826662379]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
