@@ -65,5 +65,5 @@ func _on_open_pressed():
 	get_tree().change_scene_to_packed(dunia_1_scene)
 
 func _on_quit_pressed():
-	# Exit game completely just like the original main_menu.tscn
-	get_tree().quit()
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/Menu/home.tscn")
