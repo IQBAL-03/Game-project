@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="The Knight"
-run/main_scene="uid://dpjcxcc3fqbcg"
+run/main_scene="uid://c0v8bjjl4bcrg"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+LevelTracker="*res://scripts/Core/level_tracker.gd"
+ButtonHover="*res://scripts/UI/button_hover.gd"
 
 [display]
 

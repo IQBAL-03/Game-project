@@ -51,6 +51,8 @@ var nearest_ladder_center = Vector2.INF
 
 var is_defending = false
 
+var was_on_spikes = false
+
 
 @onready var sprite = $AnimatedSprite2D
 
@@ -154,8 +156,6 @@ func _physics_process(_delta):
 
 
 	check_climbable_tile()
-
-	check_duri_tile()
 
 	if is_dead:
 
@@ -293,6 +293,7 @@ func _physics_process(_delta):
 
 	move_and_slide()
 
+	check_duri_tile()
 
 	if is_on_floor() and not is_dead and not is_teleporting and not is_on_spikes():
 		last_safe_position = global_position
@@ -361,11 +362,15 @@ func update_animations(arah):
 
 
 func check_duri_tile() -> void:
-	if is_dead or duri_tilemap == null:
+	if is_dead or is_teleporting or duri_tilemap == null:
 		return
 
-	if is_on_spikes():
+	var currently_on_spikes = is_on_spikes()
+	
+	if currently_on_spikes and not was_on_spikes:
 		_on_spike_hit()
+	
+	was_on_spikes = currently_on_spikes
 
 func is_on_spikes() -> bool:
 	if duri_tilemap == null or collision_shape == null or collision_shape.shape == null:

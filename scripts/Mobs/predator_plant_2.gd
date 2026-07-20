@@ -23,6 +23,7 @@ var is_flashing: bool = false
 
 var player_di_kanan: bool = false
 var player_di_kiri: bool = false
+var visibility_notifier: VisibleOnScreenNotifier2D
 
 func _ready() -> void:
 
@@ -60,9 +61,9 @@ func _ready() -> void:
 
 	var attack_collision = CollisionShape2D.new()
 	var attack_shape = RectangleShape2D.new()
-	attack_shape.size = Vector2(67, 71)  
+	attack_shape.size = Vector2(130, 130)
 	attack_collision.shape = attack_shape
-	attack_collision.position = Vector2(446.5, 976.5)  
+	attack_collision.position = Vector2(45, 59)
 	attack_box.add_child(attack_collision)
 
 	attack_box.area_entered.connect(_on_attack_box_area_entered)
@@ -72,6 +73,12 @@ func _ready() -> void:
 		reaksi.body_shape_exited.connect(_on_reaksi_body_shape_exited)
 	else:
 		push_error("PREDATOR_PLANT_2: Node 'Reaksi' belum ada!")
+
+	visibility_notifier = VisibleOnScreenNotifier2D.new()
+	visibility_notifier.rect = Rect2(-200, -200, 400, 400)
+	add_child(visibility_notifier)
+	visibility_notifier.screen_entered.connect(_on_screen_entered)
+	visibility_notifier.screen_exited.connect(_on_screen_exited)
 
 func _physics_process(delta: float) -> void:
 	if is_dead: return
@@ -88,6 +95,11 @@ func _physics_process(delta: float) -> void:
 
 		var target_anim = "serang_kanan" if player_di_kanan else "serang_kiri"
 
+		if attack_box and attack_box.get_child_count() > 0:
+			var attack_collision = attack_box.get_child(0)
+			if attack_collision:
+				attack_collision.position = Vector2(110, 59) if player_di_kanan else Vector2(-20, 59)
+
 		if animated_sprite.animation != target_anim:
 			animated_sprite.play(target_anim)
 	else:
@@ -98,6 +110,14 @@ func _physics_process(delta: float) -> void:
 			if attack_box:
 				attack_box.set_deferred("monitoring", false)
 				attack_box_active = false
+
+func _on_screen_entered() -> void:
+	set_physics_process(true)
+	set_process(true)
+
+func _on_screen_exited() -> void:
+	set_physics_process(false)
+	set_process(false)
 
 func _on_reaksi_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, local_shape_index: int) -> void:
 	if body.is_in_group("player"):
@@ -199,6 +219,8 @@ func _on_died() -> void:
 	is_dead = true
 	is_attacking = false
 	$CollisionShape2D.set_deferred("disabled", true)
+	
+	LevelTracker.predator_killed(get_path())
 
 	var scene_root := get_tree().current_scene
 	if scene_root:

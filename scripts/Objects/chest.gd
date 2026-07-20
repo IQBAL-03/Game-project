@@ -61,6 +61,8 @@ func buka_peti():
 	sprite.play(animation_name)
 	sprite.animation_finished.connect(_on_animasi_selesai, CONNECT_ONE_SHOT)
 	
+	LevelTracker.chest_opened(get_path())
+	
 	var scene_root := get_tree().current_scene
 	if scene_root:
 		Coin.spawn_burst(scene_root, sprite.global_position)
