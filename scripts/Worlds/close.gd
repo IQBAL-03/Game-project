@@ -23,4 +23,25 @@ func _change_to_stars_scene() -> void:
 	else:
 		scene_path = "res://scenes/UI/1_stars.tscn"
 	
-	get_tree().change_scene_to_file(scene_path)
+	# Load dan instantiate scene stars sebagai overlay
+	var stars_scene = load(scene_path)
+	if stars_scene:
+		var stars_instance = stars_scene.instantiate()
+		
+		# Set process mode untuk stars instance agar tetap berjalan saat paused
+		stars_instance.process_mode = Node.PROCESS_MODE_ALWAYS
+		
+		# Pause game
+		get_tree().paused = true
+		
+		# Sembunyikan player setelah pause
+		var player = get_tree().get_first_node_in_group("player")
+		if player:
+			player.visible = false
+			# Pastikan semua child sprite player juga tersembunyi
+			for child in player.get_children():
+				if child is AnimatedSprite2D or child is Sprite2D:
+					child.visible = false
+		
+		# Tambahkan ke root sebagai overlay
+		get_tree().root.add_child(stars_instance)
