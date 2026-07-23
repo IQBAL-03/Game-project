@@ -62,9 +62,9 @@ var was_on_spikes = false
 
 @onready var deff_sprite: AnimatedSprite2D = $deff
 
-@onready var tilemap: TileMapLayer = get_node("/root/Dunia_1/objek")
+@onready var tilemap: TileMapLayer = get_node_or_null("/root/Dunia_1/objek")
 
-@onready var duri_tilemap: TileMapLayer = get_node("/root/Dunia_1/duri")
+@onready var duri_tilemap: TileMapLayer = get_node_or_null("/root/Dunia_1/duri")
 
 @onready var collision_shape: CollisionShape2D = $Badan
 
@@ -842,7 +842,7 @@ func start_defending() -> void:
 
 		if sprite.flip_h:
 
-			deff_sprite.position = Vector2(original_badan_x - (61 - original_badan_x), 55)
+			deff_sprite.position = Vector2(original_badan_x - (61 - original_badan_x), 45)
 
 		else:
 
