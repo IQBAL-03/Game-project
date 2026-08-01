@@ -2,6 +2,11 @@ extends Node
 
 var chests_opened: Array[String] = []
 var predators_killed: Array[String] = []
+var level_stars: Dictionary = {}
+
+func _ready() -> void:
+	# Selalu reset data bintang setiap kali game/code di-run (tahap pengembangan)
+	clear_all_saved_data()
 
 func chest_opened(chest_id: String) -> void:
 	if not chests_opened.has(chest_id):
@@ -32,6 +37,28 @@ func calculate_stars(expected_chests: int, expected_predators: int) -> int:
 		return 2
 	else:
 		return 1
+
+func set_level_stars(level_num: int, stars: int) -> void:
+	var current = level_stars.get(level_num, 0)
+	if stars > current:
+		level_stars[level_num] = stars
+		save_level_data()
+
+func get_level_stars(level_num: int) -> int:
+	return level_stars.get(level_num, 0)
+
+func save_level_data() -> void:
+	var config = ConfigFile.new()
+	for key in level_stars:
+		config.set_value("stars", str(key), level_stars[key])
+	config.save("user://level_stars.cfg")
+
+func clear_all_saved_data() -> void:
+	level_stars.clear()
+	chests_opened.clear()
+	predators_killed.clear()
+	if FileAccess.file_exists("user://level_stars.cfg"):
+		DirAccess.remove_absolute("user://level_stars.cfg")
 
 func reset() -> void:
 	chests_opened.clear()

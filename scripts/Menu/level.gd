@@ -8,6 +8,8 @@ func _ready():
 	texture_rect.scale = Vector2(scale_factor, scale_factor)
 	texture_rect.position = (screen_size - (tr_size * scale_factor)) / 2.0
 	
+	_update_stars()
+
 	if has_node("TextureRect/open"):
 		$TextureRect/open.hide()
 		$TextureRect/open.disabled = true
@@ -47,6 +49,35 @@ func _ready():
 		for conn in x_btn.pressed.get_connections():
 			x_btn.pressed.disconnect(conn.callable)
 		x_btn.pressed.connect(_on_quit_pressed)
+
+func _update_stars() -> void:
+	var stars = LevelTracker.get_level_stars(1)
+	
+	var s1 = get_node_or_null("TextureRect/stars_1")
+	var s2 = get_node_or_null("TextureRect/stars_2")
+	var s3 = get_node_or_null("TextureRect/stars_3")
+	
+	var es1 = get_node_or_null("TextureRect/empty_stars_1")
+	var es2 = get_node_or_null("TextureRect/empty_stars_2")
+	var es3 = get_node_or_null("TextureRect/empty_stars_3")
+	
+	if stars == 0:
+		# Hide all stars if level has not been completed yet
+		if s1: s1.visible = false
+		if s2: s2.visible = false
+		if s3: s3.visible = false
+		if es1: es1.visible = false
+		if es2: es2.visible = false
+		if es3: es3.visible = false
+	else:
+		if s1: s1.visible = (stars >= 1)
+		if es1: es1.visible = (stars < 1)
+		
+		if s2: s2.visible = (stars >= 2)
+		if es2: es2.visible = (stars < 2)
+		
+		if s3: s3.visible = (stars >= 3)
+		if es3: es3.visible = (stars < 3)
 
 func _on_level_1_pressed():
 	if has_node("TextureRect/level_1"):

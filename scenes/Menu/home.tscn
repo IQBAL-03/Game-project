@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dxfb464g2lkbb" path="res://map/title.png" id="7_lxfmp"]
 [ext_resource type="PackedScene" path="res://scenes/Player/player_menu.tscn" id="7_xk4pu"]
 [ext_resource type="Texture2D" uid="uid://ddksoxp4yddjx" path="res://map/button.png" id="9_lxfmp"]
+[ext_resource type="AudioStream" uid="uid://cta2q7vmvrxf6" path="res://Backsound/Home/dziiten-adventures-loop-music-226836.mp3" id="12_1g8gw"]
+[ext_resource type="Script" path="res://scripts/UI/settings.gd" id="13_settings"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qaayy"]
 texture = ExtResource("1_8krf6")
@@ -16059,6 +16061,7 @@ offset_bottom = 430.0
 texture_normal = SubResource("AtlasTexture_871q6")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("13_settings")
 
 [node name="quit" type="TextureButton" parent="Home2D" unique_id=325663282]
 offset_left = 556.6667
@@ -16069,3 +16072,10 @@ texture_normal = SubResource("AtlasTexture_073uw")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("5_qaayy")
+
+[node name="BgMusic" type="AudioStreamPlayer" parent="." unique_id=720281673]
+process_mode = 3
+stream = ExtResource("12_1g8gw")
+volume_db = 3.662
+autoplay = true
+parameters/looping = true

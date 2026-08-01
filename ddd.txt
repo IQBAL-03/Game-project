@@ -1,0 +1,9 @@
+Bang  ubah untuk Music_Bar_Active_1 sampai Music_Bar_Active_15 itu pakai region pada gambar .
+
+Untuk Audio_Bar_Active_1 sampai Audio_Bar_Active_15 pakai region pada gambar.
+
+Dan atur agar ukuran dan posisi sama seperti bagian Emptynya.
+
+Posisi Music_Bar_Active_1 sampai Music_Bar_Active_15 di Music_Bar_Empty_1 sampai Music_Bar_Empty_15,
+
+dan  Audio_Bar_Active_1 sampai Audio_Bar_Active_15 posisinya di Audio_Bar_Empty_1 sampai Audio_Bar_Empty_15

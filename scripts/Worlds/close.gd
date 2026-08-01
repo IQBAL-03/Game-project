@@ -14,6 +14,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _change_to_stars_scene() -> void:
 	var stars = LevelTracker.calculate_stars(expected_chests, expected_predators)
+	LevelTracker.set_level_stars(1, stars)
 	
 	var scene_path = ""
 	if stars == 3:
