@@ -1,6 +1,13 @@
 extends Control
 
 func _ready():
+	# Load dan putar musik home di runtime
+	var home_music = load("res://Backsound/Home/Home-and-Level.mp3")
+	if home_music:
+		MusicManager.play_music(home_music, true)
+	else:
+		push_error("Failed to load Home-and-Level.mp3")
+	
 	var texture_rect = $TextureRect
 	var screen_size = get_viewport_rect().size
 	var tr_size = texture_rect.size

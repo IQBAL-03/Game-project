@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://dpjcxcc3fqbcg"]
 
+[ext_resource type="Script" path="res://scripts/Worlds/dunia_1.gd" id="1_dunia_script"]
 [ext_resource type="Texture2D" uid="uid://clg3n02unhrcw" path="res://map/Map/PNG/Background/1920x1080/├╖2/Sky_1920x1080├╖2.png" id="1_68rvi"]
 [ext_resource type="Texture2D" uid="uid://c78jwc507t4sn" path="res://map/Map/PNG/Background/1920x1080/├╖2/Full_bg_1920x1080├╖2.png" id="2_icn3x"]
 [ext_resource type="Texture2D" uid="uid://dm48x1j203w4s" path="res://map/Map/PNG/Background/1920x1080/├╖2/Clouds_1920x1080├╖2.png" id="3_6j8o4"]
@@ -8512,6 +8513,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_1km24")
 
 [node name="Dunia_1" type="Node2D" unique_id=579968787]
+script = ExtResource("1_dunia_script")
 
 [node name="Parallax2D_latar" type="Parallax2D" parent="." unique_id=1614489454]
 
