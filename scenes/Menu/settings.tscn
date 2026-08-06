@@ -1,0 +1,1052 @@
+[gd_scene format=3 uid="uid://cxbtlrrol5qyd"]
+
+[ext_resource type="Texture2D" uid="uid://df8mp2yao7vet" path="res://User Interface/PNG/Settings.png" id="1_sogl8"]
+[ext_resource type="Script" uid="uid://cff518r5ronxc" path="res://scripts/UI/settings_menu.gd" id="2_settings_menu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ph7n"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(119, 0, 98, 149)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3850"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(317, 2, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu4f0"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(48, 227, 13, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k12w"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(112, 227, 13, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sogl8"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmuj3"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dd6v"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yen8a"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_caijd"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcqvs"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y61c1"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkpta"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v3ek"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcpfh"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1isi"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lrrc"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4cy7"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_solbw"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlole"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqwm4"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(48, 242, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74y4d"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(112, 242, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt0fm"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(240, 195, 11, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4cco"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(176, 195, 11, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afsxd"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(240, 211, 11, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nmd5"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(176, 211, 11, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7go1g"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(148, 162, 39, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnhew"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(148, 178, 39, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3ysr"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcx22"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kphso"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8jyl"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swo2t"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkrfv"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drofm"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nicl5"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xey5"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t583"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clmbn"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_578is"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3rdq"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbawp"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wm75"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(193, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nddk"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(28, 27, 41, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_audio_act_1"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_audio_act_2"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_audio_act_3"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_audio_act_4"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_audio_act_5"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_audio_act_6"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_audio_act_7"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_audio_act_8"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_audio_act_9"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_audio_act_10"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_audio_act_11"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_audio_act_12"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_audio_act_13"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_audio_act_14"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_audio_act_15"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_music_act_1"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_music_act_2"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_music_act_3"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_music_act_4"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_music_act_5"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_music_act_6"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_music_act_7"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_music_act_8"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_music_act_9"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_music_act_10"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_music_act_11"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_music_act_12"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_music_act_13"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_music_act_14"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_music_act_15"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(209, 243, 3, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xn8rk"]
+atlas = ExtResource("1_sogl8")
+region = Rect2(172, 124, 8, 9)
+
+[node name="Settings" type="CanvasLayer" unique_id=1347873637]
+layer = 100
+script = ExtResource("2_settings_menu")
+
+[node name="DarkOverlay" type="ColorRect" parent="." unique_id=826662380]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=595947085]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.5
+offset_top = -456.0
+offset_right = 294.5
+offset_bottom = 456.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_5ph7n")
+
+[node name="x" type="TextureButton" parent="TextureRect" unique_id=1186436489]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 12.0
+offset_right = 571.0
+offset_bottom = 67.0
+texture_normal = SubResource("AtlasTexture_e3850")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="AudioLogoEmpty" type="TextureButton" parent="TextureRect" unique_id=1715645487]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 116.0
+offset_right = 134.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_qu4f0")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="AudioLogo" type="TextureButton" parent="TextureRect" unique_id=1426936477]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 116.0
+offset_right = 134.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_5k12w")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Empty_1" type="TextureButton" parent="TextureRect" unique_id=602071835]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 116.0
+offset_right = 199.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_sogl8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Empty_2" type="TextureButton" parent="TextureRect" unique_id=1853055228]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 116.0
+offset_right = 223.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_kmuj3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Empty_3" type="TextureButton" parent="TextureRect" unique_id=563530397]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 116.0
+offset_right = 247.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_5dd6v")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Empty_4" type="TextureButton" parent="TextureRect" unique_id=189522953]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 116.0
+offset_right = 271.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_yen8a")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Empty_5" type="TextureButton" parent="TextureRect" unique_id=623929628]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 116.0
+offset_right = 295.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_caijd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Empty_6" type="TextureButton" parent="TextureRect" unique_id=1440641813]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 116.0
+offset_right = 319.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_xcqvs")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Empty_7" type="TextureButton" parent="TextureRect" unique_id=1392296276]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 116.0
+offset_right = 343.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_y61c1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Empty_8" type="TextureButton" parent="TextureRect" unique_id=462773592]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 116.0
+offset_right = 367.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_qkpta")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Empty_9" type="TextureButton" parent="TextureRect" unique_id=1151588069]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 116.0
+offset_right = 391.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_0v3ek")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Empty_10" type="TextureButton" parent="TextureRect" unique_id=724727197]
+layout_mode = 0
+offset_left = 397.0
+offset_top = 116.0
+offset_right = 415.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_hcpfh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Empty_11" type="TextureButton" parent="TextureRect" unique_id=638780694]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 116.0
+offset_right = 439.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_h1isi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Empty_12" type="TextureButton" parent="TextureRect" unique_id=1313981254]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 116.0
+offset_right = 463.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_3lrrc")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Empty_13" type="TextureButton" parent="TextureRect" unique_id=302722728]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 116.0
+offset_right = 487.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_j4cy7")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Empty_14" type="TextureButton" parent="TextureRect" unique_id=916068076]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 116.0
+offset_right = 511.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_solbw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Empty_15" type="TextureButton" parent="TextureRect" unique_id=164410311]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 116.0
+offset_right = 535.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_hlole")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MusicIconEmpty" type="TextureButton" parent="TextureRect" unique_id=1658029273]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 208.0
+offset_right = 132.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_aqwm4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MusicIcon" type="TextureButton" parent="TextureRect" unique_id=3230276]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 208.0
+offset_right = 133.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_74y4d")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="FullScreenEmpty" type="TextureButton" parent="TextureRect" unique_id=1653342615]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 312.0
+offset_right = 120.0
+offset_bottom = 386.0
+texture_normal = SubResource("AtlasTexture_kt0fm")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="FullScreen" type="TextureButton" parent="TextureRect" unique_id=1265339444]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 312.0
+offset_right = 120.0
+offset_bottom = 386.0
+texture_normal = SubResource("AtlasTexture_e4cco")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="WindowEmpty" type="TextureButton" parent="TextureRect" unique_id=1381388287]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 410.0
+offset_right = 120.0
+offset_bottom = 484.0
+texture_normal = SubResource("AtlasTexture_afsxd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Window" type="TextureButton" parent="TextureRect" unique_id=1962486713]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 410.0
+offset_right = 120.0
+offset_bottom = 484.0
+texture_normal = SubResource("AtlasTexture_1nmd5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Save" type="TextureButton" parent="TextureRect" unique_id=178894923]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 698.0
+offset_right = 409.0
+offset_bottom = 777.0
+texture_normal = SubResource("AtlasTexture_7go1g")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Decline" type="TextureButton" parent="TextureRect" unique_id=967033353]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 796.0
+offset_right = 409.0
+offset_bottom = 875.0
+texture_normal = SubResource("AtlasTexture_wnhew")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Empty_1" type="TextureButton" parent="TextureRect" unique_id=24216838]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 214.0
+offset_right = 199.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_g3ysr")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Empty_2" type="TextureButton" parent="TextureRect" unique_id=245714117]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 214.0
+offset_right = 223.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_qcx22")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Empty_3" type="TextureButton" parent="TextureRect" unique_id=122655728]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 214.0
+offset_right = 247.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_kphso")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Empty_4" type="TextureButton" parent="TextureRect" unique_id=1178951789]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 214.0
+offset_right = 271.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_r8jyl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Empty_5" type="TextureButton" parent="TextureRect" unique_id=327226626]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 214.0
+offset_right = 295.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_swo2t")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Empty_6" type="TextureButton" parent="TextureRect" unique_id=2077151585]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 214.0
+offset_right = 319.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_qkrfv")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Empty_7" type="TextureButton" parent="TextureRect" unique_id=2142589874]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 214.0
+offset_right = 343.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_drofm")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Empty_8" type="TextureButton" parent="TextureRect" unique_id=447312063]
+layout_mode = 0
+offset_left = 348.0
+offset_top = 214.0
+offset_right = 367.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_nicl5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Empty_9" type="TextureButton" parent="TextureRect" unique_id=1666252647]
+layout_mode = 0
+offset_left = 372.0
+offset_top = 214.0
+offset_right = 391.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_6xey5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Empty_10" type="TextureButton" parent="TextureRect" unique_id=875785182]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 214.0
+offset_right = 415.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_1t583")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Empty_11" type="TextureButton" parent="TextureRect" unique_id=1596232381]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 214.0
+offset_right = 439.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_clmbn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Empty_12" type="TextureButton" parent="TextureRect" unique_id=1085466105]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 214.0
+offset_right = 463.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_578is")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Empty_13" type="TextureButton" parent="TextureRect" unique_id=1872085162]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 214.0
+offset_right = 487.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_h3rdq")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Empty_14" type="TextureButton" parent="TextureRect" unique_id=749566911]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 214.0
+offset_right = 511.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_bbawp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Empty_15" type="TextureButton" parent="TextureRect" unique_id=1739743227]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 214.0
+offset_right = 535.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_2wm75")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=1699865922]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 493.0
+offset_right = 513.0
+offset_bottom = 664.0
+texture = SubResource("AtlasTexture_3nddk")
+
+[node name="Audio_Bar_Active_1" type="TextureButton" parent="TextureRect" unique_id=2000000001]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 116.0
+offset_right = 199.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_audio_act_1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Active_2" type="TextureButton" parent="TextureRect" unique_id=2000000002]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 116.0
+offset_right = 223.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_audio_act_2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Active_3" type="TextureButton" parent="TextureRect" unique_id=2000000003]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 116.0
+offset_right = 247.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_audio_act_3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Active_4" type="TextureButton" parent="TextureRect" unique_id=2000000004]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 116.0
+offset_right = 271.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_audio_act_4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Active_5" type="TextureButton" parent="TextureRect" unique_id=2000000005]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 116.0
+offset_right = 295.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_audio_act_5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Active_6" type="TextureButton" parent="TextureRect" unique_id=2000000006]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 116.0
+offset_right = 319.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_audio_act_6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Active_7" type="TextureButton" parent="TextureRect" unique_id=2000000007]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 116.0
+offset_right = 343.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_audio_act_7")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Active_8" type="TextureButton" parent="TextureRect" unique_id=2000000008]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 116.0
+offset_right = 367.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_audio_act_8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Active_9" type="TextureButton" parent="TextureRect" unique_id=2000000009]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 116.0
+offset_right = 391.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_audio_act_9")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Active_10" type="TextureButton" parent="TextureRect" unique_id=2000000010]
+layout_mode = 0
+offset_left = 397.0
+offset_top = 116.0
+offset_right = 415.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_audio_act_10")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Active_11" type="TextureButton" parent="TextureRect" unique_id=2000000011]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 116.0
+offset_right = 439.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_audio_act_11")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Active_12" type="TextureButton" parent="TextureRect" unique_id=2000000012]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 116.0
+offset_right = 463.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_audio_act_12")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Active_13" type="TextureButton" parent="TextureRect" unique_id=2000000013]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 116.0
+offset_right = 487.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_audio_act_13")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Active_14" type="TextureButton" parent="TextureRect" unique_id=2000000014]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 116.0
+offset_right = 511.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_audio_act_14")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Audio_Bar_Active_15" type="TextureButton" parent="TextureRect" unique_id=2000000015]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 116.0
+offset_right = 535.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_audio_act_15")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Active_1" type="TextureButton" parent="TextureRect" unique_id=2000000016]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 214.0
+offset_right = 199.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_music_act_1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Active_2" type="TextureButton" parent="TextureRect" unique_id=2000000017]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 214.0
+offset_right = 223.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_music_act_2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Active_3" type="TextureButton" parent="TextureRect" unique_id=2000000018]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 214.0
+offset_right = 247.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_music_act_3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Active_4" type="TextureButton" parent="TextureRect" unique_id=2000000019]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 214.0
+offset_right = 271.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_music_act_4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Active_5" type="TextureButton" parent="TextureRect" unique_id=2000000020]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 214.0
+offset_right = 295.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_music_act_5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Active_6" type="TextureButton" parent="TextureRect" unique_id=2000000021]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 214.0
+offset_right = 319.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_music_act_6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Active_7" type="TextureButton" parent="TextureRect" unique_id=2000000022]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 214.0
+offset_right = 343.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_music_act_7")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Active_8" type="TextureButton" parent="TextureRect" unique_id=2000000023]
+layout_mode = 0
+offset_left = 348.0
+offset_top = 214.0
+offset_right = 367.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_music_act_8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Active_9" type="TextureButton" parent="TextureRect" unique_id=2000000024]
+layout_mode = 0
+offset_left = 372.0
+offset_top = 214.0
+offset_right = 391.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_music_act_9")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Active_10" type="TextureButton" parent="TextureRect" unique_id=2000000025]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 214.0
+offset_right = 415.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_music_act_10")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Active_11" type="TextureButton" parent="TextureRect" unique_id=2000000026]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 214.0
+offset_right = 439.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_music_act_11")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Active_12" type="TextureButton" parent="TextureRect" unique_id=2000000027]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 214.0
+offset_right = 463.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_music_act_12")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Active_13" type="TextureButton" parent="TextureRect" unique_id=2000000028]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 214.0
+offset_right = 487.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_music_act_13")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Active_14" type="TextureButton" parent="TextureRect" unique_id=2000000029]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 214.0
+offset_right = 511.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_music_act_14")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Music_Bar_Active_15" type="TextureButton" parent="TextureRect" unique_id=2000000030]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 214.0
+offset_right = 535.0
+offset_bottom = 282.0
+texture_normal = SubResource("AtlasTexture_music_act_15")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect" unique_id=1412857865]
+layout_mode = 0
+offset_left = 155.5
+offset_top = 116.0
+offset_right = 175.5
+offset_bottom = 282.0
+texture = SubResource("AtlasTexture_xn8rk")

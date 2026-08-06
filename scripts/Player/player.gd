@@ -75,6 +75,11 @@ var original_hurt_x = 0.0
 var original_badan_x = 0.0
 
 @onready var hurt_box = get_node_or_null("HurtBox")
+@onready var sound_jalan: AudioStreamPlayer2D = get_node_or_null("jalan")
+@onready var sound_lari: AudioStreamPlayer2D = get_node_or_null("lari")
+@onready var sound_jump: AudioStreamPlayer2D = get_node_or_null("jump")
+@onready var sound_jump_landing: AudioStreamPlayer2D = get_node_or_null("jump_landing")
+var was_on_floor: bool = true
 
 func _ready():
 	spawn_position = global_position
@@ -126,10 +131,12 @@ func _ready():
 
 func _physics_process(_delta):
 	if is_teleporting:
+		update_footstep_sounds(0)
 		velocity = Vector2.ZERO
 		return
 
 	if is_dead:
+		update_footstep_sounds(0)
 
 		velocity.x = 0
 
@@ -158,6 +165,7 @@ func _physics_process(_delta):
 	check_climbable_tile()
 
 	if is_dead:
+		update_footstep_sounds(0)
 
 		return
 
@@ -176,6 +184,7 @@ func _physics_process(_delta):
 
 
 	if is_defending:
+		update_footstep_sounds(0)
 
 		velocity.x = 0
 
@@ -187,6 +196,7 @@ func _physics_process(_delta):
 
 
 	if is_climbing:
+		update_footstep_sounds(0)
 
 		handle_climbing(_delta)
 
@@ -216,12 +226,16 @@ func _physics_process(_delta):
 		if is_on_floor():
 
 			velocity.y = kekuatan_loncat
+			if sound_jump:
+				sound_jump.play()
 
 		elif bisa_double_jump:
 
 			velocity.y = kekuatan_loncat
 
 			bisa_double_jump = false
+			if sound_jump:
+				sound_jump.play()
 
 
 	if Input.is_action_just_pressed("ui_up") and can_climb and not sedang_serang:
@@ -291,12 +305,40 @@ func _physics_process(_delta):
 
 	update_animations(arah)
 
+	update_footstep_sounds(arah)
+
 	move_and_slide()
+
+	var currently_on_floor = is_on_floor()
+	if currently_on_floor and not was_on_floor and not is_dead and not is_teleporting:
+		if sound_jump_landing:
+			sound_jump_landing.play()
+	was_on_floor = currently_on_floor
 
 	check_duri_tile()
 
 	if is_on_floor() and not is_dead and not is_teleporting and not is_on_spikes():
 		last_safe_position = global_position
+
+
+func update_footstep_sounds(arah: float) -> void:
+	if is_dead or is_teleporting or is_climbing or is_defending or sedang_serang or not is_on_floor() or arah == 0:
+		if sound_jalan and sound_jalan.playing:
+			sound_jalan.stop()
+		if sound_lari and sound_lari.playing:
+			sound_lari.stop()
+		return
+
+	if sedang_lari:
+		if sound_jalan and sound_jalan.playing:
+			sound_jalan.stop()
+		if sound_lari and not sound_lari.playing:
+			sound_lari.play()
+	else:
+		if sound_lari and sound_lari.playing:
+			sound_lari.stop()
+		if sound_jalan and not sound_jalan.playing:
+			sound_jalan.play()
 
 
 func serang():
@@ -533,6 +575,8 @@ func handle_climbing(_delta: float) -> void:
 		stop_climbing()
 
 		velocity.y = kekuatan_loncat
+		if sound_jump:
+			sound_jump.play()
 
 		return
 

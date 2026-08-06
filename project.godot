@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+MusicManager="*res://scripts/Core/music_manager.gd"
 LevelTracker="*res://scripts/Core/level_tracker.gd"
 ButtonHover="*res://scripts/UI/button_hover.gd"
 

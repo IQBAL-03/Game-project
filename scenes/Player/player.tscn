@@ -13,6 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://bav0jd50w6kw8" path="res://knight/Knight_1/pick up.png" id="11_4ni07"]
 [ext_resource type="Texture2D" uid="uid://ckf6c3pbobjlp" path="res://knight/Knight_1/Protect.png" id="12_l71n6"]
 [ext_resource type="Script" uid="uid://cgec2f5bi56h5" path="res://scripts/Core/health_component.gd" id="13_ke2ow"]
+[ext_resource type="AudioStream" uid="uid://b45ujqg67sw1u" path="res://Backsound/In-Game/jalan.mp3" id="14_wyey8"]
+[ext_resource type="AudioStream" uid="uid://bu1mooqbsmy2h" path="res://Backsound/In-Game/lari.mp3" id="15_1bwnf"]
+[ext_resource type="AudioStream" uid="uid://cvb62du4hy2jy" path="res://Backsound/In-Game/jump.mp3" id="16_jump"]
+[ext_resource type="AudioStream" uid="uid://fbudurtkxo35" path="res://Backsound/In-Game/jump_landing.mp3" id="17_landing"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mf77c"]
 atlas = ExtResource("3_oprun")
@@ -515,3 +519,17 @@ debug_color = Color(0.7864859, 0.107906334, 0.9999998, 0.41960785)
 
 [node name="HealthComponent" type="Node" parent="player" unique_id=884309319]
 script = ExtResource("13_ke2ow")
+
+[node name="jalan" type="AudioStreamPlayer2D" parent="player" unique_id=525097028]
+stream = ExtResource("14_wyey8")
+volume_db = -16.687
+
+[node name="lari" type="AudioStreamPlayer2D" parent="player" unique_id=329109243]
+stream = ExtResource("15_1bwnf")
+
+[node name="jump" type="AudioStreamPlayer2D" parent="player" unique_id=232823759]
+stream = ExtResource("16_jump")
+
+[node name="jump_landing" type="AudioStreamPlayer2D" parent="player" unique_id=621444379]
+stream = ExtResource("17_landing")
+volume_db = 10.477
