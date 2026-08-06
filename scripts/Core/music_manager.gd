@@ -5,13 +5,26 @@ var music_player: AudioStreamPlayer = null
 var current_music: AudioStream = null
 
 func _ready():
+	ensure_audio_buses()
 	# Buat AudioStreamPlayer
 	music_player = AudioStreamPlayer.new()
-	music_player.bus = "Master"
+	music_player.bus = "Music"
 	add_child(music_player)
 	
 	# Set process mode agar tidak terhenti saat game pause
 	process_mode = Node.PROCESS_MODE_ALWAYS
+
+func ensure_audio_buses() -> void:
+	if AudioServer.get_bus_index("Music") == -1:
+		var bus_idx = AudioServer.bus_count
+		AudioServer.add_bus(bus_idx)
+		AudioServer.set_bus_name(bus_idx, "Music")
+		AudioServer.set_bus_send(bus_idx, "Master")
+	if AudioServer.get_bus_index("SFX") == -1:
+		var bus_idx = AudioServer.bus_count
+		AudioServer.add_bus(bus_idx)
+		AudioServer.set_bus_name(bus_idx, "SFX")
+		AudioServer.set_bus_send(bus_idx, "Master")
 
 func play_music(music: AudioStream, _loop: bool = true):
 	"""

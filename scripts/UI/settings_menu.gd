@@ -21,6 +21,9 @@ func _ready() -> void:
 	layer = 100
 	get_tree().paused = true
 	
+	if MusicManager.has_method("ensure_audio_buses"):
+		MusicManager.ensure_audio_buses()
+	
 	# Make sure music continues playing when game is paused
 	_ensure_bg_music_process_mode()
 	
@@ -148,14 +151,15 @@ func set_fullscreen(enable: bool) -> void:
 	_update_ui()
 
 func _apply_audio_volume() -> void:
-	var bus_idx = AudioServer.get_bus_index("Master")
-	if is_audio_muted or audio_level == 0:
-		AudioServer.set_bus_mute(bus_idx, true)
-	else:
-		AudioServer.set_bus_mute(bus_idx, false)
-		var ratio = float(audio_level) / 15.0
-		var db = linear_to_db(ratio)
-		AudioServer.set_bus_volume_db(bus_idx, db)
+	var sfx_bus_idx = AudioServer.get_bus_index("SFX")
+	if sfx_bus_idx != -1:
+		if is_audio_muted or audio_level == 0:
+			AudioServer.set_bus_mute(sfx_bus_idx, true)
+		else:
+			AudioServer.set_bus_mute(sfx_bus_idx, false)
+			var ratio = float(audio_level) / 15.0
+			var db = linear_to_db(ratio)
+			AudioServer.set_bus_volume_db(sfx_bus_idx, db)
 
 func _apply_music_volume() -> void:
 	var music_bus_idx = AudioServer.get_bus_index("Music")
@@ -168,6 +172,12 @@ func _apply_music_volume() -> void:
 			var db = linear_to_db(ratio)
 			AudioServer.set_bus_volume_db(music_bus_idx, db)
 	
+	if MusicManager:
+		if is_music_muted or music_level == 0:
+			MusicManager.set_volume_db(-80.0)
+		else:
+			MusicManager.set_volume_db(linear_to_db(float(music_level) / 15.0))
+
 	var bg_music = get_tree().root.find_child("BgMusic", true, false)
 	if bg_music and bg_music is AudioStreamPlayer:
 		bg_music.process_mode = Node.PROCESS_MODE_ALWAYS
