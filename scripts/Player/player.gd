@@ -77,6 +77,9 @@ var original_badan_x = 0.0
 @onready var hurt_box = get_node_or_null("HurtBox")
 @onready var sound_jalan: AudioStreamPlayer2D = get_node_or_null("jalan")
 @onready var sound_lari: AudioStreamPlayer2D = get_node_or_null("lari")
+@onready var sound_jump: AudioStreamPlayer2D = get_node_or_null("jump")
+@onready var sound_jump_landing: AudioStreamPlayer2D = get_node_or_null("jump_landing")
+var was_on_floor: bool = true
 
 func _ready():
 	spawn_position = global_position
@@ -223,12 +226,16 @@ func _physics_process(_delta):
 		if is_on_floor():
 
 			velocity.y = kekuatan_loncat
+			if sound_jump:
+				sound_jump.play()
 
 		elif bisa_double_jump:
 
 			velocity.y = kekuatan_loncat
 
 			bisa_double_jump = false
+			if sound_jump:
+				sound_jump.play()
 
 
 	if Input.is_action_just_pressed("ui_up") and can_climb and not sedang_serang:
@@ -301,6 +308,12 @@ func _physics_process(_delta):
 	update_footstep_sounds(arah)
 
 	move_and_slide()
+
+	var currently_on_floor = is_on_floor()
+	if currently_on_floor and not was_on_floor and not is_dead and not is_teleporting:
+		if sound_jump_landing:
+			sound_jump_landing.play()
+	was_on_floor = currently_on_floor
 
 	check_duri_tile()
 
@@ -562,6 +575,8 @@ func handle_climbing(_delta: float) -> void:
 		stop_climbing()
 
 		velocity.y = kekuatan_loncat
+		if sound_jump:
+			sound_jump.play()
 
 		return
 
