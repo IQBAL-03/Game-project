@@ -13,6 +13,42 @@ func _ready():
 	
 	# Set process mode agar tidak terhenti saat game pause
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	# Terapkan pengaturan yang tersimpan agar volume berlaku sejak awal game
+	apply_saved_settings()
+
+func apply_saved_settings() -> void:
+	var config = ConfigFile.new()
+	var err = config.load("user://settings.cfg")
+	
+	var audio_level: int = 15
+	var music_level: int = 15
+	var is_audio_muted: bool = false
+	var is_music_muted: bool = false
+	
+	if err == OK:
+		audio_level = config.get_value("audio", "audio_level", 15)
+		music_level = config.get_value("audio", "music_level", 15)
+		is_audio_muted = config.get_value("audio", "is_audio_muted", false)
+		is_music_muted = config.get_value("audio", "is_music_muted", false)
+	
+	# Terapkan SFX bus
+	var sfx_idx = AudioServer.get_bus_index("SFX")
+	if sfx_idx != -1:
+		if is_audio_muted or audio_level == 0:
+			AudioServer.set_bus_mute(sfx_idx, true)
+		else:
+			AudioServer.set_bus_mute(sfx_idx, false)
+			AudioServer.set_bus_volume_db(sfx_idx, linear_to_db(float(audio_level) / 15.0))
+	
+	# Terapkan Music bus
+	var music_idx = AudioServer.get_bus_index("Music")
+	if music_idx != -1:
+		if is_music_muted or music_level == 0:
+			AudioServer.set_bus_mute(music_idx, true)
+		else:
+			AudioServer.set_bus_mute(music_idx, false)
+			AudioServer.set_bus_volume_db(music_idx, linear_to_db(float(music_level) / 15.0))
 
 func ensure_audio_buses() -> void:
 	if AudioServer.get_bus_index("Music") == -1:

@@ -10,6 +10,13 @@ func _ready() -> void:
 	# Sembunyikan player setelah process mode diset
 	_hide_player()
 	
+	# Mainkan suara menang
+	var win_snd = get_node_or_null("Control/TextureRect/win")
+	if not win_snd:
+		win_snd = find_child("win", true, false)
+	if win_snd:
+		win_snd.play()
+	
 	ButtonHover.apply_to_tree(self)
 	
 	var control = get_node_or_null("Control")

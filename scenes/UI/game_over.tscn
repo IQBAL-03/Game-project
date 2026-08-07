@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cqij8dt2nxws1" path="res://scripts/UI/game_over.gd" id="1_gameover_script"]
 [ext_resource type="Texture2D" uid="uid://xhec5cylbvoo" path="res://User Interface/PNG/Win_loose.png" id="1_xeevv"]
-[ext_resource type="Script" path="res://scripts/UI/restart.gd" id="2_wqhvx"]
+[ext_resource type="Script" uid="uid://dsf4bsnnscp2d" path="res://scripts/UI/restart.gd" id="2_wqhvx"]
 [ext_resource type="Texture2D" uid="uid://d0vddgtgmwsou" path="res://User Interface/PNG/Buttons.png" id="5_v3hpu"]
-[ext_resource type="Script" path="res://scripts/UI/quit.gd" id="6_irg28"]
+[ext_resource type="Script" uid="uid://bfr345ltycxdm" path="res://scripts/UI/quit.gd" id="6_irg28"]
+[ext_resource type="AudioStream" uid="uid://cd5mhjxoqneg0" path="res://Backsound/In-Game/game-over.mp3" id="6_r5ffl"]
+[ext_resource type="AudioStream" uid="uid://c3pr0g37lnik3" path="res://Backsound/button-click.mp3" id="7_lrum0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqhvx"]
 atlas = ExtResource("1_xeevv")
@@ -100,3 +102,10 @@ texture_normal = SubResource("AtlasTexture_2jtsn")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("6_irg28")
+
+[node name="game-over" type="AudioStreamPlayer2D" parent="TextureRect" unique_id=525417377]
+stream = ExtResource("6_r5ffl")
+volume_db = 10.865
+
+[node name="button" type="AudioStreamPlayer2D" parent="TextureRect" unique_id=529740120]
+stream = ExtResource("7_lrum0")

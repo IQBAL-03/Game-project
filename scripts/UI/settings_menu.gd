@@ -262,9 +262,18 @@ func _on_close_pressed() -> void:
 	_close()
 
 func _close() -> void:
-	get_tree().paused = false
+	var main_menu = get_tree().root.find_child("MainMenu", true, false)
+	if not (main_menu and main_menu.visible):
+		get_tree().paused = false
 	visible = false
 	queue_free()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		_save_settings()
+		_backup_settings()
+		_close()
+		get_viewport().set_input_as_handled()
 
 func _save_settings() -> void:
 	var config = ConfigFile.new()

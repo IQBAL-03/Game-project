@@ -19,11 +19,18 @@ func _apply_fullscreen() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and not event.is_echo():
+		var settings = get_tree().root.find_child("Settings", true, false)
+		if settings and settings.visible:
+			# Jika Settings sedang terbuka, biarkan settings_menu.gd yang menangani ESC (auto-save & tutup settings)
+			return
+		
+		# Jika Settings tidak terbuka, toggle MainMenu (Pause Menu)
 		if visible:
 			_on_close_pressed()
 		else:
 			visible = true
 			get_tree().paused = true
+		get_viewport().set_input_as_handled()
 
 func _on_close_pressed() -> void:
 	visible = false

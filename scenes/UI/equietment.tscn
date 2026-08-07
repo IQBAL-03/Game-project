@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cq2jm4nj08krs" path="res://scripts/UI/item_2.gd" id="4_rsnss"]
 [ext_resource type="Script" uid="uid://djpvalbco0uyr" path="res://scripts/UI/item_3.gd" id="5_mob0t"]
 [ext_resource type="Script" uid="uid://txtdiptg57y3" path="res://scripts/UI/item_4.gd" id="7_b38ex"]
-[ext_resource type="Script" path="res://scripts/UI/x.gd" id="7_x"]
+[ext_resource type="Script" uid="uid://clo47g0xjk6ed" path="res://scripts/UI/x.gd" id="7_x"]
 [ext_resource type="Script" uid="uid://drq54ccexr0yj" path="res://scripts/UI/item_5.gd" id="8_jsssc"]
 [ext_resource type="Script" uid="uid://daar6s2f1sy5l" path="res://scripts/UI/item_6.gd" id="9_djgeo"]
 [ext_resource type="Script" uid="uid://ba81py0bdo5us" path="res://scripts/UI/item_7.gd" id="10_ukhke"]
@@ -21,7 +21,7 @@
 [ext_resource type="Script" uid="uid://bvtwgyf7ajhiv" path="res://scripts/UI/item_16.gd" id="19_hyxlb"]
 [ext_resource type="Script" uid="uid://cw0uayfmn6sy7" path="res://scripts/UI/kiri.gd" id="20_fjwvc"]
 [ext_resource type="Script" uid="uid://dska4lyom2nrd" path="res://scripts/UI/kanan.gd" id="21_hyxlb"]
-[ext_resource type="Script" path="res://scripts/UI/settings.gd" id="22_settings"]
+[ext_resource type="AudioStream" uid="uid://c3pr0g37lnik3" path="res://Backsound/button-click.mp3" id="22_ujofm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n2nmf"]
 atlas = ExtResource("1_ekvgd")
@@ -89,22 +89,6 @@ texture_normal = SubResource("AtlasTexture_t6vae")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("7_x")
-
-[node name="settings" type="TextureButton" parent="TextureRect" unique_id=148037324]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.70
-anchor_top = 0.018
-anchor_right = 0.82
-anchor_bottom = 0.075
-offset_left = 0.0
-offset_top = 5.367998
-offset_right = 0.0
-offset_bottom = 52.699997
-texture_normal = SubResource("AtlasTexture_t6vae")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("22_settings")
 
 [node name="item_1" type="TextureButton" parent="TextureRect" unique_id=712779985]
 layout_mode = 1
@@ -385,3 +369,6 @@ texture_normal = SubResource("AtlasTexture_ukhke")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("20_fjwvc")
+
+[node name="button" type="AudioStreamPlayer2D" parent="TextureRect" unique_id=1987212612]
+stream = ExtResource("22_ujofm")

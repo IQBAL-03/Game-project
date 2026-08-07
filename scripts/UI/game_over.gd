@@ -43,6 +43,9 @@ func try_show_game_over() -> void:
 	visible = true
 	get_tree().paused = true
 	is_game_over_pending = false
+	var snd = get_node_or_null("TextureRect/game-over")
+	if snd:
+		snd.play()
 
 func _input(event: InputEvent) -> void:
 	if visible and event.is_action_pressed("ui_accept"):

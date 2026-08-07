@@ -4,8 +4,9 @@
 [ext_resource type="Script" uid="uid://clo47g0xjk6ed" path="res://scripts/UI/x.gd" id="2_cx7hs"]
 [ext_resource type="Script" uid="uid://dsf4bsnnscp2d" path="res://scripts/UI/restart.gd" id="3_g8v3y"]
 [ext_resource type="Texture2D" uid="uid://cbby286ho3wfi" path="res://User Interface/PNG/Main_menu.png" id="4_m5u5j"]
-[ext_resource type="Script" path="res://scripts/UI/stars.gd" id="5_stars"]
-
+[ext_resource type="Script" uid="uid://cq5ljxsoe5p5s" path="res://scripts/UI/stars.gd" id="5_stars"]
+[ext_resource type="AudioStream" uid="uid://dwbls5dh74vvv" path="res://Backsound/In-Game/winner.mp3" id="6_tlyqv"]
+[ext_resource type="AudioStream" uid="uid://c3pr0g37lnik3" path="res://Backsound/button-click.mp3" id="7_6o8no"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4f5l1"]
 atlas = ExtResource("1_sdfjs")
@@ -27,11 +28,11 @@ region = Rect2(189, 146, 56, 12)
 atlas = ExtResource("1_sdfjs")
 region = Rect2(146, 332, 29, 13)
 
-[node name="1Stars" type="CanvasLayer"]
+[node name="1Stars" type="CanvasLayer" unique_id=820537860]
 layer = 100
 script = ExtResource("5_stars")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1493556696]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -40,7 +41,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DarkOverlay" type="ColorRect" parent="Control"]
+[node name="DarkOverlay" type="ColorRect" parent="Control" unique_id=251435032]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -98,3 +99,11 @@ offset_bottom = 473.0
 texture_normal = SubResource("AtlasTexture_61vtg")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="win" type="AudioStreamPlayer2D" parent="Control/TextureRect" unique_id=787550487]
+stream = ExtResource("6_tlyqv")
+volume_db = 8.149
+bus = &"SFX"
+
+[node name="button" type="AudioStreamPlayer2D" parent="Control/TextureRect" unique_id=1912679321]
+stream = ExtResource("7_6o8no")
