@@ -16,6 +16,9 @@ func _ready():
 	texture_rect.position = (screen_size - (tr_size * scale_factor)) / 2.0
 	
 	_update_stars()
+	
+	if ButtonHover:
+		ButtonHover.apply_to_tree(self)
 
 	if has_node("TextureRect/open"):
 		$TextureRect/open.hide()

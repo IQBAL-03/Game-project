@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://clo47g0xjk6ed" path="res://scripts/UI/x.gd" id="3_3wtdn"]
 [ext_resource type="Script" uid="uid://bfr345ltycxdm" path="res://scripts/UI/quit.gd" id="3_pb2kh"]
 [ext_resource type="Texture2D" uid="uid://xhec5cylbvoo" path="res://User Interface/PNG/Win_loose.png" id="6_4rfaw"]
+[ext_resource type="AudioStream" uid="uid://c3pr0g37lnik3" path="res://Backsound/button-click.mp3" id="7_77crd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4rfaw"]
 texture = ExtResource("2_g1yj1")
@@ -2488,3 +2489,6 @@ offset_top = 487.0
 offset_right = 751.0
 offset_bottom = 585.0
 texture = SubResource("AtlasTexture_j2fmo")
+
+[node name="button" type="AudioStreamPlayer2D" parent="TextureRect" unique_id=1312360001]
+stream = ExtResource("7_77crd")

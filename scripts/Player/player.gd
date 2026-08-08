@@ -764,6 +764,9 @@ func collect_coin(amount: int = 1) -> void:
 	var hud_nodes = get_tree().get_nodes_in_group("hud")
 	if hud_nodes.size() > 0:
 		hud_nodes[0].update_coins(coins)
+	var sound_coin: AudioStreamPlayer2D = get_node_or_null("coin")
+	if sound_coin:
+		sound_coin.play()
 
 func interact_with_chest() -> void:
 	if inventory_keys.size() == 0:

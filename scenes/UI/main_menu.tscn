@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://br8srmubgwnr7" path="res://scripts/UI/settings.gd" id="5_5dd4i"]
 [ext_resource type="Script" uid="uid://bfr345ltycxdm" path="res://scripts/UI/quit.gd" id="6_lgwnu"]
 [ext_resource type="Script" uid="uid://bkbu01r2j8gd2" path="res://scripts/UI/main_menu.gd" id="7_mm"]
+[ext_resource type="AudioStream" uid="uid://c3pr0g37lnik3" path="res://Backsound/button-click.mp3" id="9_um6dh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_flqon"]
 atlas = ExtResource("1_rtw2f")
@@ -143,3 +144,6 @@ texture_normal = SubResource("AtlasTexture_5pajh")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("6_lgwnu")
+
+[node name="button" type="AudioStreamPlayer2D" parent="TextureRect" unique_id=1982173905]
+stream = ExtResource("9_um6dh")

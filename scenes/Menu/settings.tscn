@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://df8mp2yao7vet" path="res://User Interface/PNG/Settings.png" id="1_sogl8"]
 [ext_resource type="Script" uid="uid://cff518r5ronxc" path="res://scripts/UI/settings_menu.gd" id="2_settings_menu"]
+[ext_resource type="AudioStream" uid="uid://c3pr0g37lnik3" path="res://Backsound/button-click.mp3" id="3_e3850"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ph7n"]
 atlas = ExtResource("1_sogl8")
@@ -1050,3 +1051,7 @@ offset_top = 116.0
 offset_right = 175.5
 offset_bottom = 282.0
 texture = SubResource("AtlasTexture_xn8rk")
+
+[node name="button" type="AudioStreamPlayer2D" parent="TextureRect" unique_id=604700987]
+stream = ExtResource("3_e3850")
+volume_db = 4.269
