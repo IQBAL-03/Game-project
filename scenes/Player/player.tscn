@@ -18,6 +18,8 @@
 [ext_resource type="AudioStream" uid="uid://cvb62du4hy2jy" path="res://Backsound/In-Game/jump.mp3" id="16_jump"]
 [ext_resource type="AudioStream" uid="uid://fbudurtkxo35" path="res://Backsound/In-Game/jump_landing.mp3" id="17_landing"]
 [ext_resource type="AudioStream" uid="uid://c6tan4hoekoci" path="res://Backsound/In-Game/coin.mp3" id="18_x8khf"]
+[ext_resource type="AudioStream" path="res://Backsound/In-Game/sword.mp3" id="19_sword"]
+[ext_resource type="AudioStream" path="res://Backsound/In-Game/shield.mp3" id="20_shield"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mf77c"]
 atlas = ExtResource("3_oprun")
@@ -542,4 +544,14 @@ bus = &"SFX"
 [node name="coin" type="AudioStreamPlayer2D" parent="player" unique_id=213369290]
 stream = ExtResource("18_x8khf")
 volume_db = 5.432
+bus = &"SFX"
+
+[node name="sword" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("19_sword")
+volume_db = 0.0
+bus = &"SFX"
+
+[node name="shield" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("20_shield")
+volume_db = 0.0
 bus = &"SFX"
