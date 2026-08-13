@@ -30,6 +30,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			visible = true
 			get_tree().paused = true
+			# JANGAN pause background music, biarkan tetap play
 		get_viewport().set_input_as_handled()
 
 func _on_close_pressed() -> void:

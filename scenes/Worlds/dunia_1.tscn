@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dirjo4xydjtw0" path="res://scenes/UI/equietment.tscn" id="32_dxnyl"]
 [ext_resource type="PackedScene" uid="uid://da5id0cs0v0xp" path="res://scenes/UI/main_menu.tscn" id="33_jv5yy"]
 [ext_resource type="PackedScene" uid="uid://2oa8404k5n4e" path="res://scenes/UI/game_over.tscn" id="34_8rats"]
+[ext_resource type="AudioStream" uid="uid://c05ndxwo6woxd" path="res://Backsound/Home/Home-and-Level.mp3" id="35_music"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_56qte"]
 texture = ExtResource("1_68rvi")
@@ -8607,3 +8608,9 @@ visible = false
 
 [node name="GameOver" parent="MenuLayer" unique_id=1234567890 instance=ExtResource("34_8rats")]
 visible = false
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("35_music")
+autoplay = true
+bus = &"Music"

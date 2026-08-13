@@ -16,13 +16,19 @@ func _ready() -> void:
 	call_deferred("update_pagination")
 
 func _input(event):
-	if event is InputEventKey and event.pressed and (event.keycode == KEY_E or event.keycode == KEY_B):
+	if event is InputEventKey and event.pressed and event.keycode == KEY_E:
 		toggle_equipment()
 
 func toggle_equipment():
 	is_visible_equipment = !is_visible_equipment
 	visible = is_visible_equipment
 	get_tree().paused = is_visible_equipment
+	
+	# Play button click sound
+	var button_sound = get_node_or_null("button_click")
+	if button_sound:
+		button_sound.play()
+	
 	if is_visible_equipment:
 		current_page = 0
 		update_pagination()

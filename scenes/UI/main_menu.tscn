@@ -145,5 +145,7 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("6_lgwnu")
 
-[node name="button" type="AudioStreamPlayer2D" parent="TextureRect" unique_id=1982173905]
+[node name="button" type="AudioStreamPlayer" parent="TextureRect" unique_id=1982173905]
+process_mode = 3
 stream = ExtResource("9_um6dh")
+bus = &"SFX"

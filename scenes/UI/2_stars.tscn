@@ -100,10 +100,13 @@ texture_normal = SubResource("AtlasTexture_erwcl")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="win" type="AudioStreamPlayer2D" parent="Control/TextureRect" unique_id=1217228916]
+[node name="win" type="AudioStreamPlayer" parent="Control/TextureRect" unique_id=1217228916]
+process_mode = 3
 stream = ExtResource("6_aygk4")
 volume_db = 8.149
 bus = &"SFX"
 
-[node name="button" type="AudioStreamPlayer2D" parent="Control/TextureRect" unique_id=689431670]
+[node name="button" type="AudioStreamPlayer" parent="Control/TextureRect" unique_id=689431670]
+process_mode = 3
 stream = ExtResource("7_x2ub0")
+bus = &"SFX"

@@ -81,6 +81,7 @@ var original_badan_x = 0.0
 @onready var sound_jump_landing: AudioStreamPlayer2D = get_node_or_null("jump_landing")
 @onready var sound_sword: AudioStreamPlayer2D = get_node_or_null("sword")
 @onready var sound_shield: AudioStreamPlayer2D = get_node_or_null("shield")
+@onready var sound_hit: AudioStreamPlayer2D = get_node_or_null("hit")
 var was_on_floor: bool = true
 
 func _ready():
@@ -172,7 +173,7 @@ func _physics_process(_delta):
 		return
 
 
-	if Input.is_action_pressed("ui_shift"):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 
 		if not is_defending:
 
@@ -708,7 +709,7 @@ func _on_spike_hit() -> void:
 	if is_teleporting or is_dead:
 		return
 
-
+	# Check if player will die from this hit
 	if health_component and health_component.get_current_health() <= 1:
 		if health_component:
 			health_component.take_damage(1, true)
@@ -716,15 +717,31 @@ func _on_spike_hit() -> void:
 
 	is_teleporting = true
 
-
+	# Play hit sound ONCE
+	if sound_hit:
+		sound_hit.play()
+	
+	# Start death animation
 	if sprite.sprite_frames.has_animation("mati"):
 		sprite.play("mati")
 	elif sprite.sprite_frames.has_animation("death"):
 		sprite.play("death")
+	
+	# Start flashing effect at the same time
+	if not is_hit_invulnerable:
+		is_hit_invulnerable = true
+		var flash_tween = create_tween()
+		flash_tween.set_loops(5)  # Flash 5 times during death animation
+		flash_tween.tween_property(sprite, "modulate", Color(1, 0, 0, 1), 0.1)
+		flash_tween.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 0.1)
 
+	# Wait for death animation to finish
 	await sprite.animation_finished
+	
+	is_hit_invulnerable = false
+	sprite.modulate = Color(1, 1, 1, 1)
 
-
+	# Fade to black
 	var fade_layer = CanvasLayer.new()
 	fade_layer.layer = 100
 	add_child(fade_layer)
@@ -738,12 +755,12 @@ func _on_spike_hit() -> void:
 	tween.tween_property(fade_rect, "color", Color(0, 0, 0, 1), 0.5)
 	await tween.finished
 
-
+	# Teleport to safe position
 	var nudge_x = 25 if sprite.flip_h else -25
 	global_position = last_safe_position + Vector2(nudge_x, -5)
 	velocity = Vector2.ZERO
 
-
+	# Apply damage AFTER teleport (only once, ignore_evasion to skip sound)
 	if health_component:
 		health_component.take_damage(1, true)
 
