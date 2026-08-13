@@ -106,5 +106,16 @@ func _on_open_pressed():
 	get_tree().change_scene_to_packed(dunia_1_scene)
 
 func _on_quit_pressed():
+	# Play button click sound
+	var sound_player = AudioStreamPlayer.new()
+	sound_player.stream = load("res://Backsound/button-click.mp3")
+	sound_player.bus = "SFX"
+	add_child(sound_player)
+	sound_player.play()
+	
+	# Wait for sound to finish before changing scene
+	await sound_player.finished
+	sound_player.queue_free()
+	
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/Menu/home.tscn")

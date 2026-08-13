@@ -25,6 +25,12 @@ func take_damage(amount, ignore_evasion: bool = false) -> void:
 		if parent.is_evading():
 			return
 
+	if parent.has_method("is_player_defending") and parent.is_player_defending():
+		if parent.has_node("shield"):
+			var sound_shield = parent.get_node("shield")
+			if sound_shield:
+				sound_shield.play()
+
 	current_health -= amount
 
 	current_health = clampf(current_health, 0.0, float(max_health))

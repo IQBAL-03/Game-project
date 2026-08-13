@@ -79,6 +79,8 @@ var original_badan_x = 0.0
 @onready var sound_lari: AudioStreamPlayer2D = get_node_or_null("lari")
 @onready var sound_jump: AudioStreamPlayer2D = get_node_or_null("jump")
 @onready var sound_jump_landing: AudioStreamPlayer2D = get_node_or_null("jump_landing")
+@onready var sound_sword: AudioStreamPlayer2D = get_node_or_null("sword")
+@onready var sound_shield: AudioStreamPlayer2D = get_node_or_null("shield")
 var was_on_floor: bool = true
 
 func _ready():
@@ -346,6 +348,9 @@ func serang():
 	sedang_serang = true
 
 	sprite.play("serang")
+
+	if sound_sword:
+		sound_sword.play()
 
 
 	if attack_box:
