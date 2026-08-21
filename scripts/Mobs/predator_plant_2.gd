@@ -8,6 +8,9 @@ extends CharacterBody2D
 @onready var reaksi: Area2D = get_node_or_null("Reaksi")
 @onready var attack_box: Area2D = null  
 
+var sound_attack: AudioStreamPlayer2D = null
+var sound_damage: AudioStreamPlayer2D = null
+
 var health_component: Node = null
 var health_bar_sprite: Sprite2D = null
 var bar_full_tex: Texture2D = null
@@ -79,6 +82,19 @@ func _ready() -> void:
 	add_child(visibility_notifier)
 	visibility_notifier.screen_entered.connect(_on_screen_entered)
 	visibility_notifier.screen_exited.connect(_on_screen_exited)
+	
+	# Setup sound effects
+	sound_attack = AudioStreamPlayer2D.new()
+	sound_attack.name = "predator_attack"
+	sound_attack.stream = load("res://Backsound/In-Game/predator_plant_attack.mp3")
+	sound_attack.max_polyphony = 4
+	add_child(sound_attack)
+	
+	sound_damage = AudioStreamPlayer2D.new()
+	sound_damage.name = "predator_damage"
+	sound_damage.stream = load("res://Backsound/In-Game/predator_take_damage.mp3")
+	sound_damage.max_polyphony = 4
+	add_child(sound_damage)
 
 func _physics_process(delta: float) -> void:
 	if is_dead: return
@@ -163,6 +179,9 @@ func _on_sprite_frame_changed() -> void:
 			if attack_box:
 				attack_box.set_deferred("monitoring", true)
 				attack_box_active = true
+				# Play attack sound
+				if sound_attack:
+					sound_attack.play()
 		elif animated_sprite.frame != 5:
 
 			if attack_box and attack_box_active:
@@ -202,6 +221,9 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		if health_component:
 			health_component.take_damage(1)
 			show_hit_feedback()
+			# Play damage sound
+			if sound_damage:
+				sound_damage.play()
 
 func _on_enemy_health_changed(current: float, _maximum: float) -> void:
 

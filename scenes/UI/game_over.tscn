@@ -103,9 +103,13 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("6_irg28")
 
-[node name="game-over" type="AudioStreamPlayer2D" parent="TextureRect" unique_id=525417377]
+[node name="game-over" type="AudioStreamPlayer" parent="TextureRect" unique_id=525417377]
+process_mode = 3
 stream = ExtResource("6_r5ffl")
 volume_db = 10.865
+bus = &"SFX"
 
-[node name="button" type="AudioStreamPlayer2D" parent="TextureRect" unique_id=529740120]
+[node name="button" type="AudioStreamPlayer" parent="TextureRect" unique_id=529740120]
+process_mode = 3
 stream = ExtResource("7_lrum0")
+bus = &"SFX"

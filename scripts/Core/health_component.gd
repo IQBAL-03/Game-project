@@ -30,8 +30,14 @@ func take_damage(amount, ignore_evasion: bool = false) -> void:
 			var sound_shield = parent.get_node("shield")
 			if sound_shield:
 				sound_shield.play()
-
-	current_health -= amount
+		current_health -= amount
+	else:
+		current_health -= amount
+		# Play hit sound only if NOT ignore_evasion (to prevent double sound on spike)
+		if not ignore_evasion and parent.has_node("hit"):
+			var sound_hit = parent.get_node("hit")
+			if sound_hit:
+				sound_hit.play()
 
 	current_health = clampf(current_health, 0.0, float(max_health))
 

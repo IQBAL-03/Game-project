@@ -18,8 +18,9 @@
 [ext_resource type="AudioStream" uid="uid://cvb62du4hy2jy" path="res://Backsound/In-Game/jump.mp3" id="16_jump"]
 [ext_resource type="AudioStream" uid="uid://fbudurtkxo35" path="res://Backsound/In-Game/jump_landing.mp3" id="17_landing"]
 [ext_resource type="AudioStream" uid="uid://c6tan4hoekoci" path="res://Backsound/In-Game/coin.mp3" id="18_x8khf"]
-[ext_resource type="AudioStream" path="res://Backsound/In-Game/sword.mp3" id="19_sword"]
-[ext_resource type="AudioStream" path="res://Backsound/In-Game/shield.mp3" id="20_shield"]
+[ext_resource type="AudioStream" uid="uid://ce7lw8jao83b6" path="res://Backsound/In-Game/sword.mp3" id="19_sword"]
+[ext_resource type="AudioStream" uid="uid://bek8em46dvy3e" path="res://Backsound/In-Game/shield.mp3" id="20_shield"]
+[ext_resource type="AudioStream" uid="uid://c5esxyiyfsbcv" path="res://Backsound/In-Game/hit.mp3" id="21_hit"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mf77c"]
 atlas = ExtResource("3_oprun")
@@ -525,33 +526,31 @@ script = ExtResource("13_ke2ow")
 
 [node name="jalan" type="AudioStreamPlayer2D" parent="player" unique_id=525097028]
 stream = ExtResource("14_wyey8")
-volume_db = -16.687
-bus = &"SFX"
+volume_db = 2.716
 
 [node name="lari" type="AudioStreamPlayer2D" parent="player" unique_id=329109243]
 stream = ExtResource("15_1bwnf")
-bus = &"SFX"
 
 [node name="jump" type="AudioStreamPlayer2D" parent="player" unique_id=232823759]
 stream = ExtResource("16_jump")
-bus = &"SFX"
 
 [node name="jump_landing" type="AudioStreamPlayer2D" parent="player" unique_id=621444379]
 stream = ExtResource("17_landing")
 volume_db = 10.477
-bus = &"SFX"
 
 [node name="coin" type="AudioStreamPlayer2D" parent="player" unique_id=213369290]
 stream = ExtResource("18_x8khf")
 volume_db = 5.432
-bus = &"SFX"
 
-[node name="sword" type="AudioStreamPlayer2D" parent="player"]
+[node name="sword" type="AudioStreamPlayer2D" parent="player" unique_id=25987337]
 stream = ExtResource("19_sword")
-volume_db = 0.0
-bus = &"SFX"
+max_polyphony = 4
 
-[node name="shield" type="AudioStreamPlayer2D" parent="player"]
+[node name="shield" type="AudioStreamPlayer2D" parent="player" unique_id=1167526905]
 stream = ExtResource("20_shield")
-volume_db = 0.0
-bus = &"SFX"
+max_polyphony = 4
+
+[node name="hit" type="AudioStreamPlayer2D" parent="player" unique_id=1918058839]
+stream = ExtResource("21_hit")
+volume_db = -9.667
+max_polyphony = 4

@@ -10,14 +10,13 @@ func _ready() -> void:
 	# Sembunyikan player setelah process mode diset
 	_hide_player()
 	
-	# Mainkan suara menang
-	var win_snd = get_node_or_null("Control/TextureRect/win")
-	if not win_snd:
-		win_snd = find_child("win", true, false)
-	if win_snd:
-		win_snd.play()
+	# Pause background music
+	_pause_background_music()
 	
 	ButtonHover.apply_to_tree(self)
+	
+	# Mainkan suara menang setelah semua setup
+	call_deferred("_play_win_sound")
 	
 	var control = get_node_or_null("Control")
 	if not control:
@@ -47,6 +46,16 @@ func _ready() -> void:
 		if next_button:
 			next_button.visible = false
 
+func _play_win_sound() -> void:
+	var win_snd = get_node_or_null("Control/TextureRect/win")
+	if not win_snd:
+		win_snd = find_child("win", true, false)
+	if win_snd:
+		print("Playing win sound: ", win_snd.name)
+		win_snd.play()
+	else:
+		print("Win sound node not found!")
+
 func _on_x_pressed() -> void:
 	_unpause_and_remove()
 	LevelTracker.reset()
@@ -72,7 +81,17 @@ func _hide_player() -> void:
 			if child is AnimatedSprite2D or child is Sprite2D:
 				child.visible = false
 
+func _pause_background_music() -> void:
+	var music_player = get_tree().root.find_child("BackgroundMusic", true, false)
+	if music_player and music_player is AudioStreamPlayer:
+		music_player.stream_paused = true
+
 func _unpause_and_remove() -> void:
+	# Resume background music
+	var music_player = get_tree().root.find_child("BackgroundMusic", true, false)
+	if music_player and music_player is AudioStreamPlayer:
+		music_player.stream_paused = false
+	
 	# Tampilkan player kembali sebelum unpause
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
